@@ -8,8 +8,6 @@ export const StyledUniloWrapper = styled.div`
 `
 
 export const StyledUnilo = styled.div`
-  display: flex;
-  align-items: flex-start;
   padding: 1rem;
   margin: 0 auto;
   max-width: 25vw;
