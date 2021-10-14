@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import OpenBoxGame from "./pages/OpenBoxGame";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/screen-3">
           <div>Screen 3</div>
+        </Route>
+        <Route path="/open-box-game">
+          <OpenBoxGame />
         </Route>
       </Switch>
     </Router>
