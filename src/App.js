@@ -6,28 +6,28 @@ import {
   Switch,
 } from "react-router-dom";
 import "./App.css";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <Router>
-      <ul>
-        <li>
-          <Link to="/screen-1">Screen 1</Link>
-        </li>
-        <li>
-          <Link to="/screen-2">Screen 2</Link>
-        </li>
-        <li>
-          <Link to="/screen-3">Screen 3</Link>
-        </li>
-      </ul>
-
+      {/*<ul>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/dashboard">Dashboard</Link>*/}
+      {/*  </li>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/screen-2">Screen 2</Link>*/}
+      {/*  </li>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/screen-3">Screen 3</Link>*/}
+      {/*  </li>*/}
+      {/*</ul>*/}
       <Switch>
         <Route exact path="/">
-          <Redirect to="/screen-1" />
+          <Redirect to="/dashboard" />
         </Route>
-        <Route path="/screen-1">
-          <div>Screen 1</div>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
         <Route path="/screen-2">
           <div>Screen 2</div>
