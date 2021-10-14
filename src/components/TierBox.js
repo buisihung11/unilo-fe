@@ -40,9 +40,9 @@ export default function TierBox(props) {
         <div className={"font-weight-bold text-right"}>
             {`${currentNutCount}/${upperTierNut}`}
         </div>
-        <div className={"mt-1 text-center d-flex"}>
+        <div className={"mt-1 d-flex"}>
             <InfoIcon/>
-            <p>
+            <p className={"h6 ml-1"}>
                 {`Chỉ còn ${nutRemainCount} hạt dẻ nữa để thăng hạng ${upperTier}`}
             </p>
         </div>

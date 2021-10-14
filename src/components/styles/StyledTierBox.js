@@ -58,9 +58,11 @@ export const StyledNutWrapper = styled.div`
   top: -20px;
 `
 
+const DEFAULT_NUT_SIZE = "30px"
+
 export const StyledNut = styled.div`
   background: url(${nutImage});
   background-size: cover;
-  width: 30px;
-  height: 30px;
+  width: ${(props => props.nutSize ?? DEFAULT_NUT_SIZE)};
+  height: ${(props => props.nutSize ?? DEFAULT_NUT_SIZE)};
 `
