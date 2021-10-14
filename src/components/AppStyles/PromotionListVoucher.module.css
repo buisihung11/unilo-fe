@@ -1,0 +1,33 @@
+.storeWrapper {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../img/promotion/tbl2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: center;
+  height: 31rem;
+}
+
+.storeTitleContainer {
+  display: flex;
+  height: 2rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+.storeTitleContainer p {
+  font-size: 15px;
+  font-weight: bold;
+}
+.firstStoreTitle {
+  margin-left: 0.5rem;
+  margin-right: 1.8rem;
+}
+
+.listVouchers {
+  margin-top: 2rem;
+  margin-left: 1.8rem;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}

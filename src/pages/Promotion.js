@@ -2,9 +2,9 @@ import {
   StyledUnilo,
   StyledUniloWrapper,
 } from "../components/styles/StyledUnilo";
-import StyledPromotion from "../components/styles/Promotion.module.css";
 import PromotionHeader from "../components/PromotionHeader";
 import PromotionSpecial from "../components/PromotionSpecial";
+import PromotionListVoucher from "../components/PromotionListVoucher";
 
 export default function Promotion(props) {
   return (
@@ -13,6 +13,7 @@ export default function Promotion(props) {
         <div>
           <PromotionHeader />
           <PromotionSpecial />
+          <PromotionListVoucher />
         </div>
       </StyledUnilo>
     </StyledUniloWrapper>
