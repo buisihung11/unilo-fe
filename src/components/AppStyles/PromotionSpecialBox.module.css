@@ -1,0 +1,71 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  background-image: url("../../img/promotion/tbl1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: center;
+  width: 20rem;
+  height: 11rem;
+  margin: auto;
+}
+
+.activityImg {
+  width: 4.9rem;
+  height: 4.5rem;
+  border-radius: 30%;
+}
+
+.leftContentContainer {
+  padding-left: 2.9rem;
+  padding-top: 0.9rem;
+  margin-right: 1rem;
+}
+
+.rightContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightContentContainer p {
+  font-size: 11px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.acbLogo {
+  width: 35px;
+  height: auto;
+  padding-bottom: 6px;
+}
+
+.specialButton {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  width: 6rem;
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+}
+
+.specialButton img {
+  width: 20px;
+  height: 17px;
+}
+
+.specialButton > span {
+  padding-right: 0.5rem;
+}
+
+.specialButton > img,
+.specialButton > span {
+  vertical-align: middle;
+}

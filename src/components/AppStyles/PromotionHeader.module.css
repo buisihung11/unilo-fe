@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.backButton {
+  width: 12%;
+  height: auto;
+}
+
+.badgesTableContainer {
+  display: flex;
+  padding-left: 10rem;
+}
+
+.badgesIconsContainer {
+  display: flex;
+  align-items: center;
+  margin-left: -11.2rem;
+}
+
+.badgesIconsContainer p {
+  padding-right: 18px;
+  font-weight: bold;
+}
+
+.badgesTbleImg {
+  width: 12rem;
+  height: 2.9rem;
+}
+
+.normalBadge {
+  width: 22px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.mediumBadge {
+  width: 26px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.specialBadge {
+  width: 28px;
+  height: 26px;
+  margin-right: 5px;
+}
