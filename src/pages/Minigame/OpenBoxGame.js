@@ -8,6 +8,7 @@ import backImage from '../../assets/images/back.png'
 import bgImage from '../../assets/images/bg.jpg'
 import bean from '../../assets/images/bean.png'
 import MiniGameBox from '../../components/OpenBoxGame'
+import { CustomerSummary } from '../../components'
 
 const RootStyle = styled.div`
   padding: 1rem;
@@ -63,6 +64,7 @@ export default function OpenBoxGame() {
           </p>
         </ContentStyle>
         <MiniGameBox />
+        <CustomerSummary />
       </RootStyle>
     </StyledUniloWrapper>
   )
