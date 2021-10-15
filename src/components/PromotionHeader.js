@@ -1,3 +1,4 @@
+import { useState } from "react";
 import StyledPromotion from "./styles/PromotionHeader.module.css";
 import backImg from "../img/promotion/back.png";
 import badgesTbl from "../img/promotion/tbl5.png";
@@ -6,6 +7,9 @@ import mediumBadge from "../img/promotion/icon5.png";
 import specialBadge from "../img/promotion/icon2.png";
 
 function PromotionHeader() {
+  const [normalBadges, setnormalBadges] = useState(5);
+  const [mediumBagdes, setmediumBagdes] = useState(10);
+  const [specialBadges, setspecialBadges] = useState(3);
   return (
     <>
       <div className={StyledPromotion.wrapper}>
@@ -28,19 +32,19 @@ function PromotionHeader() {
               alt="normal badge"
               className={StyledPromotion.normalBadge}
             />
-            <p>10</p>
+            <span>{normalBadges}</span>
             <img
               src={mediumBadge}
               alt="medium badge"
               className={StyledPromotion.mediumBadge}
             />
-            <p>5</p>
+            <span>{mediumBagdes}</span>
             <img
               src={specialBadge}
               alt="special badge"
               className={StyledPromotion.specialBadge}
             />
-            <p>3</p>
+            <span>{specialBadges}</span>
           </div>
         </div>
       </div>

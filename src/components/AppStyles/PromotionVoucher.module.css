@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
-  width: 18rem;
+  width: 17.5rem;
+  height: 4rem;
   background-color: rgba(255, 255, 255, 0.34);
   align-items: center;
   margin-bottom: 0.9rem;
@@ -17,13 +18,13 @@
   display: flex;
   flex-direction: column;
   width: 9.5rem;
+  height: 3.5rem;
   margin-left: 7px;
 }
 
 .title {
   font-weight: bold;
-  font-size: 16px;
-  padding-bottom: 2px;
+  font-size: 15px;
 }
 
 .description {
@@ -43,7 +44,6 @@
   box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
   box-sizing: border-box;
   color: #fff;
-  cursor: pointer;
 }
 
 .specialButton img {

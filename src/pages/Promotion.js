@@ -10,11 +10,9 @@ export default function Promotion(props) {
   return (
     <StyledUniloWrapper>
       <StyledUnilo>
-        <div>
-          <PromotionHeader />
-          <PromotionSpecial />
-          <PromotionListVoucher />
-        </div>
+        <PromotionHeader />
+        <PromotionSpecial />
+        <PromotionListVoucher />
       </StyledUnilo>
     </StyledUniloWrapper>
   );

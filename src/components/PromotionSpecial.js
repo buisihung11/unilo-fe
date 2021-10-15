@@ -1,9 +1,15 @@
+import { useState } from "react";
 import StyledPromotion from "./styles/PromotionSpecialBox.module.css";
 import acbActivity from "../img/promotion/activity.png";
 import acbLogo from "../img/promotion/ACB_Logo.png";
 import mediumBadge from "../img/promotion/icon5.png";
+import specialButton from "../img/btn-blue-bg.png";
 
 function PromotionSpecial() {
+  const [voucherDescription, setvoucherDescription] = useState(
+    " Ưu đãi 0.5% lãi suất khi gửi tiền tiết kiệm qua ..."
+  );
+  const [noOfBadge, setnoOfBadge] = useState(3);
   return (
     <div className={StyledPromotion.wrapper}>
       <div className={StyledPromotion.leftContentContainer}>
@@ -21,14 +27,15 @@ function PromotionSpecial() {
           onClick={() => console.log("CHECK")}
           className={StyledPromotion.acbLogo}
         />
-        <p>
-          Ưu đãi 0.5% lãi suất khi gửi <br />
-          tiền tiết kiếm qua ...
-        </p>
-        <button type="button" className={StyledPromotion.specialButton}>
-          <span>3</span>
-          <img src={mediumBadge} alt="back button" />
-        </button>
+        <span>
+          Ưu đãi 0.5% lãi suất khi gửi
+          <br />
+          tiền tiết kiệm qua ...
+        </span>
+        <div className={StyledPromotion.specialButtonContainer}>
+          <span>{noOfBadge}</span>
+          <img src={mediumBadge} alt="medium badge" />
+        </div>
       </div>
     </div>
   );

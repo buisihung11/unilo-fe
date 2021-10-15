@@ -12,8 +12,8 @@
 }
 
 .activityImg {
-  width: 4.9rem;
-  height: 4.5rem;
+  width: 4.7rem;
+  height: 4.3rem;
   border-radius: 30%;
 }
 
@@ -26,46 +26,45 @@
 .rightContentContainer {
   display: flex;
   flex-direction: column;
+  align-content: flex-start;
   align-items: center;
+  padding-top: 3rem;
+  padding-left: px;
 }
 
-.rightContentContainer p {
+.rightContentContainer span {
   font-size: 11px;
   text-align: center;
-  padding-bottom: 5px;
 }
 
 .acbLogo {
   width: 35px;
   height: auto;
-  padding-bottom: 6px;
-}
-
-.specialButton {
-  text-align: center;
-  font-size: 17px;
-  font-weight: bold;
   padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.specialButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../img/btn-blue-bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   width: 6rem;
-  background-color: #0095ff;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
+  height: 5rem;
 }
 
-.specialButton img {
-  width: 20px;
-  height: 17px;
+.specialButtonContainer > img {
+  width: 23px;
+  height: 20px;
+  margin-bottom: 30px;
 }
 
-.specialButton > span {
-  padding-right: 0.5rem;
-}
-
-.specialButton > img,
-.specialButton > span {
-  vertical-align: middle;
+.specialButtonContainer > span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  padding-right: 10px;
+  margin-bottom: 30px;
 }

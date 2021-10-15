@@ -5,18 +5,18 @@ import mediumBadge from "../img/promotion/icon5.png";
 function PromotionVoucher(props) {
   return (
     <div className={StyledVoucher.wrapper}>
-      <img src={lounge} alt="normal badge" />
+      <img src={props.item.img} alt="normal badge" />
 
       <div className={StyledVoucher.contentContainer}>
-        <p className={StyledVoucher.title}>VIP Louge</p>
-        <p className={StyledVoucher.description}>
-          Tặng 1 lượt checkin phòng chờ thương gia
-        </p>
+        <span className={StyledVoucher.title}>{props.item.title}</span>
+        <span className={StyledVoucher.description}>
+          {props.item.description}
+        </span>
       </div>
 
       <button type="button" className={StyledVoucher.specialButton}>
-        <span>3</span>
-        <img src={mediumBadge} alt="back button" />
+        <span>{props.item.quantity}</span>
+        <img src={props.item.badgeIcon} alt="back button" />
       </button>
     </div>
   );

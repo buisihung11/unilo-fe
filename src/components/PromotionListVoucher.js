@@ -6,11 +6,25 @@ import badgeMedium from "../img/promotion/icon5.png";
 
 const vouchers = [
   {
-    img: { lounge },
+    img: lounge,
     title: "VIP Lounge",
     description: "Tặng 1 lượt checkin phòng chờ thương gia",
     quantity: 3,
-    badgeIcon: { badgeMedium },
+    badgeIcon: badgeMedium,
+  },
+  {
+    img: lounge,
+    title: "VIP Lounge",
+    description: "Tặng 1 lượt checkin phòng chờ thương gia",
+    quantity: 3,
+    badgeIcon: badgeMedium,
+  },
+  {
+    img: lounge,
+    title: "VIP Lounge",
+    description: "Tặng 1 lượt checkin phòng chờ thương gia",
+    quantity: 3,
+    badgeIcon: badgeMedium,
   },
 ];
 
@@ -24,11 +38,16 @@ function PromotionListVoucher() {
         <p>Quà tặng của tôi</p>
       </div>
       <div className={StyledPromotionListVoucher.listVouchers}>
-        <PromotionVoucher list={vouchers} />
-        <PromotionVoucher list={vouchers} />
-        <PromotionVoucher list={vouchers} />
-        <PromotionVoucher list={vouchers} />
+        {vouchers.map((voucher) => {
+          return <PromotionVoucher item={voucher} />;
+        })}
       </div>
+
+      {/* <div className={StyledPromotionListVoucher.listVouchers}>
+        <PromotionVoucher />
+        <PromotionVoucher />
+        <PromotionVoucher />
+      </div> */}
     </div>
   );
 }
