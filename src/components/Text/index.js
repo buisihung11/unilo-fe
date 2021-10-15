@@ -1,3 +1,4 @@
-import Text from './Text.style'
+import Text, { BorderText } from './Text.style'
 
 export default Text
+export { BorderText }
