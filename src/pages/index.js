@@ -1,4 +1,4 @@
-import Dashboard from "./Dashboard/Dashboard";
-import OpenBoxGame from "./Minigame/OpenBoxGame";
+import Dashboard from './Dashboard'
+import OpenBoxGame from './Minigame/OpenBoxGame'
 
-export { Dashboard, OpenBoxGame };
+export { Dashboard, OpenBoxGame }
