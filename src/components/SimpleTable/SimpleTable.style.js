@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const TabWrapper = styled.div`
   float: left;
@@ -6,9 +6,9 @@ export const TabWrapper = styled.div`
   width: 50%;
   margin-left: 4%;
   z-index: 3;
-`;
+`
 
-export const TabContent = styled.h3`
+export const TabContent = styled.h4`
   width: 90%;
   position: absolute;
   top: 50%;
@@ -18,23 +18,23 @@ export const TabContent = styled.h3`
   -webkit-text-stroke: 1px black;
   color: white;
 }
-`;
+`
 
 export const Mascot = styled.div`
   position: relative;
   top: -13%;
   left: 50%;
-  background: url(${props => props.icon}) no-repeat center center/contain;
+  background: url(${(props) => props.icon}) no-repeat center center/contain;
   height: 30%;
   z-index: 1;
   width: 50%;
-`;
+`
 
 export const TableWrapper = styled.div`
   z-index: 2;
   position: relative;
   top: -23%;
-`;
+`
 
 export const TableContent = styled.div`
   position: absolute;
@@ -49,4 +49,4 @@ export const TableContent = styled.div`
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-`;
+`

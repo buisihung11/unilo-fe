@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react'
 
 export default function Icon(props) {
-  return <img src={props.img} className="icon" />
+  return <img src={props.img} className="icon" onClick={props.onClick} />
 }

@@ -11,6 +11,8 @@ import HoneyPot from './HoneyPot'
 import NutLabel from './NutLabel'
 import TierBox from './TierBox'
 import Dialog from './Dialog'
+import SimpleTable from './SimpleTable'
+import Header from './Header'
 
 export {
   BearTalking,
@@ -26,4 +28,6 @@ export {
   NutLabel,
   TierBox,
   Dialog,
+  SimpleTable,
+  Header,
 }
