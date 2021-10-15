@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import Pages from "./pages";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/screen-3">
           <div>Screen 3</div>
+        </Route>
+        <Route path="/reward">
+          <Pages.Reward />
         </Route>
       </Switch>
     </Router>
