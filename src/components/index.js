@@ -10,6 +10,7 @@ import CustomerSummary from './CustomerSummary'
 import HoneyPot from './HoneyPot'
 import NutLabel from './NutLabel'
 import TierBox from './TierBox'
+import Dialog from './Dialog'
 
 export {
     BearTalking,
@@ -24,4 +25,5 @@ export {
     HoneyPot,
     NutLabel,
     TierBox,
+    Dialog,
 }
