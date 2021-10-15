@@ -1,7 +1,6 @@
 import React from "react";
-import StyledVoucher from "./styles/PromotionVoucher.module.css";
-import lounge from "../img/promotion/lounge.jpg";
-import mediumBadge from "../img/promotion/icon5.png";
+import StyledVoucher from "./PromotionVoucher.module.css";
+
 function PromotionVoucher(props) {
   return (
     <div className={StyledVoucher.wrapper}>

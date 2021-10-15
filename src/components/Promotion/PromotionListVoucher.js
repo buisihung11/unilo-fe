@@ -1,8 +1,8 @@
 import React from "react";
 import PromotionVoucher from "./PromotionVoucher";
-import StyledPromotionListVoucher from "./styles/PromotionListVoucher.module.css";
-import lounge from "../img/promotion/lounge.jpg";
-import badgeMedium from "../img/promotion/icon5.png";
+import StyledPromotionListVoucher from "./PromotionListVoucher.module.css";
+import lounge from "../../assets/images/lounge.jpg";
+import badgeMedium from "../../assets/icons/honeypot2.png";
 
 const vouchers = [
   {
@@ -42,12 +42,6 @@ function PromotionListVoucher() {
           return <PromotionVoucher item={voucher} />;
         })}
       </div>
-
-      {/* <div className={StyledPromotionListVoucher.listVouchers}>
-        <PromotionVoucher />
-        <PromotionVoucher />
-        <PromotionVoucher />
-      </div> */}
     </div>
   );
 }

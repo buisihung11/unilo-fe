@@ -1,10 +1,10 @@
 import { useState } from "react";
-import StyledPromotion from "./styles/PromotionHeader.module.css";
-import backImg from "../img/promotion/back.png";
-import badgesTbl from "../img/promotion/tbl5.png";
-import normalBadge from "../img/promotion/icon4.png";
-import mediumBadge from "../img/promotion/icon5.png";
-import specialBadge from "../img/promotion/icon2.png";
+import StyledPromotion from "./PromotionHeader.module.css";
+import exitIon from "../../assets/icons/exit-icon.png";
+import badgesTbl from "../../assets/images/badges-board.png";
+import normalBadge from "../../assets/icons/honeypot1.png";
+import mediumBadge from "../../assets/icons/honeypot2.png";
+import specialBadge from "../../assets/icons/honeypot3.png";
 
 function PromotionHeader() {
   const [normalBadges, setnormalBadges] = useState(5);
@@ -14,7 +14,7 @@ function PromotionHeader() {
     <>
       <div className={StyledPromotion.wrapper}>
         <img
-          src={backImg}
+          src={exitIon}
           alt="back button"
           onClick={() => console.log("CHECK")}
           className={StyledPromotion.backButton}

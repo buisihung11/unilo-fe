@@ -1,9 +1,8 @@
 import { useState } from "react";
-import StyledPromotion from "./styles/PromotionSpecialBox.module.css";
-import acbActivity from "../img/promotion/activity.png";
-import acbLogo from "../img/promotion/ACB_Logo.png";
-import mediumBadge from "../img/promotion/icon5.png";
-import specialButton from "../img/btn-blue-bg.png";
+import StyledPromotion from "./PromotionSpecialBox.module.css";
+import acbActivity from "../../assets/images/acb-activity.jpg";
+import acbLogo from "../../assets/images/acb-logo.png";
+import mediumBadge from "../../assets/icons/honeypot2.png";
 
 function PromotionSpecial() {
   const [voucherDescription, setvoucherDescription] = useState(
