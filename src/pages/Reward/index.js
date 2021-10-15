@@ -1,5 +1,5 @@
 import React from "react";
-import {StyledUniloWrapper, VerticalView, DashedLine} from "../../components/styles/StyledUnilo";
+import {StyledUniloWrapper, VerticalView, DashedLine} from "../../components/AppStyles";
 import Header from "../../components/Header";
 import SimpleTable from "../../components/SimpleTable";
 import PrimaryButton from "../../components/PrimaryButton";
