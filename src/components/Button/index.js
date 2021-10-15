@@ -13,7 +13,6 @@ const Button = (props) => {
   });
 
   const { variant, onClick, ...others } = props;
-  console.log(`others`, others);
 
   const onClickHandler = () => {
     onPlaySound();

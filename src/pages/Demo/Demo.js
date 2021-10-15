@@ -5,13 +5,17 @@ import {
   StyledUniloWrapper,
 } from "../../components/styles/StyledUnilo";
 import Text from "../../components/Text";
+import Wheel from "../../components/Wheel";
 
 const Demo = () => {
   const [showDialog, setshowDialog] = useState(false);
+  const [rotate, setRotate] = useState(false);
   return (
     <StyledUniloWrapper>
       <StyledUnilo>
         <Button onClick={() => setshowDialog(true)}>Show dialog</Button>
+        <Button onClick={() => setRotate(true)}>Start Rotate</Button>
+        <Wheel isRotate={rotate} deg={5000} />
         <Dialog
           visible={showDialog}
           onClose={() => setshowDialog(false)}
