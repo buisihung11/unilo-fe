@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledHoneyPotCount = styled.div`
-  margin-top: -1.3rem;
-  font-weight: bold;
+    margin-top: -1.3rem;
+    font-weight: bold;
 `

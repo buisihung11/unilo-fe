@@ -1,8 +1,5 @@
-import React from "react";
-import {
-    StyledUnilo,
-    StyledUniloWrapper,
-} from "../../components/AppStyles"
+import React from 'react'
+import { StyledUnilo, StyledUniloWrapper } from '../../components/AppStyles'
 import {
     BearTalking,
     CustomerSummary,
@@ -11,24 +8,28 @@ import {
     MinigameButton,
     RewardButton,
     SettingButton,
-    TierBox
-} from "../../components";
+    TierBox,
+} from '../../components'
 
 export default function Dashboard(props) {
     return (
         <StyledUniloWrapper>
             <StyledUnilo>
-                <CustomerSummary/>
-                <TierBox/>
-                <div className={"container d-flex justify-content-center fixed-bottom"}>
-                    <ExitButton/>
-                    <LeaderboardButton/>
-                    <MinigameButton/>
-                    <RewardButton/>
-                    <SettingButton/>
+                <CustomerSummary />
+                <TierBox />
+                <div
+                    className={
+                        'container d-flex justify-content-center fixed-bottom'
+                    }
+                >
+                    <ExitButton />
+                    <LeaderboardButton />
+                    <MinigameButton />
+                    <RewardButton />
+                    <SettingButton />
                 </div>
-                <BearTalking/>
+                <BearTalking />
             </StyledUnilo>
         </StyledUniloWrapper>
-    );
+    )
 }
