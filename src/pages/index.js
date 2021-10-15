@@ -1,3 +1,3 @@
 import Dashboard from './Dashboard'
-
-export { Dashboard }
+import Promotion from './Promotion'
+export { Dashboard, Promotion }
