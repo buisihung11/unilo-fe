@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { color, fontSize, fontWeight, space } from "styled-system";
-import primaryBtn from "../../assets/images/primary-btn.png";
+import primaryBtn from "../../assets/images/bg-customer-summary.png";
 
 const getBackgroundImg = (variant) => {
   switch (variant) {
@@ -11,7 +11,7 @@ const getBackgroundImg = (variant) => {
   }
 };
 
-const StyledButton = styled.div`
+export const StyledButton = styled.div`
   background-image: url(${(props) => getBackgroundImg(props.variant)});
   background-size: contain;
   background-repeat: no-repeat;
@@ -27,4 +27,11 @@ const StyledButton = styled.div`
   ${fontSize}
 `;
 
-export { StyledButton };
+const DEFAULT_WIDTH = "4rem"
+
+export const StyledBackgroundButton = styled.div`
+  background: url(${(props => props.image)}) no-repeat center center/contain;
+  width: ${(props => props.width ?? DEFAULT_WIDTH)};
+  height: ${DEFAULT_WIDTH};
+  margin: .1rem;
+`

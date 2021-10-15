@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {StyledBackgroundButton} from "./styles/StyledBackgroundButton";
-import {StyledHoneyPotCount} from "./styles/StyledCustomerSummary";
+import {StyledBackgroundButton} from "../Button/Button.style";
+import {StyledHoneyPotCount} from "./HoneyPot.style";
 
 export default function HoneyPot(props) {
     return <div className={"d-flex flex-column align-items-center m-1"}>

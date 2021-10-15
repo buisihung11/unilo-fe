@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import bearImage from "../../img/gauxanh7.png"
-import bgChat from "../../img/bg-chat.png";
+import bearImage from "../../assets/images/gauxanh7.png"
+import bgChat from "../../assets/images/bg-chat.png";
 
-export const StyledBear = styled.div`
+export const StyledBearTaking = styled.div`
   margin-top: 6rem;
   background: url(${bearImage}) no-repeat center center/contain;
   width: 300px;

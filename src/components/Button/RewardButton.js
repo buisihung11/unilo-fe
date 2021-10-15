@@ -1,6 +1,6 @@
 import React from "react";
-import {StyledBackgroundButton} from "./styles/StyledBackgroundButton";
-import rewardIcon from "../img/reward-icon.png"
+import rewardIcon from "../../assets/icons/reward-icon.png"
+import {StyledBackgroundButton} from "./Button.style";
 
 export default function RewardButton() {
     return <StyledBackgroundButton image={rewardIcon}/>

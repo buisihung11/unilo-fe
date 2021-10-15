@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import nutImage from "../../img/nut.png";
 
 export const StyledTierBoxWrapper = styled.div`
   background: rgba(236, 184, 51, 0.8);
@@ -58,11 +57,4 @@ export const StyledNutWrapper = styled.div`
   top: -20px;
 `
 
-const DEFAULT_NUT_SIZE = "30px"
 
-export const StyledNut = styled.div`
-  background: url(${nutImage});
-  background-size: cover;
-  width: ${(props => props.nutSize ?? DEFAULT_NUT_SIZE)};
-  height: ${(props => props.nutSize ?? DEFAULT_NUT_SIZE)};
-`

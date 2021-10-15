@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import {StyledBear, StyledMessage, StyledMessageText} from "./styles/StyledBear";
+import {StyledBearTaking, StyledMessage, StyledMessageText} from "./BearTaking.style";
 
 export default function BearTalking() {
     const [message, setMessage] = useState("Subie xin chào buổi sáng! Chúc Nguyên có một buổi sáng an lành nhé!");
     return <div className={"d-flex justify-content-center"}>
-        <StyledBear>
+        <StyledBearTaking>
             <StyledMessage>
                 <StyledMessageText>{message}</StyledMessageText>
             </StyledMessage>
-        </StyledBear>
+        </StyledBearTaking>
     </div>
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import {StyledBackgroundButton} from "./styles/StyledBackgroundButton";
-import exitIcon from "../img/exit-icon.png"
+import {StyledBackgroundButton} from "./Button.style";
+import exitIcon from "../../assets/icons/exit-icon.png"
 
 export default function ExitButton() {
     return <StyledBackgroundButton image={exitIcon}/>

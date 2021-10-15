@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import {StyledNutLabel} from "./styles/StyledCustomerSummary";
-import {StyledNut, StyledNutWrapper} from "./styles/StyledTierBox";
+import {StyledNut, StyledNutLabel} from "./NutLabel.style";
 
 export default function NutLabel(props) {
     const [currentNutCount, setCurrentNutCount] = useState(150);

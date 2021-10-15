@@ -1,6 +1,6 @@
 import React from "react";
-import {StyledBackgroundButton} from "./styles/StyledBackgroundButton";
-import settingIcon from "../img/setting-icon.png"
+import settingIcon from "../../assets/icons/setting-icon.png"
+import {StyledBackgroundButton} from "./Button.style";
 
 export default function SettingButton() {
     return <StyledBackgroundButton image={settingIcon}/>

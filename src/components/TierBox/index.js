@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {
-    StyledNutWrapper,
     StyledLowerCircle,
+    StyledNutWrapper,
     StyledTierBoxWrapper,
     StyledTierHeader,
     StyledTierRoad,
-    StyledUpperCircle, StyledNut
-} from "./styles/StyledTierBox";
+    StyledUpperCircle
+} from "./TierBox.style";
 
-import {ReactComponent as InfoIcon} from "../img/info-icon.svg";
+import {ReactComponent as InfoIcon} from "../../assets/icons/info-icon.svg";
+import {StyledNut} from "../NutLabel/NutLabel.style";
 
 export default function TierBox(props) {
     const [tierTitle, setTierTitle] = useState("Thành viên vàng");
