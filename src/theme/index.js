@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
-const theme = {};
+const theme = {}
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -9,6 +9,6 @@ export const GlobalStyle = createGlobalStyle`
   * {
     -webkit-tap-highlight-color: transparent;
   }
-`;
+`
 
-export default theme;
+export default theme

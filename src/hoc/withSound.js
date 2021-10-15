@@ -2,11 +2,11 @@
 
 const withSound = (Component) => (src) => (props) => {
   const playSound = () => {
-    console.log(`Play ${src}`);
-  };
+    console.log(`Play ${src}`)
+  }
   return (
     <>
       <Component {...props} onPlaySound={playSound} />
     </>
-  );
-};
+  )
+}

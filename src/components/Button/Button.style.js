@@ -3,12 +3,12 @@ import { color, fontSize, fontWeight, space } from 'styled-system'
 import primaryBtn from '../../assets/images/bg-customer-summary.png'
 
 const getBackgroundImg = (variant) => {
-    switch (variant) {
-        case 'primary':
-            return primaryBtn
-        default:
-            return primaryBtn
-    }
+  switch (variant) {
+    case 'primary':
+      return primaryBtn
+    default:
+      return primaryBtn
+  }
 }
 
 export const StyledButton = styled.div`
