@@ -36,7 +36,7 @@ function App() {
         <Route path="/screen-3">
           <div>Screen 3</div>
         </Route>
-        <Route path="/open-box-game">
+        <Route path="/minigame/openbox">
           <OpenBoxGame />
         </Route>
       </Switch>

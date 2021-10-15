@@ -5,12 +5,9 @@ import { StyledUniloWrapper } from "../components/styles/StyledUnilo";
 
 // Images
 import backImage from "../img/back.png";
-import firstBox from "../img/giftbox/box_1.png";
-import secondBox from "../img/giftbox/box_2.png";
-import thirdBox from "../img/giftbox/box_3.png";
-import fourthBox from "../img/giftbox/box_4.png";
 import bgImage from "../img/bg.jpg";
 import bean from "../img/bean.png";
+import MiniGameBox from "../components/MiniGameBox";
 
 const RootStyle = styled.div`
   padding: 1rem;
@@ -38,37 +35,13 @@ const ContentStyle = styled.div`
   margin-top: -5px;
 `;
 
-const GiftBoxRowStyle = styled.div`
-  margin-top: 25px;
-  display: flex;
-  justify-content: space-around;
-`;
-
 const styles = {
-  boxImg: {
-    width: "32%",
-    height: "32%",
-    filter: "drop-shadow(0px 4px 40px #FFFFFF)",
-  },
-  title: {
-    color: "#FFFFFF",
-  },
-  subTitle: {
-    color: "#3391EC",
-  },
   beanImg: {
-    position: "relative",
-    top: "6px",
     width: "30px",
+    position: "relative",
+    top: "-3px",
+    left: "-5px",
   },
-  exchangeRule: {
-    color: "#F1D302",
-    paddingTop: "15px",
-  },
-};
-
-const openBox = () => {
-  //TODO: Do something here
 };
 
 export default function OpenBoxGame() {
@@ -79,43 +52,17 @@ export default function OpenBoxGame() {
           <img src={backImage} alt="back button" width="65px" />
         </Link>
         <ContentStyle>
-          <h1 style={styles.title}>Hộp quà bí mật</h1>
-          <h3 style={styles.subTitle}>Săn mật cùng ACB Subie</h3>
-
-          <h2 style={styles.exchangeRule}>
-            1 lượt chơi = 2 <img style={styles.beanImg} src={bean} alt="bean" />
-          </h2>
+          <p className={"h2"} style={{ color: "#FFFFFF" }}>
+            Hộp quà bí mật
+          </p>
+          <p className={"h5"} style={{ color: "#3391EC" }}>
+            Săn mật cùng ACB Subie
+          </p>
+          <p className={"h4"} style={{ color: "#F1D302", paddingTop: "15px" }}>
+            1 lượt chơi = 2 <img src={bean} style={styles.beanImg} />
+          </p>
         </ContentStyle>
-        <div>
-          <GiftBoxRowStyle>
-            <img
-              src={firstBox}
-              style={styles.boxImg}
-              alt="box-1"
-              onClick={openBox}
-            />
-            <img
-              src={thirdBox}
-              style={styles.boxImg}
-              alt="box-1"
-              onClick={openBox}
-            />
-          </GiftBoxRowStyle>
-          <GiftBoxRowStyle>
-            <img
-              src={secondBox}
-              style={styles.boxImg}
-              alt="box-1"
-              onClick={openBox}
-            />
-            <img
-              src={fourthBox}
-              style={styles.boxImg}
-              alt="box-1"
-              onClick={openBox}
-            />
-          </GiftBoxRowStyle>
-        </div>
+        <MiniGameBox />
       </RootStyle>
     </StyledUniloWrapper>
   );

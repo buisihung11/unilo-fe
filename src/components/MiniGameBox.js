@@ -1,0 +1,34 @@
+import React from "react";
+import styled from "styled-components";
+// Images
+import firstBox from "../img/giftbox/box_1.png";
+import secondBox from "../img/giftbox/box_2.png";
+import thirdBox from "../img/giftbox/box_3.png";
+import fourthBox from "../img/giftbox/box_4.png";
+
+const StyledImage = styled.img`
+  width: 32%;
+  height: 32%;
+  filter: drop-shadow(0px 4px 40px #ffffff);
+`;
+
+export default function MiniGameBox() {
+  return (
+    <div>
+      <div
+        className={"d-flex justify-content-around"}
+        style={{ marginTop: "10px" }}
+      >
+        <StyledImage src={firstBox} />
+        <StyledImage src={secondBox} />
+      </div>
+      <div
+        className={"d-flex justify-content-around"}
+        style={{ marginTop: "15px" }}
+      >
+        <StyledImage src={thirdBox} />
+        <StyledImage src={fourthBox} />
+      </div>
+    </div>
+  );
+}
