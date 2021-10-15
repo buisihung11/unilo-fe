@@ -6,8 +6,7 @@ import {
 } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
-import { Dashboard } from "./pages";
-import OpenBoxGame from "./pages/OpenBoxGame";
+import { Dashboard, OpenBoxGame } from "./pages";
 import theme, { GlobalStyle } from "./theme";
 
 function App() {

@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledUniloWrapper } from "../components/styles/StyledUnilo";
+import { StyledUniloWrapper } from "../../components/styles/StyledUnilo";
 
 // Images
-import backImage from "../assets/images/back.png";
-import bgImage from "../assets/images/bg.jpg";
-import bean from "../assets/images/bean.png";
-import MiniGameBox from "../components/MiniGameBox";
+import backImage from "../../assets/images/back.png";
+import bgImage from "../../assets/images/bg.jpg";
+import bean from "../../assets/images/bean.png";
+import MiniGameBox from "../../components/OpenBoxGame";
 
 const RootStyle = styled.div`
   padding: 1rem;
