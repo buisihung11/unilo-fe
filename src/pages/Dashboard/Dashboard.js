@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "../../components";
+import { Box, Dialog } from "../../components";
 import Button from "../../components/Button";
 import {
   StyledUnilo,
@@ -19,9 +19,7 @@ export default function Dashboard(props) {
         >
           Noi dung
         </Button>
-        <Box bg="red" m={2} p={4}>
-          Test box
-        </Box>
+        <Dialog />
       </StyledUnilo>
     </StyledUniloWrapper>
   );

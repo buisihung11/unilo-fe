@@ -9,6 +9,7 @@ export const StyledUniloWrapper = styled.div`
 
 export const StyledUnilo = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   padding: 1rem;
   margin: 0 auto;

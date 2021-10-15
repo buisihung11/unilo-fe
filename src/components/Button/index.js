@@ -1,13 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StyledButton } from "./Button.style";
 import propTypes from "@styled-system/prop-types";
+import PropTypes from "prop-types";
+import React from "react";
+import useSound from "use-sound";
+import clickSfx from "../../assets/sounds/button-click.wav";
+import useSetting from "../../hooks/useSetting";
+import { StyledButton } from "./Button.style";
 
 const Button = (props) => {
-  const { variant, ...others } = props;
+  const { mute } = useSetting();
+  const [onPlaySound] = useSound(clickSfx, {
+    soundEnabled: !mute,
+  });
+
+  const { variant, onClick, ...others } = props;
   console.log(`others`, others);
+
+  const onClickHandler = () => {
+    onPlaySound();
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <StyledButton variant={variant} {...others}>
+    <StyledButton variant={variant} {...others} onClick={onClickHandler}>
       {props.children}
     </StyledButton>
   );
