@@ -15,17 +15,11 @@ const StyledImage = styled.img`
 export default function MiniGameBox() {
   return (
     <div>
-      <div
-        className={"d-flex justify-content-around"}
-        style={{ marginTop: "10px" }}
-      >
+      <div className={"d-flex justify-content-around mt-2"}>
         <StyledImage src={firstBox} />
         <StyledImage src={secondBox} />
       </div>
-      <div
-        className={"d-flex justify-content-around"}
-        style={{ marginTop: "15px" }}
-      >
+      <div className={"d-flex justify-content-around mt-4"}>
         <StyledImage src={thirdBox} />
         <StyledImage src={fourthBox} />
       </div>
