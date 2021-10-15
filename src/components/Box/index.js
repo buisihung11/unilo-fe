@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import { space, color, layout, flexbox, zIndex } from "styled-system";
+import styled from 'styled-components'
+import { color, flexbox, layout, space, zIndex } from 'styled-system'
 
 const Box = styled.div(
   {
-    boxSizing: "border-box",
+    boxSizing: 'border-box',
     minWidth: 0,
   },
   space,
   color,
   layout,
   flexbox,
-  zIndex
-);
+  zIndex,
+)
 
-export default Box;
+export default Box
