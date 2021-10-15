@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { StyledUniloWrapper } from "../components/styles/StyledUnilo";
 
 // Images
-import backImage from "../img/back.png";
-import bgImage from "../img/bg.jpg";
-import bean from "../img/bean.png";
+import backImage from "../assets/images/back.png";
+import bgImage from "../assets/images/bg.jpg";
+import bean from "../assets/images/bean.png";
 import MiniGameBox from "../components/MiniGameBox";
 
 const RootStyle = styled.div`

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 // Images
-import firstBox from "../img/giftbox/box_1.png";
-import secondBox from "../img/giftbox/box_2.png";
-import thirdBox from "../img/giftbox/box_3.png";
-import fourthBox from "../img/giftbox/box_4.png";
+import firstBox from "../assets/images/giftbox/box_1.png";
+import secondBox from "../assets/images/giftbox/box_2.png";
+import thirdBox from "../assets/images/giftbox/box_3.png";
+import fourthBox from "../assets/images/giftbox/box_4.png";
 
 const StyledImage = styled.img`
   width: 32%;
