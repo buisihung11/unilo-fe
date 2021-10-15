@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import bgImage from "../../img/bg.jpg"
+import bgImage from "../../img/bg.jpg";
 
 export const StyledUniloWrapper = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-color: #B2F9FC;
-`
+  width: 100vw;
+  height: 100vh;
+  background-color: #b2f9fc;
+`;
 
 export const StyledUnilo = styled.div`
   padding: 1rem;
@@ -15,9 +15,11 @@ export const StyledUnilo = styled.div`
   background: url(${bgImage});
   background-size: cover;
   overflow: auto;
+  background-position: center;
+  background-repeat: no-repeat;
 
   @media (max-width: 900px) {
     width: 100%;
     max-width: 100%;
   }
-`
+`;
