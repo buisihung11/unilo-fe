@@ -7,7 +7,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { SettingProvider } from './context/SettingContext'
-import { Dashboard, Promotion } from './pages'
+import { Dashboard } from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
 
@@ -23,9 +23,6 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <Dashboard />
-            </Route>
-            <Route path="/promotion">
-              <Promotion />
             </Route>
             <Route path="/demo">
               <Demo />
