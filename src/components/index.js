@@ -11,7 +11,9 @@ import HoneyPot from './HoneyPot'
 import NutLabel from './NutLabel'
 import TierBox from './TierBox'
 import Dialog from './Dialog'
-
+import PromotionHeader from './PromotionHeader'
+import PromotionSpecial from './PromotionSpecialBox'
+import PromotionVoucherList from './PromotionVoucherList'
 export {
   BearTalking,
   Box,
@@ -26,4 +28,7 @@ export {
   NutLabel,
   TierBox,
   Dialog,
+  PromotionHeader,
+  PromotionSpecial,
+  PromotionVoucherList,
 }
