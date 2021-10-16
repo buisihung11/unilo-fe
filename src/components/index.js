@@ -11,11 +11,14 @@ import HoneyPot from './HoneyPot'
 import NutLabel from './NutLabel'
 import TierBox from './TierBox'
 import Dialog from './Dialog'
+import SimpleTable from './SimpleTable'
+import Header from './Header'
 import PromotionHeader from './PromotionHeader'
 import PromotionSpecial from './PromotionSpecialBox'
 import PromotionVoucherList from './PromotionVoucherList'
 import { BorderText } from './Text'
 import MiniGameBox from './OpenBoxGame'
+import DashedLine from './DashedLine'
 
 export {
   BearTalking,
@@ -31,9 +34,12 @@ export {
   NutLabel,
   TierBox,
   Dialog,
+  SimpleTable,
+  Header,
   PromotionHeader,
   PromotionSpecial,
   PromotionVoucherList,
   BorderText,
   MiniGameBox,
+  DashedLine,
 }

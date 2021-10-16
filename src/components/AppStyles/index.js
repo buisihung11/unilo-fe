@@ -20,6 +20,27 @@ export const StyledUnilo = styled.div`
   }
 `
 
+export const OverlayView = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 25vw;
+  height: 100vh;
+  background: url(${bgImage});
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 0 2000px #000000ab;
+  overflow: auto;
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+  }
+`
+
 export const StyledDarkUnilo = styled.div`
   padding: 1rem;
   margin: 0 auto;
