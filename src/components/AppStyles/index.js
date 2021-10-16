@@ -20,7 +20,7 @@ export const StyledUnilo = styled.div`
   }
 `
 
-export const VerticalView = styled.div`
+export const OverlayView = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -40,8 +40,17 @@ export const VerticalView = styled.div`
     max-width: 100%;
   }
 `
-export const DashedLine = styled.div`
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border-top: 1px dashed;
+
+export const StyledDarkUnilo = styled.div`
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 25vw;
+  height: 100%;
+  overflow: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(${bgImage}) no-repeat center center/cover;
+  @media (max-width: 900px) {
+    width: 100%;
+    max-width: 100%;
+  }
 `

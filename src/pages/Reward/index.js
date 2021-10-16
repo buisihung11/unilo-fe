@@ -1,10 +1,6 @@
 import React from 'react'
-import {
-  StyledUniloWrapper,
-  VerticalView,
-  DashedLine,
-} from '../../components/AppStyles'
-import { Header, SimpleTable, Button } from '../../components'
+import { StyledUniloWrapper, OverlayView } from '../../components/AppStyles'
+import { Header, SimpleTable, Button, DashedLine } from '../../components'
 import honeypot1 from '../../assets/icons/honeypot1.png'
 import honeypot2 from '../../assets/icons/honeypot2.png'
 import honeypot3 from '../../assets/icons/honeypot3.png'
@@ -18,7 +14,7 @@ const badges = [
 export default function Reward(props) {
   return (
     <StyledUniloWrapper>
-      <VerticalView>
+      <OverlayView>
         <Header style={{ flex: 1 }} onClick={() => console.log('back')} />
         <SimpleTable style={{ flex: 5 }} title="Phần thưởng">
           <div style={{ width: '100%' }}>
@@ -40,7 +36,7 @@ export default function Reward(props) {
         <Button variant="primary">
           <h4>Tiếp tục</h4>
         </Button>
-      </VerticalView>
+      </OverlayView>
     </StyledUniloWrapper>
   )
 }
