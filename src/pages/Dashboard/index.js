@@ -17,11 +17,7 @@ export default function Dashboard(props) {
       <StyledUnilo>
         <CustomerSummary />
         <TierBox />
-        <div
-          className={
-            'container d-flex justify-content-center fixed-bottom'
-          }
-        >
+        <div className={'container d-flex justify-content-center fixed-bottom'}>
           <ExitButton />
           <LeaderboardButton />
           <MinigameButton />
