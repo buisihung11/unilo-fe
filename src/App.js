@@ -7,7 +7,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { SettingProvider } from './context/SettingContext'
-import { Dashboard } from './pages'
+import { Dashboard, OpenBoxGame } from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
 
@@ -35,6 +35,9 @@ function App() {
                 Screen 3
                 <button onClick={() => console.log('Hello')}>Test</button>
               </div>
+            </Route>
+            <Route path="/minigame/openbox">
+              <OpenBoxGame />
             </Route>
           </Switch>
         </Router>

@@ -14,6 +14,9 @@ import Dialog from './Dialog'
 import PromotionHeader from './PromotionHeader'
 import PromotionSpecial from './PromotionSpecialBox'
 import PromotionVoucherList from './PromotionVoucherList'
+import { BorderText } from './Text'
+import MiniGameBox from './OpenBoxGame'
+
 export {
   BearTalking,
   Box,
@@ -31,4 +34,6 @@ export {
   PromotionHeader,
   PromotionSpecial,
   PromotionVoucherList,
+  BorderText,
+  MiniGameBox,
 }
