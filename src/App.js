@@ -24,6 +24,9 @@ function App() {
             <Route path="/dashboard">
               <Dashboard />
             </Route>
+            <Route path="/promotion">
+              <Promotion />
+            </Route>
             <Route path="/demo">
               <Demo />
             </Route>
@@ -35,9 +38,6 @@ function App() {
                 Screen 3
                 <button onClick={() => console.log('Hello')}>Test</button>
               </div>
-            </Route>
-            <Route path="/promotion">
-              <Promotion />
             </Route>
           </Switch>
         </Router>

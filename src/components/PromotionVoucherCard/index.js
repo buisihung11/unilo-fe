@@ -1,5 +1,4 @@
 import React from 'react'
-import StyledVoucher from './PromotionVoucher.module.css'
 import {
   StyledVoucherCardWrapper,
   ImgThumbnail,
