@@ -7,7 +7,13 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { SettingProvider } from './context/SettingContext'
-import { Dashboard, Reward, OpenBoxGame, Promotion } from './pages'
+import {
+  Dashboard,
+  Reward,
+  OpenBoxGame,
+  Promotion,
+  PromotionDetail,
+} from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
 
@@ -42,8 +48,11 @@ function App() {
             <Route path="/minigame/openbox">
               <OpenBoxGame />
             </Route>
-            <Route path="/promotion">
+            <Route exact path="/promotion">
               <Promotion />
+            </Route>
+            <Route path="/promotion/:id">
+              <PromotionDetail />
             </Route>
           </Switch>
         </Router>
