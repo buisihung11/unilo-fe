@@ -13,6 +13,7 @@ import {
   OpenBoxGame,
   Promotion,
   PromotionDetail,
+  MissionDetail,
 } from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route path="/promotion/:id">
               <PromotionDetail />
+            </Route>
+            <Route path="/mission/:id">
+              <MissionDetail />
             </Route>
           </Switch>
         </Router>
