@@ -17,7 +17,6 @@ import PromotionHeader from './PromotionHeader'
 import PromotionSpecial from './PromotionSpecialBox'
 import PromotionVoucherList from './PromotionVoucherList'
 import { BorderText } from './Text'
-import MiniGameBox from './OpenBoxGame'
 import DashedLine from './DashedLine'
 
 export {
@@ -40,6 +39,5 @@ export {
   PromotionSpecial,
   PromotionVoucherList,
   BorderText,
-  MiniGameBox,
   DashedLine,
 }

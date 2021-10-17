@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { StyledDarkUnilo, StyledUniloWrapper } from '../../components/AppStyles'
 import StyledNut from '../../components/NutStyle'
-import { Box, CustomerSummary, BorderText, MiniGameBox } from '../../components'
-
+import { Box, CustomerSummary, BorderText } from '../../components'
+import MiniGameBox from './components/OpenBoxGame'
 // Images
 import backImage from '../../assets/images/back.png'
 
