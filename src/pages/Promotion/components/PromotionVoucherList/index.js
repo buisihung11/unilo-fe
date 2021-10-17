@@ -5,9 +5,9 @@ import {
   StyledFirstTitleWrapper,
   StyledListWrapprer,
 } from './PromotionListVoucher.style'
-import Text from '../Text'
-import lounge from '../../assets/images/lounge.jpg'
-import badgeMedium from '../../assets/icons/honeypot2.png'
+import Text from '../../../../components/Text'
+import lounge from '../../../../assets/images/lounge.jpg'
+import badgeMedium from '../../../../assets/icons/honeypot2.png'
 import PromotionVoucher from '../PromotionVoucherCard'
 
 const vouchers = [
@@ -22,14 +22,28 @@ const vouchers = [
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
-    quantity: 3,
+    quantity: 4,
     badgeIcon: badgeMedium,
   },
   {
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
-    quantity: 3,
+    quantity: 5,
+    badgeIcon: badgeMedium,
+  },
+  {
+    img: lounge,
+    title: 'VIP Lounge',
+    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    quantity: 6,
+    badgeIcon: badgeMedium,
+  },
+  {
+    img: lounge,
+    title: 'VIP Lounge',
+    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    quantity: 7,
     badgeIcon: badgeMedium,
   },
 ]
@@ -53,19 +67,6 @@ function PromotionListVoucher() {
         })}
       </StyledListWrapprer>
     </StyledVoucherListWrapper>
-    // <div className={StyledPromotionListVoucher.storeWrapper}>
-    //   <div className={StyledPromotionListVoucher.storeTitleContainer}>
-    //     <p className={StyledPromotionListVoucher.firstStoreTitle}>
-    //       Gian hàng ưu đãi
-    //     </p>
-    //     <p>Quà tặng của tôi</p>
-    //   </div>
-    //   <div className={StyledPromotionListVoucher.listVouchers}>
-    //     {vouchers.map((voucher) => {
-    //       return <PromotionVoucher item={voucher} />
-    //     })}
-    //   </div>
-    // </div>
   )
 }
 

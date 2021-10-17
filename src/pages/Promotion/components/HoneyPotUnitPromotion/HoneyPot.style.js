@@ -13,7 +13,7 @@ export const StyledHoneyPotCard = styled.div`
 `
 const DEFAULT_FONT_SIZE = '4rem'
 const DEFAULT_MARGIN_TOP_COUNT = '-1.8rem'
-const DEFAULT_PADDING_RIGHT_COUNT = '1rem'
+const DEFAULT_PADDING_RIGHT_COUNT = '0.4rem'
 
 export const StyledHoneyPotCount = styled.div`
   margin-top: ${(props) => props.marginTopCount ?? DEFAULT_MARGIN_TOP_COUNT};

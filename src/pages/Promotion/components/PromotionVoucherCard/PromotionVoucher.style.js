@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledVoucherCardWrapper = styled.div`
   display: flex;
-  width: 17.5rem;
+  width: 15.9rem;
   height: 4rem;
   background-color: rgba(255, 255, 255, 0.34);
   align-items: center;
@@ -10,8 +10,8 @@ export const StyledVoucherCardWrapper = styled.div`
 `
 export const ImgThumbnail = styled.div`
   background: url(${(props) => props.image}) no-repeat center center/cover;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.2rem;
+  height: 3rem;
   border-radius: 20%;
   box-shadow: 1px 1px 1px #000000;
 `
