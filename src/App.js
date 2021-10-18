@@ -7,7 +7,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { SettingProvider } from './context/SettingContext'
-import { Dashboard, Reward, OpenBoxGame, Promotion } from './pages'
+import { Dashboard, Reward, OpenBoxGame, Promotion, WheelGame } from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
 
@@ -30,17 +30,11 @@ function App() {
             <Route path="/demo">
               <Demo />
             </Route>
-            <Route path="/screen-2">
-              <div>Screen 2</div>
-            </Route>
-            <Route path="/screen-3">
-              <div>
-                Screen 3
-                <button onClick={() => console.log('Hello')}>Test</button>
-              </div>
-            </Route>
             <Route path="/minigame/openbox">
               <OpenBoxGame />
+            </Route>
+            <Route path="/minigame/wheel">
+              <WheelGame />
             </Route>
             <Route path="/promotion">
               <Promotion />
