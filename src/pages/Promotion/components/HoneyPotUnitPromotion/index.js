@@ -5,12 +5,12 @@ import { StyledHoneyPotCard } from './HoneyPot.style'
 
 export default function HoneyPot(props) {
   return (
-    <StyledHoneyPotCard>
+    <StyledHoneyPotCard paddingLeft={props.paddingLeft}>
       <StyledHoneyPotCount size={props.size}>{props.count}</StyledHoneyPotCount>
       <StyledBackgroundButton
         image={props.image}
         width={props.imageSize}
-        style={{ marginTop: '-1.5rem' }}
+        style={{ marginTop: '-40%' }}
       />
     </StyledHoneyPotCard>
   )

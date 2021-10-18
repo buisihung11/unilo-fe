@@ -30,8 +30,9 @@ function PromotionSpecial() {
           <HoneyPotUnit
             image={normalBadge}
             count={3}
-            size={'1.4rem'}
-            imageSize={'1.6rem'}
+            size={'120%'}
+            imageSize={'40%'}
+            paddingLeft={'10%'}
           />
         </SpecialButton>
       </ContentWrapper>

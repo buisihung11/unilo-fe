@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const DEFAULT_PADDING_TOP = '18px'
-const DEFAULT_PADDING_LEFT = '6px'
+const DEFAULT_PADDING_TOP = '18%'
+const DEFAULT_PADDING_LEFT = '17%'
 const DEFAULT_WIDTH_CARD = '5rem'
 
 export const StyledHoneyPotCard = styled.div`
