@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import dialog from "../../assets/images/DialogWrapper.png";
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import dialog from '../../assets/images/DialogWrapper.png'
 import {
   DialogBackground,
   DialogContent,
@@ -9,20 +9,20 @@ import {
   DialogHeader,
   DialogOverlay,
   DialogWrapper,
-} from "./Dialog.style";
+} from './Dialog.style'
 
 const Dialog = (props) => {
-  const { visible, onClose, headerTitle, footer, children } = props;
-  const [controlledVisible, setcontrolledVisible] = useState(visible);
+  const { visible, onClose, headerTitle, footer, children } = props
+  const [controlledVisible, setcontrolledVisible] = useState(visible)
 
-  const visibleState = visible ?? controlledVisible;
+  const visibleState = visible ?? controlledVisible
 
   const onCloseHandler = () => {
-    setcontrolledVisible(false);
+    setcontrolledVisible(false)
     if (onClose) {
-      onClose();
+      onClose()
     }
-  };
+  }
 
   return (
     <DialogWrapper visible={visibleState}>
@@ -34,18 +34,18 @@ const Dialog = (props) => {
         <DialogFooterWrapper>{footer}</DialogFooterWrapper>
       </DialogContentWrapper>
     </DialogWrapper>
-  );
-};
+  )
+}
 
 Dialog.propTypes = {
   visible: PropTypes.bool,
   onClose: PropTypes.func,
   headerTitle: PropTypes.element,
   footer: PropTypes.element,
-};
+}
 
 Dialog.defaultProps = {
   visible: false,
-};
+}
 
-export default Dialog;
+export default Dialog

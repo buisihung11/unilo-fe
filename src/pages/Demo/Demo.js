@@ -10,6 +10,7 @@ import Wheel from "../../components/Wheel";
 const Demo = () => {
   const [showDialog, setshowDialog] = useState(false);
   const [rotate, setRotate] = useState(false);
+
   return (
     <StyledUniloWrapper>
       <StyledUnilo>
@@ -20,13 +21,20 @@ const Demo = () => {
           visible={showDialog}
           onClose={() => setshowDialog(false)}
           headerTitle={
-            <Text as="h1" fontWeight="bold" fontSize={2} color="#fff">
+            <Text
+              as='h1'
+              fontWeight='bold'
+              fontSize={2}
+              color='#fff'
+            >
               Thông báo
             </Text>
           }
           footer={
-            <Box position="absolute" mx="auto">
-              <Button onClick={() => setshowDialog(false)}>Nhận quà</Button>
+            <Box position='absolute' mx='auto'>
+              <Button onClick={() => setshowDialog(false)}>
+                Nhận quà
+              </Button>
             </Box>
           }
         >
@@ -34,7 +42,7 @@ const Demo = () => {
         </Dialog>
       </StyledUnilo>
     </StyledUniloWrapper>
-  );
-};
+  )
+}
 
-export default Demo;
+export default Demo

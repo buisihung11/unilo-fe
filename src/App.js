@@ -3,13 +3,13 @@ import {
   Redirect,
   Route,
   Switch,
-} from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import "./App.css";
-import { SettingProvider } from "./context/SettingContext";
-import { Dashboard } from "./pages";
-import Demo from "./pages/Demo/Demo";
-import theme, { GlobalStyle } from "./theme";
+} from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import './App.css'
+import { SettingProvider } from './context/SettingContext'
+import { Dashboard, Reward, OpenBoxGame, Promotion } from './pages'
+import Demo from './pages/Demo/Demo'
+import theme, { GlobalStyle } from './theme'
 
 function App() {
   return (
@@ -24,6 +24,9 @@ function App() {
             <Route path="/dashboard">
               <Dashboard />
             </Route>
+            <Route path="/reward">
+              <Reward type={1} quantity={5} />
+            </Route>
             <Route path="/demo">
               <Demo />
             </Route>
@@ -33,14 +36,20 @@ function App() {
             <Route path="/screen-3">
               <div>
                 Screen 3
-                <button onClick={() => console.log("Hello")}>Test</button>
+                <button onClick={() => console.log('Hello')}>Test</button>
               </div>
+            </Route>
+            <Route path="/minigame/openbox">
+              <OpenBoxGame />
+            </Route>
+            <Route path="/promotion">
+              <Promotion />
             </Route>
           </Switch>
         </Router>
       </SettingProvider>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App

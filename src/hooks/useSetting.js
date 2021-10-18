@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import SettingContext from "../context/SettingContext";
+import { useContext } from 'react'
+import SettingContext from '../context/SettingContext'
 
 const useSetting = () => {
-  const context = useContext(SettingContext);
-  if (!context) throw Error("Please use useSetting in SettingProvider");
+  const context = useContext(SettingContext)
+  if (!context) throw Error('Please use useSetting in SettingProvider')
 
-  return context;
-};
+  return context
+}
 
-export default useSetting;
+export default useSetting

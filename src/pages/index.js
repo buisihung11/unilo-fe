@@ -1,3 +1,6 @@
-import Dashboard from "./Dashboard/Dashboard";
+import Dashboard from './Dashboard'
+import Promotion from './Promotion'
+import { OpenBoxGame } from './Minigame'
+import Reward from './Reward'
 
-export { Dashboard };
+export { Dashboard, Promotion, OpenBoxGame, Reward }
