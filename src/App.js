@@ -23,6 +23,7 @@ import {
   Mission,
 } from './pages'
 import Demo from './pages/Demo/Demo'
+import LeaderboardPage from './pages/Leaderboard'
 import theme, { GlobalStyle } from './theme'
 
 const queryClient = new QueryClient()
@@ -47,6 +48,9 @@ function App() {
               </Route>
               <Route path="/dashboard">
                 <Dashboard />
+              </Route>
+              <Route path="/leaderboard">
+                <LeaderboardPage />
               </Route>
               <Route path="/reward">
                 <Reward type={1} quantity={5} />
