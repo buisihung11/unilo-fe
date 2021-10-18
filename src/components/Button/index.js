@@ -12,8 +12,7 @@ const Button = (props) => {
     soundEnabled: !mute,
   })
 
-  const { variant, onClick, ...others } = props
-  console.log(`others`, others)
+  const { variant, onClick, ...others } = props;
 
   const onClickHandler = () => {
     onPlaySound()
