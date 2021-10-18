@@ -30,4 +30,6 @@ export const StyledContent = styled.div`
   right: 16%;
   bottom: 7%;
   z-index: 3;
+  padding: 4%;
+  overflow: auto;
 `

@@ -9,7 +9,9 @@ import {
 } from './components/HandbookStyle'
 import backIcon from '../../assets/images/back.png'
 import bgHandbook from '../../assets/images/bg-handbook.png'
-import { BorderText } from '../../components'
+import { BorderText, ExpandableItemWithImage } from '../../components'
+import bear from '../../assets/images/gauxanh7.png'
+import HandbookDetail from './components/HandbookDetail'
 
 export default function Handbook(props) {
   return (
@@ -20,7 +22,7 @@ export default function Handbook(props) {
         </Link>
         <StyledWrapper>
           <StyledCover src={bgHandbook} />
-          <StyledContent></StyledContent>
+          <HandbookDetail />
         </StyledWrapper>
         <StyledMascot />
       </StyledDarkUnilo>
