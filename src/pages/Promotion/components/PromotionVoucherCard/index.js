@@ -23,7 +23,7 @@ function PromotionVoucher(props) {
           image={props.item.badgeIcon}
           count={props.item.quantity}
           size={'1.3rem'}
-          imageSize={'1.6rem'}
+          imageSize={'1.5rem'}
         />
       </ButtonWrapper>
     </StyledVoucherCardWrapper>

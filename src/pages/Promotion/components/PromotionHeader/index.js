@@ -5,6 +5,7 @@ import HoneyPot from '../HoneyPotPromotion'
 import {
   StyledPromotionHeaderWrapper,
   StyledBadgesCard,
+  ButtonWrapper,
 } from './PromotionHeader.style'
 import normalBadge from '../../../../assets/icons/honeypot1.png'
 import mediumBadge from '../../../../assets/icons/honeypot2.png'
@@ -17,9 +18,12 @@ function PromotionHeader() {
 
   return (
     <StyledPromotionHeaderWrapper>
-      <Link to="/dashboard">
-        <ExitButton />
-      </Link>
+      <ButtonWrapper>
+        <Link to="/dashboard">
+          <ExitButton />
+        </Link>
+      </ButtonWrapper>
+
       <StyledBadgesCard>
         <HoneyPot image={normalBadge} count={noOfHoneyPot1} />
         <HoneyPot image={mediumBadge} count={noOfHoneyPot2} />

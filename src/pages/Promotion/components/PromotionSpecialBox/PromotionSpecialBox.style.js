@@ -6,18 +6,19 @@ export const StyledSpecialBox = styled.div`
   display: flex;
   align-items: center;
   background: url(${bgImg}) no-repeat center center/contain;
-  width: 20rem;
-  height: 8rem;
+  background-size: 90% 110%;
+  width: 100%;
+  height: 25%;
   margin: 0 auto;
   padding-top: 0.5rem;
-  padding-left: 3.5rem;
+  padding-left: 17%;
 `
 
 export const StyledImage = styled.div`
   background: url(${(props) => props.image});
   background-size: cover;
-  width: 4.5rem;
-  height: 4.1rem;
+  width: 25%;
+  height: 55%;
   border-radius: 30%;
 `
 export const ContentWrapper = styled.div`
@@ -25,25 +26,29 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   align-content: flex-start;
   align-items: center;
-  padding-left: 0.7rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
+  width: 65%;
 `
 
 export const AcbLogo = styled.div`
   background: url(${(props) => props.image}) no-repeat center center/contain;
-  width: 34px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
 `
 export const Description = styled.div`
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: bold;
   color: #000;
-  width: 8rem;
+  width: 65%;
   text-align: center;
 `
 export const SpecialButton = styled.div`
+  display: flex;
+  justify-content: center;
   background: url(${bgBlueBtn}) no-repeat center center/contain;
-  width: 90px;
-  height: 50px;
-  padding-left: 12px;
+  width: 55%;
+  height: 30%;
+  padding-left: 9%;
+  padding-top: 5%;
+  margin-top: -7%;
 `
