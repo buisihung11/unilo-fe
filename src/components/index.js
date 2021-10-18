@@ -15,6 +15,10 @@ import SimpleTable from './SimpleTable'
 import Header from './Header'
 import { BorderText } from './Text'
 import DashedLine from './DashedLine'
+import ExpandableItem from './ExpandableItem'
+import Icon from './Icon'
+import { StyledUniloWrapper, OverlayView } from './AppStyles'
+import TabTable from './TabTable'
 
 export {
   BearTalking,
@@ -34,4 +38,9 @@ export {
   Header,
   BorderText,
   DashedLine,
+  ExpandableItem,
+  Icon,
+  StyledUniloWrapper,
+  OverlayView,
+  TabTable,
 }

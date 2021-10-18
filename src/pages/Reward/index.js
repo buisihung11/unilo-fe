@@ -4,6 +4,7 @@ import { Header, SimpleTable, Button, DashedLine } from '../../components'
 import honeypot1 from '../../assets/icons/honeypot1.png'
 import honeypot2 from '../../assets/icons/honeypot2.png'
 import honeypot3 from '../../assets/icons/honeypot3.png'
+import mascot from '../../assets/icons/bear-3.png'
 
 const badges = [
   { img: honeypot1, name: 'hũ mật ong thường' },
@@ -15,8 +16,8 @@ export default function Reward(props) {
   return (
     <StyledUniloWrapper>
       <OverlayView>
-        <Header style={{ flex: 1 }} onClick={() => console.log('back')} />
-        <SimpleTable style={{ flex: 5 }} title="Phần thưởng">
+        <Header style={{ flex: 1 }} />
+        <SimpleTable style={{ flex: 5 }} title="Phần thưởng" mascot={mascot}>
           <div style={{ width: '100%' }}>
             <h2>Chúc mừng</h2>
             <DashedLine />

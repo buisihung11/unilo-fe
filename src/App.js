@@ -12,7 +12,16 @@ import { Box } from './components'
 import { SettingProvider } from './context/SettingContext'
 import useQueryParam from './hooks/useQueryParam'
 import useUser from './hooks/user/useUser'
-import { Dashboard, OpenBoxGame, Promotion, Reward, WheelGame } from './pages'
+import {
+  Dashboard,
+  OpenBoxGame,
+  Promotion,
+  Reward,
+  WheelGame,
+  PromotionDetail,
+  MissionDetail,
+  Mission,
+} from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
 
@@ -51,8 +60,17 @@ function App() {
               <Route path="/minigame/wheel">
                 <WheelGame />
               </Route>
-              <Route path="/promotion">
+              <Route exact path="/promotion">
                 <Promotion />
+              </Route>
+              <Route path="/promotion/:id">
+                <PromotionDetail />
+              </Route>
+              <Route path="/mission/:id">
+                <MissionDetail />
+              </Route>
+              <Route exact path="/mission">
+                <Mission />
               </Route>
             </>
           ) : (
