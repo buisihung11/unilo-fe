@@ -22,6 +22,7 @@ import DashedLine from './DashedLine'
 import ExpandableItem from './ExpandableItem'
 import Icon from './Icon'
 import { StyledUniloWrapper, OverlayView } from './AppStyles'
+import TabTable from './TabTable'
 
 export {
   BearTalking,
@@ -49,4 +50,5 @@ export {
   Icon,
   StyledUniloWrapper,
   OverlayView,
+  TabTable,
 }

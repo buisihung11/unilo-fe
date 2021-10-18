@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 import { color, fontSize, fontWeight, space } from 'styled-system'
 import primaryBtn from '../../assets/images/btn-primary.png'
+import successBtn from '../../assets/images/btn-success.png'
 
 const getBackgroundImg = (variant) => {
   switch (variant) {
     case 'primary':
       return primaryBtn
+    case 'success':
+      return successBtn
     default:
       return primaryBtn
   }

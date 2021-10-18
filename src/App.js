@@ -14,6 +14,7 @@ import {
   Promotion,
   PromotionDetail,
   MissionDetail,
+  Mission,
 } from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
@@ -57,6 +58,9 @@ function App() {
             </Route>
             <Route path="/mission/:id">
               <MissionDetail />
+            </Route>
+            <Route exact path="/mission">
+              <Mission />
             </Route>
           </Switch>
         </Router>
