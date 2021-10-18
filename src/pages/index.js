@@ -6,6 +6,7 @@ import PromotionDetail from './PromotionDetail'
 import MissionDetail from './MissionDetail'
 import Mission from './Mission'
 import WheelGame from './WheelGame'
+import Minigame from './Minigame'
 
 export {
   Dashboard,
@@ -16,4 +17,5 @@ export {
   MissionDetail,
   Mission,
   WheelGame,
+  Minigame,
 }
