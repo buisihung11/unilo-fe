@@ -9,8 +9,8 @@ const Wheel = (props) => {
     let timeout
     if (props.isRotate) {
       timeout = setTimeout(() => {
-        console.log('TIMEOUT')
-        console.log('PRIZE IS ....')
+        // console.log('TIMEOUT')
+        // console.log('PRIZE IS ....')
         if (typeof props.onWinner === 'function') {
           props.onWinner('GIAI NHAT')
         }
