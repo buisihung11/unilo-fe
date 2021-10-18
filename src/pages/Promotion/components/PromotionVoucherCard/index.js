@@ -8,7 +8,7 @@ import {
   ButtonWrapper,
 } from './PromotionVoucher.style'
 import HoneyPotUnit from '../HoneyPotUnitPromotion'
-import btnOrg from '../../assets/images/btn-orange.png'
+import btnOrg from '../../../../assets/images/btn-orange.png'
 
 function PromotionVoucher(props) {
   return (
@@ -21,9 +21,9 @@ function PromotionVoucher(props) {
       <ButtonWrapper image={btnOrg}>
         <HoneyPotUnit
           image={props.item.badgeIcon}
-          count={3}
-          size={'1.4rem'}
-          imageSize={'1.7rem'}
+          count={props.item.quantity}
+          size={'1.3rem'}
+          imageSize={'1.6rem'}
         />
       </ButtonWrapper>
     </StyledVoucherCardWrapper>

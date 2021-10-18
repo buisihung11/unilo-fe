@@ -8,9 +8,9 @@ import {
   SpecialButton,
 } from './PromotionSpecialBox.style'
 import HoneyPotUnit from '../HoneyPotUnitPromotion'
-import normalBadge from '../../assets/icons/honeypot1.png'
-import acbActivity from '../../assets/images/acb-activity.jpg'
-import acbLogo from '../../assets/images/acb-logo.png'
+import normalBadge from '../../../../assets/icons/honeypot1.png'
+import acbActivity from '../../../../assets/images/acb-activity.jpg'
+import acbLogo from '../../../../assets/images/acb-logo.png'
 
 function PromotionSpecial() {
   const [voucherDescription, setvoucherDescription] = useState(
@@ -24,14 +24,14 @@ function PromotionSpecial() {
       <ContentWrapper>
         <AcbLogo image={acbLogo} />
         <Description>
-          <span>Ưu đãi 0.5% lãi suất khi gửi tiền tiết kiệm qua ...</span>
+          <span>{voucherDescription}</span>
         </Description>
         <SpecialButton>
           <HoneyPotUnit
             image={normalBadge}
             count={3}
             size={'1.4rem'}
-            imageSize={'1.7rem'}
+            imageSize={'1.6rem'}
           />
         </SpecialButton>
       </ContentWrapper>
