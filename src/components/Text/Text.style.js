@@ -4,6 +4,7 @@ import { color, typography, space } from 'styled-system'
 const Text = styled.p`
   ${typography}
   ${color}
+  ${space}
 `
 export const BorderText = styled.p`
   ${typography}

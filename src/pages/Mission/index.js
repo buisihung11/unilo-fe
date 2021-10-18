@@ -36,7 +36,7 @@ export default function Mission(props) {
   return (
     <StyledUniloWrapper>
       <OverlayView>
-        <Header style={{ flex: 1 }} onClick={() => console.log('back')} />
+        <Header style={{ flex: 1 }} />
         <TabTable style={{ flex: 5 }} title1="Nhiệm vụ">
           {content}
         </TabTable>

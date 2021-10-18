@@ -5,6 +5,7 @@ import Reward from './Reward'
 import PromotionDetail from './PromotionDetail'
 import MissionDetail from './MissionDetail'
 import Mission from './Mission'
+import WheelGame from './WheelGame'
 
 export {
   Dashboard,
@@ -14,4 +15,5 @@ export {
   PromotionDetail,
   MissionDetail,
   Mission,
+  WheelGame,
 }

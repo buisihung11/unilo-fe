@@ -11,7 +11,7 @@ export default function ExpandableItem(props) {
     <div>
       <LabelWrapper onClick={() => setHidden(!hidden)}>
         <h6 style={{ margin: 0 }}># {props.label || DEFAULT_LABEL}</h6>
-        <i class={`fas fa-angle-${hidden ? 'down' : 'up'}`}></i>
+        <i className={`fas fa-angle-${hidden ? 'down' : 'up'}`}></i>
       </LabelWrapper>
       {!hidden ? (
         <DescriptionWrapper>

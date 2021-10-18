@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const LabelWrapper = styled.h6({
+export const LabelWrapper = styled.div({
   display: 'flex',
   justifyContent: 'space-between',
 })

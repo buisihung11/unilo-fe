@@ -30,14 +30,14 @@ export default function PromotionDetail(props) {
     { key: 'Điều kiện áp dụng', value: undefined },
   ]
   const content = descriptions.map(({ key, value }, i) => (
-    <ExpandableItem label={key} isShown={i === 0}>
+    <ExpandableItem key={key} label={key} isShown={i === 0}>
       {value}
     </ExpandableItem>
   ))
   return (
     <StyledUniloWrapper>
       <OverlayView>
-        <Header style={{ flex: 1 }} onClick={() => console.log('back')} />
+        <Header style={{ flex: 1 }} />
         <SimpleTable style={{ flex: 5 }} title="Chi tiết">
           <div style={{ width: '100%' }}>
             <Banner img={bannerImg} subtitle={partnerName || 'Partner Name'} />
