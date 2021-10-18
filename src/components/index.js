@@ -14,7 +14,6 @@ import Dialog from './Dialog'
 import SimpleTable from './SimpleTable'
 import Header from './Header'
 import { BorderText } from './Text'
-import MiniGameBox from './OpenBoxGame'
 import DashedLine from './DashedLine'
 
 export {
@@ -34,6 +33,5 @@ export {
   SimpleTable,
   Header,
   BorderText,
-  MiniGameBox,
   DashedLine,
 }
