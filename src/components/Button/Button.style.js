@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { color, fontSize, fontWeight, space } from 'styled-system'
 import primaryBtn from '../../assets/images/btn-primary.png'
 import successBtn from '../../assets/images/btn-success.png'
+import dangerBtn from '../../assets/images/btn-danger.png'
 
 const getBackgroundImg = (variant) => {
   switch (variant) {
@@ -9,6 +10,8 @@ const getBackgroundImg = (variant) => {
       return primaryBtn
     case 'success':
       return successBtn
+    case 'danger':
+      return dangerBtn
     default:
       return primaryBtn
   }

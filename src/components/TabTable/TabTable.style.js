@@ -24,7 +24,7 @@ export const ClickableTabContent = styled.h5`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -85%);
+  transform: translate(-50%, -100%);
   text-align: center;
 }
 `
@@ -32,7 +32,7 @@ export const ClickableTabContent = styled.h5`
 export const TableWrapper = styled.div`
   z-index: 2;
   position: relative;
-  top: -5%;
+  top: -6%;
 `
 
 export const TableContent = styled.div`
@@ -47,5 +47,5 @@ export const TableContent = styled.div`
   flex: 1;
   flex-direction: column;
   align-content: space-between;
-  justify-content: space-between;
+  justify-content: flex-start;
 `

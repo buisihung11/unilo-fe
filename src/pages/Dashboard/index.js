@@ -47,11 +47,11 @@ export default function Dashboard(props) {
         }
         Footer={
           <Box display="flex" justifyContent="space-between">
-            <ExitButton />
+            <ExitButton onClick={() => router.push('/mission')} />
             <LeaderboardButton onClick={() => router.push('/leaderboard')} />
-            <MinigameButton onClick={() => router.push('/minigame/wheel')} />
-            <RewardButton />
-            <SettingButton />
+            <MinigameButton onClick={() => router.push('/minigame')} />
+            <RewardButton onClick={() => router.push('/promotion')} />
+            <SettingButton onClick={() => router.push('/account')} />
           </Box>
         }
       />

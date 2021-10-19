@@ -24,6 +24,7 @@ import {
   Mission,
   Handbook,
   Minigame,
+  Account,
   ScanQRPage,
 } from './pages'
 import Demo from './pages/Demo/Demo'
@@ -82,6 +83,9 @@ function App() {
               </Route>
               <Route exact path="/minigame">
                 <Minigame />
+              </Route>
+              <Route path="/account">
+                <Account />
               </Route>
             </>
           ) : (
