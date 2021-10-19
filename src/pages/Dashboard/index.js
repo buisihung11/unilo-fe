@@ -13,19 +13,22 @@ import {
 import BearTalking from './BearTalking'
 import { StyledMessage } from './Message/Message.style'
 import Message from './Message'
+import { useHistory } from 'react-router'
 
 export default function Dashboard(props) {
+  const router = useHistory()
+
   return (
     <StyledUniloWrapper>
       <StyledUnilo>
-        <Box mt={"-2rem"}>
+        <Box mt={'-2rem'}>
           <CustomerSummary />
         </Box>
         <TierBox />
         <div className={'container d-flex justify-content-center fixed-bottom'}>
           <ExitButton />
           <LeaderboardButton />
-          <MinigameButton />
+          <MinigameButton onClick={() => router.push('/minigame/wheel')} />
           <RewardButton />
           <SettingButton />
         </div>

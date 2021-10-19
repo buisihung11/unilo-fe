@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { position, size, width, height } from 'styled-system'
-import Wheel from '../../assets/images/Wheel.png'
+import wheelImg from '../../assets/images/Wheel.png'
+
 const calculateSkew = (total, index) => {
   const rotate = 360 / total
   const skewY = rotate + 90
@@ -18,17 +19,13 @@ const rotateAnimation = (deg) => keyframes`
 const WheelWrapper = styled.div`
   position: relative;
   padding: 0;
-  max-width: 250px;
+  max-width: 300px;
   min-width: 200px;
   min-height: 200px;
   border-radius: 50%;
   aspect-ratio: 1/1;
   list-style: none;
   overflow: hidden;
-  background-image: url(${Wheel});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   transition: all ${(props) => props.duration ?? '5000'}ms ease-out;
   /* transform: rotate(${(props) => (props.isRotate ? props.deg : 0)}deg); */
   animation-name: ${(props) =>

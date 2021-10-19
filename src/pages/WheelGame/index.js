@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import useSound from 'use-sound'
-import { Box, CustomerSummary } from '../../components'
+import { Box, Button, CustomerSummary } from '../../components'
 import {
   Overlay,
   StyledUniloBackground,
@@ -19,29 +19,31 @@ import { sleep } from '../../utils/utils'
 const DEFAULT_DURATION = 5000 /* ms */
 const DEFAULT_ROTATE = 360 * 10 /* ms */
 
+const gameRewards = [
+  'Voucher 20K',
+  'Voucher 50K',
+  'Voucher 70K',
+  'Voucher 25K',
+  'GOOD LUCK',
+  'Voucher 200K',
+  'Voucher 500K',
+  'Voucher 800K',
+]
 const WheelGamePage = () => {
   const history = useHistory()
   const { mute } = useSetting()
+
   const [isPlaying, setIsPlaying] = useState(false)
   const [rotate, setRotate] = useState(false)
   const [rotateDeg, setRotateDeg] = useState(0)
   const [prize, setPrize] = useState(null)
+
   const [clickSound] = useSound(clickSfx, {
     soundEnabled: !mute,
   })
-  const gameRewards = [
-    'Voucher 20K',
-    'Voucher 50K',
-    'Voucher 70K',
-    'Voucher 25K',
-    'GOOD LUCK',
-    'Voucher 200K',
-    'Voucher 500K',
-    'Voucher 800K',
-  ]
 
-  const startPlayGame = async () => {
-    if (isPlaying) return
+  const startPlayGame = useCallback(async () => {
+    if (isPlaying || prize) return
     setIsPlaying(true)
     clickSound()
     // API TO PLAY GAME
@@ -49,17 +51,24 @@ const WheelGamePage = () => {
     console.log('PLAY WHEEL GAME....')
     await sleep(1000)
     // GET REWARD ITEM
-    const rewardIdx = Math.ceil(Math.random() * gameRewards.length)
+    const rewardIdx = Math.floor(Math.random() * gameRewards.length)
     const rotateDeg =
       DEFAULT_ROTATE + (rewardIdx + 1) * Math.ceil(360 / gameRewards.length)
     console.log(`WINNING PRIZE`, rewardIdx)
     // SPIN TO THAT ITEM
     console.log('START SPIN....')
-    setRotate(true)
     setRotateDeg(rotateDeg)
+    setRotate(true)
     await sleep(DEFAULT_DURATION)
     setPrize(gameRewards[rewardIdx])
     setIsPlaying(false)
+  }, [clickSound, isPlaying, prize])
+
+  const resetGame = () => {
+    setIsPlaying(false)
+    setPrize(null)
+    setRotate(false)
+    setRotateDeg(0)
   }
 
   return (
@@ -87,9 +96,7 @@ const WheelGamePage = () => {
               Vòng quay may mắn
             </Text>
             <Wheel
-              onClick={() => {
-                startPlayGame()
-              }}
+              onClick={startPlayGame}
               onWinner={setPrize}
               isRotate={rotate}
               deg={rotateDeg}
@@ -100,6 +107,9 @@ const WheelGamePage = () => {
               style={{ cursor: 'pointer' }}
             />
             <Text fontSize="3rem">{prize}</Text>
+            {prize && !isPlaying && (
+              <Button onClick={resetGame}>Chơi lại</Button>
+            )}
           </Box>
         }
         Footer={<CustomerSummary />}

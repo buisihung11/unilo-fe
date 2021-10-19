@@ -9,6 +9,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { Box } from './components'
+import LoadingWrapper from './components/Loading'
 import { SettingProvider } from './context/SettingContext'
 import useQueryParam from './hooks/useQueryParam'
 import useUser from './hooks/user/useUser'
@@ -48,9 +49,7 @@ function App() {
               <Route exact path="/">
                 <Redirect to="/dashboard" />
               </Route>
-              <Route path="/dashboard">
-                <Dashboard />
-              </Route>
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/leaderboard">
                 <LeaderboardPage />
               </Route>
@@ -63,9 +62,7 @@ function App() {
               <Route path="/minigame/openbox">
                 <OpenBoxGame />
               </Route>
-              <Route path="/minigame/wheel">
-                <WheelGame />
-              </Route>
+              <Route path="/minigame/wheel" component={WheelGame} />
               <Route exact path="/promotion">
                 <Promotion />
               </Route>
@@ -94,6 +91,19 @@ function App() {
         </Switch>
       </SettingProvider>
     </ThemeProvider>
+  )
+}
+
+const LoadingRoute = ({ component: Component, ...routeProps }) => {
+  return (
+    <Route
+      {...routeProps}
+      render={(props) => (
+        <LoadingWrapper>
+          <Component {...props} />
+        </LoadingWrapper>
+      )}
+    />
   )
 }
 

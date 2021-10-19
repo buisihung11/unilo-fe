@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components'
 import { background } from 'styled-system'
 import bgImage from '../../assets/images/bg.jpg'
@@ -21,7 +22,7 @@ export const StyledUnilo = styled.div`
   }
 `
 
-export const StyledUniloBackground = styled.div`
+export const StyledUniloBackground = memo(styled.div`
   position: fixed; /* Sit on top of the page content */
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
@@ -30,7 +31,7 @@ export const StyledUniloBackground = styled.div`
   right: 0;
   bottom: 0;
   background: url(${bgImage}) no-repeat center center/cover;
-`
+`)
 
 export const OverlayView = styled.div`
   display: flex;
