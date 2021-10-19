@@ -8,10 +8,13 @@ export const StyledSpecialBox = styled.div`
   background: url(${bgImg}) no-repeat center center/contain;
   background-size: 90% 110%;
   width: 100%;
-  height: 25%;
+  height: 24%;
   margin: 0 auto;
   padding-top: 0.5rem;
   padding-left: 16%;
+  @media (max-width: 360px) {
+    height: 28%;
+  }
 `
 
 export const StyledImage = styled.div`
@@ -43,13 +46,13 @@ export const Description = styled.div`
   width: 65%;
   text-align: center;
 `
-export const SpecialButton = styled.div`
-  display: flex;
-  justify-content: center;
-  background: url(${bgBlueBtn}) no-repeat center center/contain;
-  width: 55%;
-  height: 30%;
-  padding-left: 9%;
-  padding-top: 5%;
-  margin-top: -7%;
+export const QuantityWrapper = styled.div`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding-right: 0.4rem;
+  padding-bottom: 0.2rem;
+  @media (min-width: 375px) {
+    font-size: 1.4rem;
+  }
 `

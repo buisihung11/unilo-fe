@@ -5,12 +5,12 @@ import {
   ContentWrapper,
   AcbLogo,
   Description,
-  SpecialButton,
+  QuantityWrapper,
 } from './PromotionSpecialBox.style'
-import HoneyPotUnit from '../HoneyPotUnitPromotion'
 import normalBadge from '../../../../assets/icons/honeypot1.png'
 import acbActivity from '../../../../assets/images/acb-activity.jpg'
 import acbLogo from '../../../../assets/images/acb-logo.png'
+import { Button, Icon } from '../../../../components'
 
 function PromotionSpecial() {
   const [voucherDescription, setvoucherDescription] = useState(
@@ -26,15 +26,10 @@ function PromotionSpecial() {
         <Description>
           <span>{voucherDescription}</span>
         </Description>
-        <SpecialButton>
-          <HoneyPotUnit
-            image={normalBadge}
-            count={3}
-            size={'120%'}
-            imageSize={'40%'}
-            paddingLeft={'10%'}
-          />
-        </SpecialButton>
+        <Button style={{ width: '30%' }} variant={'success'}>
+          <QuantityWrapper>{noOfBadge}</QuantityWrapper>
+          <Icon img={normalBadge} style={{ width: '1.5em' }} />
+        </Button>
       </ContentWrapper>
     </StyledSpecialBox>
   )

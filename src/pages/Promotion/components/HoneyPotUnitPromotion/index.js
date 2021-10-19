@@ -5,7 +5,10 @@ import { StyledHoneyPotCard } from './HoneyPot.style'
 
 export default function HoneyPot(props) {
   return (
-    <StyledHoneyPotCard paddingLeft={props.paddingLeft}>
+    <StyledHoneyPotCard
+      paddingLeft={props.paddingLeft}
+      paddingTop={props.paddingTop}
+    >
       <StyledHoneyPotCount size={props.size}>{props.count}</StyledHoneyPotCount>
       <StyledBackgroundButton
         image={props.image}

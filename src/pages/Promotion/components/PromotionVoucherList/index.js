@@ -1,17 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   StyledVoucherListWrapper,
-  StyledTitleWrapper,
-  StyledFirstTitleWrapper,
   StyledListWrapprer,
 } from './PromotionListVoucher.style'
 import { TabTable } from '../../../../components'
-import Text from '../../../../components/Text'
 import lounge from '../../../../assets/images/lounge.jpg'
 import badgeMedium from '../../../../assets/icons/honeypot2.png'
 import PromotionVoucher from '../PromotionVoucherCard'
 
-const vouchers = [
+const promotionVouchers = [
   {
     img: lounge,
     title: 'VIP Lounge',
@@ -64,16 +61,20 @@ const vouchers = [
 ]
 
 function PromotionListVoucher() {
+  const [shownIndex, setshownIndex] = useState(1)
+
   return (
     <StyledVoucherListWrapper>
       <TabTable
         style={{ flex: 10, paddingTop: '4%' }}
+        clickHandler1={() => setshownIndex(0)}
+        clickHandler2={() => setshownIndex(1)}
         title1={'Gian hàng ưu đãi'}
         title2={'Quà tặng của tôi'}
       >
         <StyledListWrapprer>
-          {vouchers.map((voucher) => {
-            return <PromotionVoucher item={voucher} />
+          {promotionVouchers.map((voucher) => {
+            return <PromotionVoucher item={voucher} shownIndex={shownIndex} />
           })}
         </StyledListWrapprer>
       </TabTable>

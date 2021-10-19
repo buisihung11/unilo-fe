@@ -40,12 +40,9 @@ export const Description = styled.div`
     font-size: 80%;
   }
 `
-export const ButtonWrapper = styled.div`
-  background: url(${(props) => props.image}) no-repeat center center/contain;
-  width: 28%;
-  height: 68%;
-  @media (min-width: 400px) {
-    width: 24%;
-    height: 60%;
-  }
+export const QuantityWrapper = styled.div`
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding-right: 0.6rem;
+  color: #fff;
 `
