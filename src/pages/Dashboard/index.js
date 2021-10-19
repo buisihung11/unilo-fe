@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledUnilo, StyledUniloWrapper } from '../../components/AppStyles'
 import {
-  BearTalking,
+  Box,
   CustomerSummary,
   ExitButton,
   LeaderboardButton,
@@ -10,12 +10,17 @@ import {
   SettingButton,
   TierBox,
 } from '../../components'
+import BearTalking from './BearTalking'
+import { StyledMessage } from './Message/Message.style'
+import Message from './Message'
 
 export default function Dashboard(props) {
   return (
     <StyledUniloWrapper>
       <StyledUnilo>
-        <CustomerSummary />
+        <Box mt={"-2rem"}>
+          <CustomerSummary />
+        </Box>
         <TierBox />
         <div className={'container d-flex justify-content-center fixed-bottom'}>
           <ExitButton />

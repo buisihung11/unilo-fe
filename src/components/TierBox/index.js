@@ -10,6 +10,8 @@ import {
 
 import { ReactComponent as InfoIcon } from '../../assets/icons/info-icon.svg'
 import { StyledNut } from '../NutLabel/NutLabel.style'
+import Box from '../Box'
+import Text from '../Text'
 
 export default function TierBox(props) {
   const [tierTitle, setTierTitle] = useState('Thành viên vàng')
@@ -24,10 +26,10 @@ export default function TierBox(props) {
   return (
     <StyledTierBoxWrapper>
       <StyledTierHeader>{tierTitle}</StyledTierHeader>
-      <div className={'d-flex justify-content-between'}>
-        <p className={'font-weight-bold'}>{lowerTier}</p>
-        <p className={'font-weight-bold'}>{upperTier}</p>
-      </div>
+      <Box display={"flex"} justifyContent={"space-between"}>
+        <Text fontWeight={"bold"}>{lowerTier}</Text>
+        <Text fontWeight={"bold"}>{upperTier}</Text>
+      </Box>
       <StyledTierRoad>
         <StyledLowerCircle />
         <StyledUpperCircle />
@@ -35,15 +37,15 @@ export default function TierBox(props) {
           <StyledNut />
         </StyledNutWrapper>
       </StyledTierRoad>
-      <div className={'font-weight-bold text-right'}>
+      <Text fontWeight={"bold"} textAlign={"right"}>
         {`${currentNutCount}/${upperTierNut}`}
-      </div>
-      <div className={'mt-1 d-flex'}>
+      </Text>
+      <Box display={"flex"}>
         <InfoIcon />
-        <p className={'h6 ml-1'}>
+        <Text ml={1}>
           {`Chỉ còn ${nutRemainCount} hạt dẻ nữa để thăng hạng ${upperTier}`}
-        </p>
-      </div>
+        </Text>
+      </Box>
     </StyledTierBoxWrapper>
   )
 }

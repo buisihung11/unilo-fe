@@ -38,10 +38,10 @@ export const TableWrapper = styled.div`
 
 export const TableContent = styled.div`
   position: absolute;
-  top: 10%;
+  top: 7%;
   left: 12%;
   width: 76%;
-  height: 80%;
+  height: 86%;
   overflow: auto;
   text-align: center;
   display: flex;
