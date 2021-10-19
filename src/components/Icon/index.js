@@ -1,5 +1,6 @@
 import React from 'react'
 import useSound from 'use-sound'
+import PropTypes from 'prop-types'
 import clickSfx from '../../assets/sounds/button-click.wav'
 import useSetting from '../../hooks/useSetting'
 
@@ -17,10 +18,17 @@ export default function Icon(props) {
       src={img}
       onClick={() => {
         clickSound()
-        onClick()
+        if (onClick) {
+          onClick()
+        }
       }}
       style={{ maxWidth: MAX_SIZE, cursor: 'pointer', ...style }}
       alt="Icon button"
     />
   )
+}
+
+Icon.propTypes = {
+  img: PropTypes.string,
+  onClick: PropTypes.func,
 }
