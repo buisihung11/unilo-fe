@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import { Box, CustomerSummary, Icon, TierBox } from '../../components'
 import {
@@ -20,6 +20,11 @@ import Text from '../../components/Text'
 
 export default function Dashboard(props) {
   const router = useHistory()
+  const [isVisible, setIsVisible] = useState(true)
+  const setInvisibleHandler = () => {
+    setIsVisible(!isVisible)
+    console.log('bear isVisble? ' + isVisible)
+  }
 
   return (
     <StyledUniloWrapper>
@@ -82,12 +87,13 @@ export default function Dashboard(props) {
                   </Text>
                 </StyledGameBackground>
               </Box>
-              <BearTalking />
+              {isVisible && <BearTalking getAction={setInvisibleHandler} />}
             </Box>
           </Box>
         }
         Footer={
           <Box
+<<<<<<< HEAD
             pb={2}
             display="flex"
             justifyContent="space-around"
@@ -108,12 +114,46 @@ export default function Dashboard(props) {
             />
             <IconNav img={rewardIcon} title="Khuyến mãi" path="/promotion" />
             <IconNav
+=======
+            display="flex"
+            justifyContent="space-around"
+            alignItems={'center'}
+          >
+            <Icon
+              img={taskIcon}
+              style={{
+                maxWidth: '2.5em',
+              }}
+              onClick={() => {
+                router.push('/mission')
+              }}
+            />
+            <Icon
+              img={leaderboardIcon}
+              onClick={() => {
+                router.push('/leaderboard')
+              }}
+            />
+            <Icon
+              img={rewardIcon}
+              onClick={() => {
+                router.push('/promotion')
+              }}
+            />
+            <Icon
+>>>>>>> b29239b (Adding animation)
               img={accountIcon}
               style={{
                 maxWidth: '2.2em',
               }}
+<<<<<<< HEAD
               path="/account"
               title="Tài khoản"
+=======
+              onClick={() => {
+                router.push('/account')
+              }}
+>>>>>>> b29239b (Adding animation)
             />
           </Box>
         }
