@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { space, typography } from 'styled-system'
 import { Box } from '../../../components'
 
 const FilterTabWrapper = styled(Box)`
@@ -14,7 +15,7 @@ const FilterTabWrapper = styled(Box)`
   align-items: center;
   color: white;
 `
-const FilterTab = styled.div`
+const FilterTab = styled(Box)`
   ${(props) =>
     props.active && {
       'background-color': 'white',
@@ -26,4 +27,22 @@ const FilterTab = styled.div`
   transition: all 300ms ease-in-out;
 `
 
-export { FilterTabWrapper, FilterTab }
+const Avatar = styled.img`
+  width: 54px;
+  height: 54px;
+  border-radius: 54px;
+  background-color: grey;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 4px solid #f1d302;
+`
+
+const UserName = styled.p`
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  ${typography}
+  ${space}
+`
+
+export { FilterTabWrapper, FilterTab, Avatar, UserName }

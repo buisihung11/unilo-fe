@@ -2,9 +2,12 @@ import styled from 'styled-components'
 import propTypes from '@styled-system/prop-types'
 
 import {
+  border,
   color,
   flexbox,
   layout,
+  position,
+  shadow,
   space,
   typography,
   zIndex,
@@ -20,7 +23,10 @@ const Box = styled.div(
   layout,
   flexbox,
   zIndex,
-  typography
+  typography,
+  border,
+  shadow,
+  position
 )
 
 Box.propTypes = {
@@ -30,6 +36,7 @@ Box.propTypes = {
   ...propTypes.fontSize,
   ...propTypes.typography,
   ...propTypes.layout,
+  ...propTypes.border,
 }
 
 export default Box
