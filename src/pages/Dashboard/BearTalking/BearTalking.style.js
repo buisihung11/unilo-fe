@@ -11,6 +11,6 @@ export const StyledBearWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
   z-index: 10;
 `

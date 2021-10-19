@@ -29,6 +29,7 @@ import {
 import Demo from './pages/Demo/Demo'
 import LeaderboardPage from './pages/Leaderboard'
 import theme, { GlobalStyle } from './theme'
+import Account from './pages/Account'
 
 const queryClient = new QueryClient()
 
@@ -82,6 +83,9 @@ function App() {
               </Route>
               <Route exact path="/minigame">
                 <Minigame />
+              </Route>
+              <Route exact path="/account">
+                <Account />
               </Route>
             </>
           ) : (

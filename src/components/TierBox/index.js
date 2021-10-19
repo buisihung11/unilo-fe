@@ -26,7 +26,7 @@ export default function TierBox(props) {
   return (
     <StyledTierBoxWrapper>
       <StyledTierHeader>{tierTitle}</StyledTierHeader>
-      <Box display={"flex"} justifyContent={"space-between"}>
+      <Box display={"flex"} justifyContent={"space-between"} mb={2}>
         <Text fontWeight={"bold"}>{lowerTier}</Text>
         <Text fontWeight={"bold"}>{upperTier}</Text>
       </Box>
