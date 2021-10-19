@@ -16,8 +16,10 @@ export default function Icon(props) {
     <img
       src={img}
       onClick={() => {
-        clickSound()
-        onClick()
+        if (onClick) {
+          clickSound()
+          onClick()
+        }
       }}
       style={{ maxWidth: MAX_SIZE, cursor: 'pointer', ...style }}
       alt="Icon button"

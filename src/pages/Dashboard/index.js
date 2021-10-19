@@ -26,11 +26,11 @@ export default function Dashboard(props) {
         </Box>
         <TierBox />
         <div className={'container d-flex justify-content-center fixed-bottom'}>
-          <ExitButton />
-          <LeaderboardButton />
-          <MinigameButton onClick={() => router.push('/minigame/wheel')} />
-          <RewardButton />
-          <SettingButton />
+          <ExitButton onClick={() => router.push('/mission')} />
+          <LeaderboardButton onClick={() => router.push('/leaderboard')} />
+          <MinigameButton onClick={() => router.push('/minigame')} />
+          <RewardButton onClick={() => router.push('/promotion')} />
+          <SettingButton onClick={() => router.push('/account')} />
         </div>
         <BearTalking />
       </StyledUnilo>

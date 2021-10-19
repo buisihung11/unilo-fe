@@ -12,11 +12,11 @@ const Button = (props) => {
     soundEnabled: !mute,
   })
 
-  const { variant, onClick, ...others } = props;
+  const { variant, onClick, ...others } = props
 
   const onClickHandler = () => {
-    onPlaySound()
     if (onClick) {
+      onPlaySound()
       onClick()
     }
   }
@@ -29,7 +29,7 @@ const Button = (props) => {
 }
 
 Button.propTypes = {
-  variant: PropTypes.oneOf(['default', 'primary', 'info', 'success']),
+  variant: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'danger']),
   ...propTypes.color,
   ...propTypes.space,
   ...propTypes.fontWeight,
