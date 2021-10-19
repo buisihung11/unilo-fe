@@ -4,6 +4,7 @@ import {
   Box,
   CustomerSummary,
   ExitButton,
+  Icon,
   LeaderboardButton,
   MinigameButton,
   RewardButton,
@@ -16,6 +17,8 @@ import {
 } from '../../components/AppStyles'
 import Layout from '../../components/Layout'
 import BearTalking from './BearTalking'
+import qrcode from '../../assets/icons/qrcode.png'
+import { SidebarWrapper } from './Dashboard.style'
 
 export default function Dashboard(props) {
   const router = useHistory()
@@ -33,10 +36,13 @@ export default function Dashboard(props) {
             justifyContent="center"
           >
             <CustomerSummary />
-            <Box px={4}>
-              <TierBox />
+            <TierBox />
+            <Box px={4} position="relative">
+              <SidebarWrapper>
+                <Icon onClick={() => router.push('/qr-scan')} img={qrcode} />
+              </SidebarWrapper>
+              <BearTalking />
             </Box>
-            <BearTalking />
           </Box>
         }
         Footer={
