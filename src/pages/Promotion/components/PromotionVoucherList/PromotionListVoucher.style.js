@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import bgImg from '../../../../assets/images/table-voucher-list.png'
 
 export const StyledVoucherListWrapper = styled.div`
   display: flex;
