@@ -1,4 +1,4 @@
-import BearTalking from './BearTalking'
+import BearTalking from '../pages/Dashboard/Message'
 import Box from './Box'
 import Button from './Button'
 import ExitButton from './Button/ExitButton'
