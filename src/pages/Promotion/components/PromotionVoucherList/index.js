@@ -5,6 +5,7 @@ import {
   StyledFirstTitleWrapper,
   StyledListWrapprer,
 } from './PromotionListVoucher.style'
+import { TabTable } from '../../../../components'
 import Text from '../../../../components/Text'
 import lounge from '../../../../assets/images/lounge.jpg'
 import badgeMedium from '../../../../assets/icons/honeypot2.png'
@@ -46,26 +47,36 @@ const vouchers = [
     quantity: 7,
     badgeIcon: badgeMedium,
   },
+  {
+    img: lounge,
+    title: 'VIP Lounge',
+    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    quantity: 7,
+    badgeIcon: badgeMedium,
+  },
+  {
+    img: lounge,
+    title: 'VIP Lounge',
+    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    quantity: 7,
+    badgeIcon: badgeMedium,
+  },
 ]
 
 function PromotionListVoucher() {
   return (
     <StyledVoucherListWrapper>
-      <StyledTitleWrapper>
-        <StyledFirstTitleWrapper>
-          <Text fontWeight="bold" fontSize={1} color="#000000">
-            Gian hàng ưu đãi
-          </Text>
-        </StyledFirstTitleWrapper>
-        <Text fontWeight="bold" fontSize={1} color="#000000">
-          Quà tặng của tôi
-        </Text>
-      </StyledTitleWrapper>
-      <StyledListWrapprer>
-        {vouchers.map((voucher) => {
-          return <PromotionVoucher item={voucher} />
-        })}
-      </StyledListWrapprer>
+      <TabTable
+        style={{ flex: 10, paddingTop: '4%' }}
+        title1={'Gian hàng ưu đãi'}
+        title2={'Quà tặng của tôi'}
+      >
+        <StyledListWrapprer>
+          {vouchers.map((voucher) => {
+            return <PromotionVoucher item={voucher} />
+          })}
+        </StyledListWrapprer>
+      </TabTable>
     </StyledVoucherListWrapper>
   )
 }

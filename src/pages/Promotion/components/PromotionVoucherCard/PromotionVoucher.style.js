@@ -19,20 +19,33 @@ export const ImgThumbnail = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 68%;
   height: 120%;
   margin-left: 7px;
+  padding-top: 2%;
 `
 
 export const Title = styled.div`
   font-weight: bold;
-  font-size: 90%;
+  font-size: 80%;
+  @media (min-width: 400px) {
+    font-size: 90%;
+  }
 `
 export const Description = styled.div`
-  font-size: 60%;
+  font-size: 70%;
+  text-align: left;
+  @media (min-width: 400px) {
+    font-size: 80%;
+  }
 `
 export const ButtonWrapper = styled.div`
   background: url(${(props) => props.image}) no-repeat center center/contain;
   width: 28%;
   height: 68%;
+  @media (min-width: 400px) {
+    width: 24%;
+    height: 60%;
+  }
 `

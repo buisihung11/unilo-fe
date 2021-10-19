@@ -11,14 +11,15 @@ export const StyledSpecialBox = styled.div`
   height: 25%;
   margin: 0 auto;
   padding-top: 0.5rem;
-  padding-left: 17%;
+  padding-left: 16%;
 `
 
 export const StyledImage = styled.div`
   background: url(${(props) => props.image});
-  background-size: cover;
-  width: 25%;
-  height: 55%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 26%;
+  height: 45%;
   border-radius: 30%;
 `
 export const ContentWrapper = styled.div`

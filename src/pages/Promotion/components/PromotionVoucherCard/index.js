@@ -24,6 +24,7 @@ function PromotionVoucher(props) {
           count={props.item.quantity}
           size={'1.3rem'}
           imageSize={'1.5rem'}
+          onClick={() => console.log('123')}
         />
       </ButtonWrapper>
     </StyledVoucherCardWrapper>
