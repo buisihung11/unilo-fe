@@ -1,6 +1,6 @@
 import {
-  StyledUnilo,
   StyledUniloWrapper,
+  StyledDarkUnilo,
 } from '../../components/AppStyles/index'
 import { StyledPromotionWrapper } from './components/Promotion.style'
 import PromotionHeader from './components/PromotionHeader'
@@ -10,13 +10,13 @@ import PromotionVoucherList from './components/PromotionVoucherList'
 export default function Promotion(props) {
   return (
     <StyledUniloWrapper>
-      <StyledUnilo>
+      <StyledDarkUnilo>
         <StyledPromotionWrapper>
           <PromotionHeader />
           <PromotionSpecial />
           <PromotionVoucherList />
         </StyledPromotionWrapper>
-      </StyledUnilo>
+      </StyledDarkUnilo>
     </StyledUniloWrapper>
   )
 }

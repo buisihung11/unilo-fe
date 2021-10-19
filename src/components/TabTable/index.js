@@ -25,7 +25,7 @@ export default function TabTable(props) {
   }
 
   return (
-    <div style={{ ...props.style, paddingTop: '10%' }}>
+    <div style={{ paddingTop: '10%', ...props.style }}>
       <div style={{ display: 'flex' }}>
         <TabWrapper
           style={{ zIndex: tabIndex === 0 ? 3 : 1 }}

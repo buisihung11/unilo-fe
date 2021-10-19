@@ -5,10 +5,9 @@ import {
   ContentWrapper,
   Title,
   Description,
-  ButtonWrapper,
+  QuantityWrapper,
 } from './PromotionVoucher.style'
-import HoneyPotUnit from '../HoneyPotUnitPromotion'
-import btnOrg from '../../../../assets/images/btn-orange.png'
+import { Button, Icon } from '../../../../components'
 
 function PromotionVoucher(props) {
   return (
@@ -18,14 +17,13 @@ function PromotionVoucher(props) {
         <Title>{props.item.title}</Title>
         <Description>{props.item.description}</Description>
       </ContentWrapper>
-      <ButtonWrapper image={btnOrg}>
-        <HoneyPotUnit
-          image={props.item.badgeIcon}
-          count={props.item.quantity}
-          size={'1.3rem'}
-          imageSize={'1.5rem'}
-        />
-      </ButtonWrapper>
+      <Button
+        style={{ width: '25%' }}
+        variant={props.shownIndex ? 'success' : 'danger'}
+      >
+        <QuantityWrapper>{props.item.quantity}</QuantityWrapper>
+        <Icon img={props.item.badgeIcon} style={{ width: '1.5em' }} />
+      </Button>
     </StyledVoucherCardWrapper>
   )
 }
