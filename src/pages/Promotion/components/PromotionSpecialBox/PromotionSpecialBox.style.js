@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import bgImg from '../../../../assets/images/bg-customer-summary.png'
-import bgBlueBtn from '../../../../assets/images/btn-blue-bg.png'
+import itemBg from '../../../../assets/images/item-lg.png'
 
 export const StyledSpecialBox = styled.div`
   display: flex;
@@ -11,9 +11,18 @@ export const StyledSpecialBox = styled.div`
   height: 24%;
   margin: 0 auto;
   padding-top: 0.5rem;
-  padding-left: 16%;
-  @media (max-width: 360px) {
+  padding-left: 18%;
+
+  @media (max-width: 320px) {
+    height: 23%;
+  }
+
+  @media (min-width: 360px) {
     height: 28%;
+  }
+
+  @media (min-width: 375px) {
+    height: 22%;
   }
 `
 
@@ -40,11 +49,14 @@ export const AcbLogo = styled.div`
   height: 2rem;
 `
 export const Description = styled.div`
-  font-size: 10px;
+  font-size: 7px;
   font-weight: bold;
   color: #000;
   width: 65%;
   text-align: center;
+  @media (min-width: 375px) {
+    font-size: 9px;
+  }
 `
 export const QuantityWrapper = styled.div`
   font-size: 1.2rem;
