@@ -1,11 +1,12 @@
 import Dashboard from './Dashboard'
 import Promotion from './Promotion'
-import { OpenBoxGame } from './Minigame'
+import { OpenBoxGame } from './OpenBoxGame'
 import Reward from './Reward'
 import PromotionDetail from './PromotionDetail'
 import MissionDetail from './MissionDetail'
 import Mission from './Mission'
 import WheelGame from './WheelGame'
+import Minigame from './Minigame'
 
 export {
   Dashboard,
@@ -16,4 +17,5 @@ export {
   MissionDetail,
   Mission,
   WheelGame,
+  Minigame,
 }

@@ -21,6 +21,7 @@ import {
   PromotionDetail,
   MissionDetail,
   Mission,
+  Minigame,
 } from './pages'
 import Demo from './pages/Demo/Demo'
 import theme, { GlobalStyle } from './theme'
@@ -71,6 +72,9 @@ function App() {
               </Route>
               <Route exact path="/mission">
                 <Mission />
+              </Route>
+              <Route exact path="/minigame">
+                <Minigame />
               </Route>
             </>
           ) : (
