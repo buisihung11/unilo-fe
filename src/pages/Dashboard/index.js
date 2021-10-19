@@ -1,39 +1,60 @@
 import React from 'react'
-import { StyledUnilo, StyledUniloWrapper } from '../../components/AppStyles'
+import { useHistory } from 'react-router'
 import {
   Box,
   CustomerSummary,
   ExitButton,
+  Icon,
   LeaderboardButton,
   MinigameButton,
   RewardButton,
   SettingButton,
   TierBox,
 } from '../../components'
+import {
+  StyledUniloBackground,
+  StyledUniloWrapper,
+} from '../../components/AppStyles'
+import Layout from '../../components/Layout'
 import BearTalking from './BearTalking'
-import { StyledMessage } from './Message/Message.style'
-import Message from './Message'
-import { useHistory } from 'react-router'
+import qrcode from '../../assets/icons/qrcode.png'
+import { SidebarWrapper } from './Dashboard.style'
 
 export default function Dashboard(props) {
   const router = useHistory()
 
   return (
     <StyledUniloWrapper>
-      <StyledUnilo>
-        <Box mt={'-2rem'}>
-          <CustomerSummary />
-        </Box>
-        <TierBox />
-        <div className={'container d-flex justify-content-center fixed-bottom'}>
-          <ExitButton onClick={() => router.push('/mission')} />
-          <LeaderboardButton onClick={() => router.push('/leaderboard')} />
-          <MinigameButton onClick={() => router.push('/minigame')} />
-          <RewardButton onClick={() => router.push('/promotion')} />
-          <SettingButton onClick={() => router.push('/account')} />
-        </div>
-        <BearTalking />
-      </StyledUnilo>
+      <StyledUniloBackground />
+      <Layout
+        Content={
+          <Box
+            px={2}
+            pt={1}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+          >
+            <CustomerSummary />
+            <TierBox />
+            <Box px={4} position="relative">
+              <SidebarWrapper>
+                <Icon onClick={() => router.push('/qr-scan')} img={qrcode} />
+              </SidebarWrapper>
+              <BearTalking />
+            </Box>
+          </Box>
+        }
+        Footer={
+          <Box display="flex" justifyContent="space-between">
+            <ExitButton onClick={() => router.push('/mission')} />
+            <LeaderboardButton onClick={() => router.push('/leaderboard')} />
+            <MinigameButton onClick={() => router.push('/minigame')} />
+            <RewardButton onClick={() => router.push('/promotion')} />
+            <SettingButton onClick={() => router.push('/account')} />
+          </Box>
+        }
+      />
     </StyledUniloWrapper>
   )
 }

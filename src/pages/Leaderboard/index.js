@@ -49,11 +49,11 @@ const LeaderboardPage = () => {
                 Tháng này
               </FilterTab>
             </FilterTabWrapper>
-            <Box textAlign="center">
-              <Text pt={2} fontWeight="bold">
+            <Box pt={4} textAlign="center">
+              <Text fontWeight="bold">
                 Cùng xem gấu nào siêng năng nhất tuần nè
               </Text>
-              <Box pt={2} display="flex" justifyContent="space-between">
+              <Box pt={4} display="flex" justifyContent="space-between">
                 {topTen?.slice(0, 3).map((user, idx) => (
                   <Box
                     pt={(idx === 0 || idx === 2) && 4}
@@ -64,7 +64,7 @@ const LeaderboardPage = () => {
                   </Box>
                 ))}
               </Box>
-              <Box mt={4} px={4}>
+              <Box mt={4} px={2}>
                 <LeaderboardList topUser={topTen} />
               </Box>
             </Box>

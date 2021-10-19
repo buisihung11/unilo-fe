@@ -10,6 +10,7 @@ import Mission from './Mission'
 import WheelGame from './WheelGame'
 import Minigame from './Minigame'
 import Account from './Account'
+import ScanQRPage from './ScanQR'
 
 export {
   Dashboard,
@@ -23,4 +24,5 @@ export {
   Handbook,
   Minigame,
   Account,
+  ScanQRPage,
 }
