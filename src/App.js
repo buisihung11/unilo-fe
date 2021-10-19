@@ -9,6 +9,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { Box } from './components'
+import LoadingWrapper from './components/Loading'
 import { SettingProvider } from './context/SettingContext'
 import useQueryParam from './hooks/useQueryParam'
 import useUser from './hooks/user/useUser'
@@ -25,6 +26,7 @@ import {
   Minigame,
 } from './pages'
 import Demo from './pages/Demo/Demo'
+import LeaderboardPage from './pages/Leaderboard'
 import theme, { GlobalStyle } from './theme'
 
 const queryClient = new QueryClient()
@@ -47,8 +49,9 @@ function App() {
               <Route exact path="/">
                 <Redirect to="/dashboard" />
               </Route>
-              <Route path="/dashboard">
-                <Dashboard />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/leaderboard">
+                <LeaderboardPage />
               </Route>
               <Route path="/reward">
                 <Reward type={1} quantity={5} />
@@ -59,9 +62,7 @@ function App() {
               <Route path="/minigame/openbox">
                 <OpenBoxGame />
               </Route>
-              <Route path="/minigame/wheel">
-                <WheelGame />
-              </Route>
+              <Route path="/minigame/wheel" component={WheelGame} />
               <Route exact path="/promotion">
                 <Promotion />
               </Route>
@@ -90,6 +91,19 @@ function App() {
         </Switch>
       </SettingProvider>
     </ThemeProvider>
+  )
+}
+
+const LoadingRoute = ({ component: Component, ...routeProps }) => {
+  return (
+    <Route
+      {...routeProps}
+      render={(props) => (
+        <LoadingWrapper>
+          <Component {...props} />
+        </LoadingWrapper>
+      )}
+    />
   )
 }
 

@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 import { WheelWrapper } from './Wheel.style'
+import wheelImg from '../../assets/images/Wheel.png'
+import { Img } from 'react-image'
+import { Box } from '..'
 
 const segments = ['A', 'B', 'C', 'C', 'C']
 
@@ -9,8 +12,8 @@ const Wheel = (props) => {
     let timeout
     if (props.isRotate) {
       timeout = setTimeout(() => {
-        console.log('TIMEOUT')
-        console.log('PRIZE IS ....')
+        // console.log('TIMEOUT')
+        // console.log('PRIZE IS ....')
         if (typeof props.onWinner === 'function') {
           props.onWinner('GIAI NHAT')
         }
@@ -21,7 +24,11 @@ const Wheel = (props) => {
     }
   }, [props.isRotate, props.duration, props.onWinner])
 
-  return <WheelWrapper {...props} />
+  return (
+    <WheelWrapper {...props}>
+      <Box as={Img} src={wheelImg} width="100%" />
+    </WheelWrapper>
+  )
 }
 
 Wheel.propTypes = {
