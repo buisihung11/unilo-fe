@@ -27,7 +27,7 @@ export default function Dashboard(props) {
         <TierBox />
         <div className={'container d-flex justify-content-center fixed-bottom'}>
           <ExitButton />
-          <LeaderboardButton />
+          <LeaderboardButton onClick={() => router.push('/leaderboard')} />
           <MinigameButton onClick={() => router.push('/minigame/wheel')} />
           <RewardButton />
           <SettingButton />
