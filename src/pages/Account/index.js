@@ -1,43 +1,102 @@
-import React from 'react'
-import { Box, CustomerSummary, StyledUniloWrapper, TierBox } from '../../components'
-import { Overlay, StyledUniloBackground } from '../../components/AppStyles'
-import Layout from '../../components/Layout'
-import Icon from '../../components/Icon'
-import backIcon from '../../assets/icons/back.png'
-import Text from '../../components/Text'
-import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react'
+import {
+  StyledUniloWrapper,
+  OverlayView,
+  Header,
+  TabTable,
+  Button,
+  Icon,
+} from '../../components'
+import { CustomerSummary, TierBox } from '../../components'
+import {
+  HistoryItem,
+  HistoryItemLeftWrapper,
+  HistoryItemName,
+  HistoryItemDate,
+} from './components'
+import nutIcon from '../../assets/icons/nut.png'
 
+const earnedPointHistory = [
+  {
+    id: 0,
+    name: 'Giao dịch thanh toán hóa đơn 1234565',
+    date: 'dd/MM/yyyy - hh:ss:mm',
+    point: 5,
+  },
+  {
+    id: 1,
+    name: 'Giao dịch thanh toán hóa đơn 1234565',
+    date: 'dd/MM/yyyy - hh:ss:mm',
+    point: 5,
+  },
+  {
+    id: 2,
+    name: 'Giao dịch thanh toán hóa đơn 1234565',
+    date: 'dd/MM/yyyy - hh:ss:mm',
+    point: 10,
+  },
+]
 
-export default function Account() {
-  const router = useHistory()
+const redeemedPointHistory = [
+  {
+    id: 0,
+    name: 'Giao dịch thanh toán hóa đơn 1234565',
+    date: 'dd/MM/yyyy - hh:ss:mm',
+    point: 5,
+  },
+  {
+    id: 1,
+    name: 'Giao dịch thanh toán hóa đơn 1234565',
+    date: 'dd/MM/yyyy - hh:ss:mm',
+    point: 5,
+  },
+  {
+    id: 2,
+    name: 'Giao dịch thanh toán hóa đơn 1234565',
+    date: 'dd/MM/yyyy - hh:ss:mm',
+    point: 10,
+  },
+]
+
+function Account() {
+  const [shownIndex, setShownIndex] = useState(1)
+  const content = shownIndex ? earnedPointHistory : redeemedPointHistory
+  const tblContent = content.map(({ id, name, date, point }, index) => (
+    <HistoryItem key={id}>
+      <HistoryItemLeftWrapper style={{ flex: 4 }}>
+        <div>
+          <HistoryItemName>
+            #{index + 1} {name}
+          </HistoryItemName>
+          <HistoryItemDate>{date}</HistoryItemDate>
+        </div>
+      </HistoryItemLeftWrapper>
+      <Button style={{ flex: 1 }} variant={shownIndex ? 'success' : 'danger'}>
+        <b>
+          {shownIndex ? '+' : '-'}
+          {point}
+        </b>
+        <Icon img={nutIcon} style={{ width: '1.5em' }} />
+      </Button>
+    </HistoryItem>
+  ))
   return (
     <StyledUniloWrapper>
-      <StyledUniloBackground />
-      <Overlay />
-      <Layout
-        Header={
-          <Box p={2}>
-            <Icon img={backIcon} onClick={() => router.replace('/')} />
-            <Text as='h1' fontSize='2rem' color='#fff' pb={2} textAlign={"center"}>
-              Tài khoản
-            </Text>
-            <CustomerSummary />
-            <TierBox />
-          </Box>
-        }
-        Content={
-          <Box
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='center'
-            zIndex='90'
-            position='relative'
-            overflow='hidden'
-          >
-          </Box>
-        }
-      />
+      <OverlayView>
+        <Header title="Tài khoản" />
+        <CustomerSummary />
+        <TierBox />
+        <TabTable
+          title1={'Lịch sử tích điểm'}
+          clickHandler1={() => setShownIndex(0)}
+          title2={'Lịch sử đổi ưu đãi'}
+          clickHandler2={() => setShownIndex(1)}
+        >
+          {tblContent}
+        </TabTable>
+      </OverlayView>
     </StyledUniloWrapper>
   )
 }
+
+export default Account

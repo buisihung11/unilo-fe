@@ -24,12 +24,12 @@ import {
   Mission,
   Handbook,
   Minigame,
+  Account,
   ScanQRPage,
 } from './pages'
 import Demo from './pages/Demo/Demo'
 import LeaderboardPage from './pages/Leaderboard'
 import theme, { GlobalStyle } from './theme'
-import Account from './pages/Account'
 
 const queryClient = new QueryClient()
 
@@ -84,7 +84,7 @@ function App() {
               <Route exact path="/minigame">
                 <Minigame />
               </Route>
-              <Route exact path="/account">
+              <Route path="/account">
                 <Account />
               </Route>
             </>

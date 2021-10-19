@@ -17,8 +17,8 @@ export default function Icon(props) {
     <img
       src={img}
       onClick={() => {
-        clickSound()
         if (onClick) {
+          clickSound()
           onClick()
         }
       }}
