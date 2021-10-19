@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const LayoutWrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   overflow-x: hidden;

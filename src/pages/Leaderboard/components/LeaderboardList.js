@@ -3,6 +3,8 @@ import { Box } from '../../../components'
 import PropTypes from 'prop-types'
 import { Avatar } from './Leaderboard.style'
 import Text from '../../../components/Text'
+import nutImage from '../../../assets/icons/nut.png'
+import honeypot1 from '../../../assets/icons/honeypot1.png'
 
 const LeaderboardList = ({ topUser = [] }) => {
   return (
@@ -21,11 +23,18 @@ const LeaderboardList = ({ topUser = [] }) => {
           <Box pr={3}>
             <Avatar src={user.avatar} />
           </Box>
-          <Box display="flex" flexdirection="row" alignItems="center">
-            <Text fontWeight="bold" mb={0} pr={2}>
-              {user.userName}
-            </Text>
-            <Text mb={0}>{user.membership}</Text>
+          <Box display="flex" flex={1} flexdirection="row" alignItems="center">
+            <Box width="50%" pr={2}>
+              <Text fontWeight="bold" mb={0}>
+                {user.userName}
+              </Text>
+            </Box>
+            <Box display="flex" flex={1} justifyContent="flex-start">
+              {user.totalNut}{' '}
+              <Box ml={1} as="img" src={nutImage} width={24} height={24} />{' '}
+              {user.totalBadge}{' '}
+              <Box ml={1} as="img" src={honeypot1} width={24} height={24} />
+            </Box>
           </Box>
         </Box>
       ))}

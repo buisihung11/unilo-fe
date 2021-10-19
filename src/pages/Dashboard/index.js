@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledUnilo, StyledUniloWrapper } from '../../components/AppStyles'
+import { useHistory } from 'react-router'
 import {
   Box,
   CustomerSummary,
@@ -10,30 +10,45 @@ import {
   SettingButton,
   TierBox,
 } from '../../components'
+import {
+  StyledUniloBackground,
+  StyledUniloWrapper,
+} from '../../components/AppStyles'
+import Layout from '../../components/Layout'
 import BearTalking from './BearTalking'
-import { StyledMessage } from './Message/Message.style'
-import Message from './Message'
-import { useHistory } from 'react-router'
 
 export default function Dashboard(props) {
   const router = useHistory()
 
   return (
     <StyledUniloWrapper>
-      <StyledUnilo>
-        <Box mt={'-2rem'}>
-          <CustomerSummary />
-        </Box>
-        <TierBox />
-        <div className={'container d-flex justify-content-center fixed-bottom'}>
-          <ExitButton />
-          <LeaderboardButton />
-          <MinigameButton onClick={() => router.push('/minigame/wheel')} />
-          <RewardButton />
-          <SettingButton />
-        </div>
-        <BearTalking />
-      </StyledUnilo>
+      <StyledUniloBackground />
+      <Layout
+        Content={
+          <Box
+            px={2}
+            pt={1}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+          >
+            <CustomerSummary />
+            <Box px={4}>
+              <TierBox />
+            </Box>
+            <BearTalking />
+          </Box>
+        }
+        Footer={
+          <Box display="flex" justifyContent="space-between">
+            <ExitButton />
+            <LeaderboardButton onClick={() => router.push('/leaderboard')} />
+            <MinigameButton onClick={() => router.push('/minigame/wheel')} />
+            <RewardButton />
+            <SettingButton />
+          </Box>
+        }
+      />
     </StyledUniloWrapper>
   )
 }

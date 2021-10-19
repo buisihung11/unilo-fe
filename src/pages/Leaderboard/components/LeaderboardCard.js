@@ -21,12 +21,13 @@ const LeaderboardCard = ({ user }) => {
       <UserName pt={2} fontWeight="bold">
         {userName}
       </UserName>
-      <Box>
+      <Box py={1}>
         <Text>{membership}</Text>
       </Box>
-      <Box p={2} bg="#235789" borderRadius="24px" color="white">
-        {totalNut} <Box as="img" src={nutImage} width={24} height={24} />{' '}
-        {totalBadge} <Box as="img" src={honeypot1} width={24} height={24} />
+      <Box p={2} bg="#235789" borderRadius="24px" color="white" display="flex">
+        {totalNut} <Box ml={1} as="img" src={nutImage} width={24} height={24} />{' '}
+        {totalBadge}{' '}
+        <Box ml={1} as="img" src={honeypot1} width={24} height={24} />
       </Box>
     </Box>
   )
