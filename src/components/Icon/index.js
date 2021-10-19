@@ -22,7 +22,7 @@ export default function Icon(props) {
           onClick()
         }
       }}
-      style={{ maxWidth: MAX_SIZE, cursor: 'pointer', ...style }}
+      style={{ maxWidth: MAX_SIZE, cursor: 'pointer', ...style, objectFit: "contain" }}
       alt="Icon button"
     />
   )
