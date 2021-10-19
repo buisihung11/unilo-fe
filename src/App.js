@@ -76,6 +76,7 @@ function App() {
               </Route>
               <Route path="/handbook">
                 <Handbook />
+              </Route>
               <Route exact path="/minigame">
                 <Minigame />
               </Route>
