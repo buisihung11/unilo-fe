@@ -1,17 +1,19 @@
 import styled from 'styled-components'
-
+import itemBg from '../../../../assets/images/item-lg.png'
 export const StyledVoucherCardWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 19%;
-  background-color: rgba(255, 255, 255, 0.34);
+  background: url(${itemBg}) no-repeat center center/contain;
+  background-size: 120% 110%;
+
   align-items: center;
   margin-bottom: 0.5rem;
 `
 export const ImgThumbnail = styled.div`
   background: url(${(props) => props.image}) no-repeat center center/cover;
   width: 24%;
-  height: 100%;
+  height: 90%;
   border-radius: 20%;
   box-shadow: 1px 1px 1px #000000;
 `
