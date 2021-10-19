@@ -19,6 +19,7 @@ import ExpandableItem from './ExpandableItem'
 import Icon from './Icon'
 import { StyledUniloWrapper, OverlayView } from './AppStyles'
 import TabTable from './TabTable'
+import { ExpandableItemWithImage } from './ExpandableItem/index'
 
 export {
   BearTalking,
@@ -43,4 +44,5 @@ export {
   StyledUniloWrapper,
   OverlayView,
   TabTable,
+  ExpandableItemWithImage,
 }

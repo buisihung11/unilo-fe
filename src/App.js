@@ -21,6 +21,7 @@ import {
   PromotionDetail,
   MissionDetail,
   Mission,
+  Handbook,
   Minigame,
 } from './pages'
 import Demo from './pages/Demo/Demo'
@@ -73,6 +74,8 @@ function App() {
               <Route exact path="/mission">
                 <Mission />
               </Route>
+              <Route path="/handbook">
+                <Handbook />
               <Route exact path="/minigame">
                 <Minigame />
               </Route>
