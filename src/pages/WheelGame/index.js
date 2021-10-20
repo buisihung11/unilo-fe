@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import useSound from 'use-sound'
 import {
   Box,
@@ -18,6 +18,7 @@ import Wheel from '../../components/Wheel'
 import clickSfx from '../../assets/sounds/button-click.wav'
 import rewardSfx from '../../assets/sounds/reward.wav'
 import badLuckSfx from '../../assets/sounds/bad-luck.wav'
+import wheelMusicSfx from '../../assets/sounds/wheel-music.mp3'
 import useSetting from '../../hooks/useSetting'
 import backIcon from '../../assets/icons/back.png'
 import mascot from '../../assets/images/reward-bear.png'
@@ -56,6 +57,9 @@ const WheelGamePage = () => {
   const [badLuckSound] = useSound(badLuckSfx, {
     soundEnabled: !mute,
   })
+  const [wheelGameSound, { stop: stopGameSound }] = useSound(wheelMusicSfx, {
+    soundEnabled: !mute,
+  })
 
   const startPlayGame = useCallback(async () => {
     if (isPlaying || prize) return
@@ -84,6 +88,14 @@ const WheelGamePage = () => {
     }
     setIsPlaying(false)
   }, [clickSound, rewardSound, badLuckSound, isPlaying, prize])
+
+  useEffect(() => {
+    if (isPlaying) {
+      wheelGameSound()
+    } else {
+      stopGameSound()
+    }
+  }, [isPlaying, stopGameSound, wheelGameSound])
 
   const resetGame = () => {
     setIsPlaying(false)
