@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { Box, CustomerSummary, Icon, TierBox } from '../../components'
+import { Box, CustomerSummary, Icon } from '../../components'
 import {
   StyledUniloBackground,
   StyledUniloWrapper,
@@ -34,7 +34,6 @@ export default function Dashboard(props) {
             justifyContent="center"
           >
             <CustomerSummary />
-            <TierBox />
             <Box px={4} position="relative">
               <SidebarWrapper>
                 <Icon
