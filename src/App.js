@@ -51,7 +51,7 @@ function App() {
               <Route exact path="/">
                 <Redirect to="/dashboard" />
               </Route>
-              <Route path="/dashboard" component={Dashboard} />
+              <LoadingRoute path="/dashboard" component={Dashboard} />
               <Route path="/leaderboard">
                 <LeaderboardPage />
               </Route>

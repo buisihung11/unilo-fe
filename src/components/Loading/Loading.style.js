@@ -1,4 +1,11 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const movingAnimation = keyframes`
+  from {
+    transform: translateX(-20px)
+  }
+  to {transform: translateX(20px)}
+`
 
 export const LoadingOverlayWrapper = styled.div`
   position: absolute;
@@ -12,6 +19,9 @@ export const LoadingOverlayWrapper = styled.div`
   align-items: center;
   justify-content: center;
   visibility: ${(props) => (props.show ? 'visibility' : 'hidden')};
-  background-color: #0038a8;
+  background-color: #00afff;
   color: white;
+`
+export const BearAnimationWrapper = styled.div`
+  animation: ${movingAnimation} infinite 2000ms ease-in-out;
 `
