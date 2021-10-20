@@ -11,6 +11,7 @@ import QrScanner from 'qr-scanner'
 const ScanQRPage = () => {
   const history = useHistory()
   const [result, setResult] = useState(null)
+  const [error, setError] = useState(null)
 
   const handleScan = (data) => {
     if (data) {
@@ -18,6 +19,7 @@ const ScanQRPage = () => {
     }
   }
   const handleError = (err) => {
+    setError(err)
     console.error(err)
   }
 
@@ -52,6 +54,9 @@ const ScanQRPage = () => {
             </Text>
             <Text py={2} fontWeight="bold">
               {result}
+            </Text>
+            <Text color="red" py={2} fontWeight="bold">
+              {error}
             </Text>
           </Box>
         }
