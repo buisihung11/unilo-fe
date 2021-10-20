@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import bearImg from "../../../assets/images/gauxanh7.png"
+import bearImg from '../../../assets/icons/bear-main.gif'
 
 export const StyledBear = styled.div`
   background: url(${bearImg}) no-repeat center center/contain;
