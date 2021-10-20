@@ -26,9 +26,12 @@ function PromotionSpecial() {
         <Description>
           <span>{voucherDescription}</span>
         </Description>
-        <Button style={{ width: '30%' }} variant={'success'}>
+        <Button
+          style={{ width: '30%', marginBottom: '5%' }}
+          variant={'success'}
+        >
           <QuantityWrapper>{noOfBadge}</QuantityWrapper>
-          <Icon img={normalBadge} style={{ width: '1.5em' }} />
+          <Icon img={normalBadge} style={{ width: '1.4em' }} />
         </Button>
       </ContentWrapper>
     </StyledSpecialBox>

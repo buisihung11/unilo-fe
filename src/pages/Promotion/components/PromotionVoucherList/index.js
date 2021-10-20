@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import {
   StyledVoucherListWrapper,
   StyledListWrapprer,
@@ -13,41 +14,61 @@ const promotionVouchers = [
     id: 1,
     img: lounge,
     title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    description: '1 lượt checkin phòng chờ thương gia',
+    applyRule: 'Cho khách hàng thân thiết',
     quantity: 3,
     badgeIcon: badgeMedium,
+    partnerName: 'phòng chờ Lotus',
+    startDate: '20/10/2021',
+    expirationDate: '20/11/2021',
   },
   {
     id: 2,
     img: lounge,
     title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    description: '1 lượt checkin phòng chờ thương gia',
+    applyRule: 'Cho khách hàng thân thiết',
     quantity: 4,
     badgeIcon: badgeMedium,
+    partnerName: 'phòng chờ Lotus',
+    startDate: '20/10/2021',
+    expirationDate: '20/11/2021',
   },
   {
     id: 3,
     img: lounge,
     title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    description: ' 1 lượt checkin phòng chờ thương gia',
+    applyRule: 'Cho khách hàng thân thiết',
     quantity: 5,
     badgeIcon: badgeMedium,
+    partnerName: 'phòng chờ Lotus',
+    startDate: '20/10/2021',
+    expirationDate: '20/11/2021',
   },
   {
     id: 4,
     img: lounge,
     title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    description: ' 1 lượt checkin phòng chờ thương gia',
+    applyRule: 'Cho khách hàng thân thiết',
     quantity: 6,
     badgeIcon: badgeMedium,
+    partnerName: 'phòng chờ Lotus',
+    startDate: '20/10/2021',
+    expirationDate: '20/11/2021',
   },
   {
     id: 5,
     img: lounge,
     title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
+    description: ' 1 lượt checkin phòng chờ thương gia',
+    applyRule: 'Cho khách hàng thân thiết',
     quantity: 7,
     badgeIcon: badgeMedium,
+    partnerName: 'phòng chờ Lotus',
+    startDate: '20/10/2021',
+    expirationDate: '20/11/2021',
   },
 ]
 
@@ -57,11 +78,10 @@ function PromotionListVoucher() {
   return (
     <StyledVoucherListWrapper>
       <TabTable
-        style={{ flex: 10, paddingTop: '4%' }}
         clickHandler1={() => setshownIndex(0)}
         clickHandler2={() => setshownIndex(1)}
         title1={'Gian hàng ưu đãi'}
-        title2={'Quà tặng của tôi'}
+        title2={'Giỏ quà của tôi'}
       >
         <StyledListWrapprer>
           {promotionVouchers.map((voucher) => {

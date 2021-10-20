@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import {
   StyledUniloWrapper,
   OverlayView,
@@ -12,22 +13,25 @@ import Banner from './components/Banner'
 import honeypot1 from '../../assets/icons/honeypot1.png'
 
 export default function PromotionDetail(props) {
+  let history = useHistory()
   let {
     name,
-    descriptions,
+    description,
+    applyRule,
     bannerImg,
     startDate,
     expirationDate,
     exchangedValue,
     exchangedType,
     partnerName,
-  } = props
-  descriptions = [
+  } = history.location.state
+
+  const descriptions = [
     {
       key: 'Mô tả',
-      value: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
+      value: description,
     },
-    { key: 'Điều kiện áp dụng', value: undefined },
+    { key: 'Điều kiện áp dụng', value: applyRule },
   ]
   const content = descriptions.map(({ key, value }, i) => (
     <ExpandableItem key={key} label={key} isShown={i === 0}>
