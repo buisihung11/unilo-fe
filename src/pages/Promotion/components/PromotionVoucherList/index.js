@@ -10,6 +10,7 @@ import PromotionVoucher from '../PromotionVoucherCard'
 
 const promotionVouchers = [
   {
+    id: 1,
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
@@ -17,6 +18,7 @@ const promotionVouchers = [
     badgeIcon: badgeMedium,
   },
   {
+    id: 2,
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
@@ -24,6 +26,7 @@ const promotionVouchers = [
     badgeIcon: badgeMedium,
   },
   {
+    id: 3,
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
@@ -31,6 +34,7 @@ const promotionVouchers = [
     badgeIcon: badgeMedium,
   },
   {
+    id: 4,
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
@@ -38,20 +42,7 @@ const promotionVouchers = [
     badgeIcon: badgeMedium,
   },
   {
-    img: lounge,
-    title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
-    quantity: 7,
-    badgeIcon: badgeMedium,
-  },
-  {
-    img: lounge,
-    title: 'VIP Lounge',
-    description: 'Tặng 1 lượt checkin phòng chờ thương gia',
-    quantity: 7,
-    badgeIcon: badgeMedium,
-  },
-  {
+    id: 5,
     img: lounge,
     title: 'VIP Lounge',
     description: 'Tặng 1 lượt checkin phòng chờ thương gia',
@@ -74,7 +65,13 @@ function PromotionListVoucher() {
       >
         <StyledListWrapprer>
           {promotionVouchers.map((voucher) => {
-            return <PromotionVoucher item={voucher} shownIndex={shownIndex} />
+            return (
+              <PromotionVoucher
+                item={voucher}
+                shownIndex={shownIndex}
+                key={voucher.id}
+              />
+            )
           })}
         </StyledListWrapprer>
       </TabTable>
