@@ -13,7 +13,7 @@ const SidebarWrapper = styled.div`
 
 const StyledGameBackground = styled.div`
   background: url(${bgGame}) no-repeat center center/contain;
-  padding: 1.4rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;

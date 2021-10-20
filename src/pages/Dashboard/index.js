@@ -52,7 +52,7 @@ export default function Dashboard(props) {
                 <StyledGameBackground>
                   <Icon
                     img={openBoxGameIcon}
-                    style={{ maxWidth: '4em' }}
+                    style={{ width: '5em', height: '5em' }}
                     onClick={() => {
                       router.push('/minigame/openbox')
                     }}
@@ -68,7 +68,7 @@ export default function Dashboard(props) {
                 <StyledGameBackground>
                   <Icon
                     img={wheelGameIcon}
-                    style={{ maxWidth: '4em' }}
+                    style={{ width: '5em', height: '5em' }}
                     onClick={() => {
                       router.push('/minigame/wheel')
                     }}

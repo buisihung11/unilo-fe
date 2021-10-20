@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import QrReader from 'react-qr-reader'
 import { Box, Icon, StyledUniloWrapper } from '../../components'
 import { StyledUniloBackground } from '../../components/AppStyles'
@@ -6,6 +6,7 @@ import Layout from '../../components/Layout'
 import backIcon from '../../assets/icons/back.png'
 import { useHistory } from 'react-router'
 import Text from '../../components/Text'
+import QrScanner from 'qr-scanner'
 
 const ScanQRPage = () => {
   const history = useHistory()
@@ -18,6 +19,15 @@ const ScanQRPage = () => {
   }
   const handleError = (err) => {
     console.error(err)
+  }
+
+  const scanQrImg = (e) => {
+    console.log(e)
+    const image = e.currentTarget.files[0]
+    console.log(`image`, image)
+    QrScanner.scanImage(image)
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error || 'No QR code found.'))
   }
 
   return (
@@ -40,7 +50,9 @@ const ScanQRPage = () => {
             <Text py={2} fontWeight="bold">
               Đưa camera vào mã QR
             </Text>
-            <p>{result}</p>
+            <Text py={2} fontWeight="bold">
+              {result}
+            </Text>
           </Box>
         }
       />

@@ -11,16 +11,16 @@ const openBox = () => {
   console.log('openBox')
 }
 
-export default function MiniGameBox() {
+export default function MiniGameBox({ onPlay }) {
   return (
     <>
       <Box display="flex" justifyContent="space-around" mt={2}>
-        <StyledBox src={firstBox} onClick={openBox} />
-        <StyledBox src={secondBox} onClick={openBox} />
+        <StyledBox src={firstBox} onClick={onPlay} />
+        <StyledBox src={secondBox} onClick={onPlay} />
       </Box>
       <Box display="flex" justifyContent="space-around" mt={4}>
-        <StyledBox src={thirdBox} onClick={openBox} />
-        <StyledBox src={fourthBox} onClick={openBox} />
+        <StyledBox src={thirdBox} onClick={onPlay} />
+        <StyledBox src={fourthBox} onClick={onPlay} />
       </Box>
     </>
   )
