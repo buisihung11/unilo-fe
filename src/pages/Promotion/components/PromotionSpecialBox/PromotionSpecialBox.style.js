@@ -63,8 +63,8 @@ export const QuantityWrapper = styled.div`
   font-weight: bold;
   color: #fff;
   padding-right: 0.4rem;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.1rem;
   @media (min-width: 375px) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 `

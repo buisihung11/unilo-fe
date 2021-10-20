@@ -14,12 +14,12 @@ export default function Mission(props) {
   const history = useHistory()
   let { missions } = props
   missions = [
-    { id: 0, name: 'Nhiệm vụ 1' },
-    { id: 2, name: 'Nhiệm vụ 2' },
-    { id: 3, name: 'Nhiệm vụ 3' },
-    { id: 4, name: 'Nhiệm vụ 4' },
-    { id: 5, name: 'Nhiệm vụ 5' },
-    { id: 6, name: 'Nhiệm vụ 6' },
+    { id: 0, name: 'Đăng bài facebook hashtag #acb' },
+    { id: 2, name: 'Chạy bộ 4000 bước' },
+    { id: 3, name: 'Sử dụng thẻ Visa ACB để thanh toán' },
+    { id: 4, name: 'Chạy bộ 7 ngày liên tục' },
+    { id: 5, name: 'Đăng nhập 10 ngày liên tục' },
+    { id: 6, name: 'Gửi link giới thiệu' },
   ]
   const content = missions.map(({ id, name }) => (
     <MissionItem key={id}>
