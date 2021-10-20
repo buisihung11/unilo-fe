@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import './App.css'
 import { Box } from './components'
-import LoadingWrapper from './components/Loading'
+import LoadingWrapper, { LoadingPlaceHolder } from './components/Loading'
 import { SettingProvider } from './context/SettingContext'
 import useQueryParam from './hooks/useQueryParam'
 import useUser from './hooks/user/useUser'
@@ -45,13 +45,13 @@ function App() {
         <GlobalStyle />
         <Switch>
           {isFetching ? (
-            <Box>Loading...</Box>
+            <LoadingPlaceHolder />
           ) : isAuthenticated ? (
             <>
               <Route exact path="/">
                 <Redirect to="/dashboard" />
               </Route>
-              <LoadingRoute path="/dashboard" component={Dashboard} />
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/leaderboard">
                 <LeaderboardPage />
               </Route>
@@ -61,10 +61,8 @@ function App() {
               <Route path="/demo">
                 <Demo />
               </Route>
-              <Route path="/minigame/openbox">
-                <OpenBoxGame />
-              </Route>
-              <Route path="/minigame/wheel" component={WheelGame} />
+              <LoadingRoute path="/minigame/openbox" component={OpenBoxGame} />
+              <LoadingRoute path="/minigame/wheel" component={WheelGame} />
               <Route path="/qr-scan" component={ScanQRPage} />
               <Route exact path="/promotion">
                 <Promotion />

@@ -17,6 +17,7 @@ import { BorderText } from './Text'
 import DashedLine from './DashedLine'
 import ExpandableItem from './ExpandableItem'
 import Icon from './Icon'
+import StaticImg from './StaticImg'
 import { StyledUniloWrapper, OverlayView } from './AppStyles'
 import TabTable from './TabTable'
 import { ExpandableItemWithImage } from './ExpandableItem/index'
@@ -45,4 +46,5 @@ export {
   OverlayView,
   TabTable,
   ExpandableItemWithImage,
+  StaticImg,
 }
