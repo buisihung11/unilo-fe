@@ -5,6 +5,7 @@ import { Avatar } from './Leaderboard.style'
 import Text from '../../../components/Text'
 import nutImage from '../../../assets/icons/nut.png'
 import honeypot1 from '../../../assets/icons/honeypot1.png'
+import topAvatar from '../../../assets/icons/leader-avatar.png'
 
 const LeaderboardList = ({ topUser = [] }) => {
   return (
@@ -21,7 +22,7 @@ const LeaderboardList = ({ topUser = [] }) => {
           height="50px"
         >
           <Box pr={3}>
-            <Avatar src={user.avatar} />
+            <Avatar src={topAvatar} />
           </Box>
           <Box display="flex" flex={1} flexdirection="row" alignItems="center">
             <Box width="50%" pr={2}>

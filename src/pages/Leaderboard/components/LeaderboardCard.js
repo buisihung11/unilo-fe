@@ -1,11 +1,10 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+import honeypot1 from '../../../assets/icons/honeypot1.png'
+import topAvatar from '../../../assets/icons/leader-avatar.png'
+import nutImage from '../../../assets/icons/nut.png'
 import { Box } from '../../../components'
 import Text from '../../../components/Text'
-import styled from 'styled-components'
-import { space, typography } from 'styled-system'
-import nutImage from '../../../assets/icons/nut.png'
-import honeypot1 from '../../../assets/icons/honeypot1.png'
 import { Avatar, UserName } from './Leaderboard.style'
 
 const LeaderboardCard = ({ user }) => {
@@ -17,7 +16,7 @@ const LeaderboardCard = ({ user }) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Avatar src={avatar} alt={userName} />
+      <Avatar src={topAvatar} />
       <UserName pt={2} fontWeight="bold">
         {userName}
       </UserName>
