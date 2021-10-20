@@ -1,6 +1,12 @@
 import React, { useCallback, useState } from 'react'
 import useSound from 'use-sound'
-import { Box, Button, CustomerSummary } from '../../components'
+import {
+  Box,
+  Button,
+  CustomerSummary,
+  DashedLine,
+  Dialog,
+} from '../../components'
 import {
   Overlay,
   StyledUniloBackground,
@@ -10,8 +16,11 @@ import Layout from '../../components/Layout'
 import Text from '../../components/Text'
 import Wheel from '../../components/Wheel'
 import clickSfx from '../../assets/sounds/button-click.wav'
+import rewardSfx from '../../assets/sounds/reward.wav'
+import badLuckSfx from '../../assets/sounds/bad-luck.wav'
 import useSetting from '../../hooks/useSetting'
 import backIcon from '../../assets/icons/back.png'
+import mascot from '../../assets/images/reward-bear.png'
 import { useHistory } from 'react-router'
 import Icon from '../../components/Icon'
 import { sleep } from '../../utils/utils'
@@ -24,7 +33,7 @@ const gameRewards = [
   'Voucher 50K',
   'Voucher 70K',
   'Voucher 25K',
-  'GOOD LUCK',
+  'BAD LUCK',
   'Voucher 200K',
   'Voucher 500K',
   'Voucher 800K',
@@ -39,6 +48,12 @@ const WheelGamePage = () => {
   const [prize, setPrize] = useState(null)
 
   const [clickSound] = useSound(clickSfx, {
+    soundEnabled: !mute,
+  })
+  const [rewardSound] = useSound(rewardSfx, {
+    soundEnabled: !mute,
+  })
+  const [badLuckSound] = useSound(badLuckSfx, {
     soundEnabled: !mute,
   })
 
@@ -60,9 +75,15 @@ const WheelGamePage = () => {
     setRotateDeg(rotateDeg)
     setRotate(true)
     await sleep(DEFAULT_DURATION)
+
     setPrize(gameRewards[rewardIdx])
+    if (gameRewards[rewardIdx] === 'BAD LUCK') {
+      badLuckSound()
+    } else {
+      rewardSound()
+    }
     setIsPlaying(false)
-  }, [clickSound, isPlaying, prize])
+  }, [clickSound, rewardSound, badLuckSound, isPlaying, prize])
 
   const resetGame = () => {
     setIsPlaying(false)
@@ -71,10 +92,41 @@ const WheelGamePage = () => {
     setRotateDeg(0)
   }
 
+  console.log(`prize`, prize)
+
   return (
     <StyledUniloWrapper>
       <StyledUniloBackground />
       <Overlay />
+      <Dialog
+        visible={Boolean(prize)}
+        headerTitle={
+          <Text fontWeight="bold" color="white">
+            Phần thưởng
+          </Text>
+        }
+        extraHeader={
+          <Box pr={4} as="img" src={mascot} width={140} height="auto" />
+        }
+        footer={
+          <Button onClick={resetGame} variant="primary">
+            <h4>Tiếp tục</h4>
+          </Button>
+        }
+      >
+        <Box textAlign="center">
+          <div style={{ width: '100%' }}>
+            <h2>Chúc mừng</h2>
+            <DashedLine />
+            <p>Bạn đã nhận được 01 phần quà</p>
+            <Text fontSize="3rem">{prize}</Text>
+          </div>
+          <div style={{ width: '100%' }}>
+            <DashedLine />
+            <p>Bạn có muốn tiếp tục?</p>
+          </div>
+        </Box>
+      </Dialog>
       <Layout
         Header={
           <Box p={2} display="flex">
@@ -97,7 +149,6 @@ const WheelGamePage = () => {
             </Text>
             <Wheel
               onClick={startPlayGame}
-              onWinner={setPrize}
               isRotate={rotate}
               deg={rotateDeg}
               duration={DEFAULT_DURATION}
@@ -106,7 +157,7 @@ const WheelGamePage = () => {
               aspectRatio={'1/1'}
               style={{ cursor: 'pointer' }}
             />
-            <Text fontSize="3rem">{prize}</Text>
+
             {prize && !isPlaying && (
               <Button onClick={resetGame}>Chơi lại</Button>
             )}

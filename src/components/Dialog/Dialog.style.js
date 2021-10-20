@@ -40,9 +40,23 @@ const DialogHeader = styled.div`
   left: 0;
   width: 150px;
   height: 70px;
-  z-index: 20;
+  z-index: 21;
   display: flex;
   padding-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  ${position}
+  ${space}
+`
+
+const DialogExtraHeader = styled.div`
+  transform: translate(0%, -94%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 19;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -78,7 +92,7 @@ const DialogContentWrapper = styled.div`
   min-height: 350px;
   max-height: 80%;
   padding: 2rem;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
 `
 const DialogContent = styled.div`
@@ -95,5 +109,6 @@ export {
   DialogBackground,
   DialogContent,
   DialogHeader,
+  DialogExtraHeader,
   DialogFooterWrapper,
 }

@@ -5,6 +5,7 @@ import {
   DialogBackground,
   DialogContent,
   DialogContentWrapper,
+  DialogExtraHeader,
   DialogFooterWrapper,
   DialogHeader,
   DialogOverlay,
@@ -12,7 +13,7 @@ import {
 } from './Dialog.style'
 
 const Dialog = (props) => {
-  const { visible, onClose, headerTitle, footer, children } = props
+  const { visible, onClose, headerTitle, footer, children, extraHeader } = props
   const [controlledVisible, setcontrolledVisible] = useState(visible)
 
   const visibleState = visible ?? controlledVisible
@@ -29,6 +30,7 @@ const Dialog = (props) => {
       <DialogOverlay onClick={onCloseHandler} />
       <DialogContentWrapper>
         <DialogHeader>{headerTitle}</DialogHeader>
+        <DialogExtraHeader>{extraHeader}</DialogExtraHeader>
         <DialogBackground src={dialog} />
         <DialogContent>{children}</DialogContent>
         <DialogFooterWrapper>{footer}</DialogFooterWrapper>
@@ -42,6 +44,7 @@ Dialog.propTypes = {
   onClose: PropTypes.func,
   headerTitle: PropTypes.element,
   footer: PropTypes.element,
+  extraHeader: PropTypes.element,
 }
 
 Dialog.defaultProps = {
