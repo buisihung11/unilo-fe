@@ -29,8 +29,10 @@ export const ContentWrapper = styled.div`
 `
 
 export const Title = styled.div`
+  display: flex;
   font-weight: bold;
   font-size: 80%;
+  color: #000000;
   @media (min-width: 400px) {
     font-size: 90%;
   }
@@ -38,6 +40,7 @@ export const Title = styled.div`
 export const Description = styled.div`
   font-size: 70%;
   text-align: left;
+  color: #000000;
   @media (min-width: 400px) {
     font-size: 80%;
   }
