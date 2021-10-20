@@ -11,7 +11,7 @@ import { Button, Icon } from '../../../../components'
 
 function PromotionVoucher(props) {
   return (
-    <StyledVoucherCardWrapper>
+    <StyledVoucherCardWrapper key={props.id}>
       <ImgThumbnail image={props.item.img} />
       <ContentWrapper>
         <Title>{props.item.title}</Title>
