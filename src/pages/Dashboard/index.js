@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { Box, CustomerSummary, Icon } from '../../components'
 import {
@@ -18,8 +18,24 @@ import openBoxGameIcon from '../../assets/images/giftbox/box_2.png'
 import settingIcon from '../../assets/icons/setting-icon.png'
 import Text from '../../components/Text'
 
+// SOUNDS
+import gameBgSfx from '../../assets/sounds/game-background.mp3'
+import useSetting from '../../hooks/useSetting'
+import useSound from 'use-sound'
+
 export default function Dashboard(props) {
   const router = useHistory()
+  const { mute } = useSetting()
+
+  const [playBgGameSound, { stop }] = useSound(gameBgSfx, {
+    soundEnabled: !mute,
+    volume: 0.5,
+  })
+
+  useEffect(() => {
+    playBgGameSound()
+    return stop
+  }, [playBgGameSound, stop])
 
   return (
     <StyledUniloWrapper>

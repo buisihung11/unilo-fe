@@ -11,6 +11,7 @@ import WheelGame from './WheelGame'
 import Minigame from './Minigame'
 import Account from './Account'
 import ScanQRPage from './ScanQR'
+import EventMapPage from './EventMap'
 
 export {
   Dashboard,
@@ -25,4 +26,5 @@ export {
   Minigame,
   Account,
   ScanQRPage,
+  EventMapPage,
 }

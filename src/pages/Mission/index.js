@@ -6,6 +6,7 @@ import {
   Header,
   TabTable,
   Button,
+  Box,
 } from '../../components'
 import { MissionItem, MissionItemName, Mascot } from './components'
 import mascot from '../../assets/icons/bear-4.png'

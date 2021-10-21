@@ -26,6 +26,7 @@ import {
   Minigame,
   Account,
   ScanQRPage,
+  EventMapPage,
 } from './pages'
 import Demo from './pages/Demo/Demo'
 import LeaderboardPage from './pages/Leaderboard'
@@ -64,6 +65,7 @@ function App() {
               <LoadingRoute path="/minigame/openbox" component={OpenBoxGame} />
               <LoadingRoute path="/minigame/wheel" component={WheelGame} />
               <Route path="/qr-scan" component={ScanQRPage} />
+              <Route path="/event-map" component={EventMapPage} />
               <Route exact path="/promotion">
                 <Promotion />
               </Route>

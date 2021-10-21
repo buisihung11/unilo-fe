@@ -8,22 +8,25 @@ import {
   ExpandableItem,
 } from '../../components'
 
+const DEFAULT_DESC = [
+  {
+    key: 'Phần thưởng',
+    value: '10 hạt dẻ',
+  },
+  { key: 'Mô tả', value: undefined },
+  { key: 'Hướng dẫn', value: undefined },
+  { key: 'Điều kiện tham gia', value: undefined },
+]
+
 export default function MissionDetail(props) {
-  let { name, descriptions, startDate, expirationDate } = props
-  descriptions = [
-    {
-      key: 'Phần thưởng',
-      value: '10 hạt dẻ',
-    },
-    { key: 'Mô tả', value: undefined },
-    { key: 'Hướng dẫn', value: undefined },
-    { key: 'Điều kiện tham gia', value: undefined },
-  ]
+  const { name, descriptions = DEFAULT_DESC, startDate, expirationDate } = props
+
   const content = descriptions.map(({ key, value }, i) => (
     <ExpandableItem key={key} label={key} isShown={i === 0}>
       {value}
     </ExpandableItem>
   ))
+  
   return (
     <StyledUniloWrapper>
       <OverlayView>
