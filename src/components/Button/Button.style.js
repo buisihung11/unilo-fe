@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, fontSize, fontWeight, space } from 'styled-system'
+import { color, fontSize, fontWeight, space, width } from 'styled-system'
 import primaryBtn from '../../assets/images/btn-primary.png'
 import successBtn from '../../assets/images/btn-success.png'
 import dangerBtn from '../../assets/images/btn-danger.png'
@@ -31,6 +31,7 @@ export const StyledButton = styled.div`
   ${space}
   ${fontWeight}
   ${fontSize}
+  ${width}
 `
 
 const DEFAULT_WIDTH = '4rem'

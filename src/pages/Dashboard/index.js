@@ -16,21 +16,29 @@ import accountIcon from '../../assets/icons/account-icon.png'
 import wheelGameIcon from '../../assets/icons/wheel.png'
 import openBoxGameIcon from '../../assets/images/giftbox/box_2.png'
 import settingIcon from '../../assets/icons/setting-icon.png'
+import muteIcon from '../../assets/icons/mute.png'
 import Text from '../../components/Text'
 
 // SOUNDS
 import gameBgSfx from '../../assets/sounds/game-background.mp3'
 import useSetting from '../../hooks/useSetting'
 import useSound from 'use-sound'
+import { useQuery } from 'react-query'
+import axiosClient from '../../utils/axios'
 
 export default function Dashboard(props) {
   const router = useHistory()
-  const { mute } = useSetting()
+  const { mute, updateSoundMode } = useSetting()
 
   const [playBgGameSound, { stop }] = useSound(gameBgSfx, {
     soundEnabled: !mute,
     volume: 0.5,
   })
+  const { data } = useQuery(['test'], () =>
+    axiosClient.get(
+      `https://api-loyalty.unilo.net/api/v1/brand/8CBAC6F4-6578-4920-8825-586D1634FF1B`
+    )
+  )
 
   useEffect(() => {
     playBgGameSound()
@@ -61,7 +69,8 @@ export default function Dashboard(props) {
                     maxWidth: '5em',
                   }}
                 />
-                <Icon img={settingIcon} />
+                <Icon style={{ paddingBottom: '0.5rem' }} img={settingIcon} />
+                <Icon img={muteIcon} onClick={() => updateSoundMode(!mute)} />
               </SidebarWrapper>
               <Box display={'flex'} justifyContent={'space-around'} mt={2}>
                 <StyledGameBackground>

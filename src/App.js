@@ -27,6 +27,7 @@ import {
   Account,
   ScanQRPage,
   EventMapPage,
+  LoginPage,
 } from './pages'
 import Demo from './pages/Demo/Demo'
 import LeaderboardPage from './pages/Leaderboard'
@@ -36,15 +37,18 @@ const queryClient = new QueryClient()
 
 function App() {
   const query = useQueryParam()
-  const token = query.token || true
+
   // TODO: Check user token and set user info for first time
-  const { isFetching, isAuthenticated } = useUser(token)
+  const { isFetching, isAuthenticated } = useUser()
+
+  console.log('isAuthenticated', isFetching, isAuthenticated)
 
   return (
     <ThemeProvider theme={theme}>
       <SettingProvider>
         <GlobalStyle />
         <Switch>
+          <Route path="/login" component={LoginPage} />
           {isFetching ? (
             <LoadingPlaceHolder />
           ) : isAuthenticated ? (
@@ -89,7 +93,7 @@ function App() {
               </Route>
             </>
           ) : (
-            <Redirect to="/401" />
+            <Redirect to="/login" />
           )}
           <Route path="/401">
             <Box>UnAuthenticated</Box>

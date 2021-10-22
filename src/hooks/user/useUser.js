@@ -1,30 +1,28 @@
+import axios from 'axios'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
+import axiosClient from '../../utils/axios'
 
-const useUser = (token) => {
-  const data = useQuery(
-    ['user', 'profile', token],
+const useUser = () => {
+  const userId = localStorage.getItem('user_id')
+  const token = localStorage.getItem('access_token')
+  const { data, isFetching } = useQuery(
+    ['user', userId, 'profile', token],
     () => {
-      return new Promise((res) => {
-        setTimeout(() => {
-          const userData = {
-            id: 123,
-            fullName: 'Nguời chơi 1',
-          }
-          return res(userData)
-        }, 1000)
-      })
+      return axiosClient.get(`/customers/${userId}`)
     },
     {
-      enabled: Boolean(token),
+      enabled: Boolean(token && userId),
       staleTime: Infinity, // only refetch when reveive invalidate query command
     }
   )
 
   const value = useMemo(
-    () => ({ ...(data || {}), isAuthenticated: Boolean(data) }),
-    [data]
+    () => ({ ...(data || {}), isFetching, isAuthenticated: Boolean(data) }),
+    [data, isFetching]
   )
+
+  console.log(`value`, value)
   return value
 }
 
