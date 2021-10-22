@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { position, size, width, height } from 'styled-system'
+import { position, size, width, height, space } from 'styled-system'
 import wheelImg from '../../assets/images/Wheel.png'
 
 const calculateSkew = (total, index) => {
@@ -17,6 +17,7 @@ const rotateAnimation = (deg) => keyframes`
 `
 
 const WheelWrapper = styled.div`
+  margin-top: 30px;
   position: relative;
   padding: 0;
   max-width: 300px;
@@ -25,7 +26,6 @@ const WheelWrapper = styled.div`
   border-radius: 50%;
   aspect-ratio: 1/1;
   list-style: none;
-  overflow: hidden;
   transition: all ${(props) => props.duration ?? '5000'}ms ease-out;
   /* transform: rotate(${(props) => (props.isRotate ? props.deg : 0)}deg); */
   animation-name: ${(props) =>
@@ -33,7 +33,7 @@ const WheelWrapper = styled.div`
   animation-duration: ${(props) => props.duration}ms;
   animation-fill-mode: forwards;
   z-index: inherit;
-  overflow: hidden;
+  /* overflow: hidden; */
   ${height}
   ${width}
   ${size}
@@ -46,6 +46,16 @@ const WheelSliceWrapper = styled.div`
   width: 100%;
   height: 100%;
 `
+const WheelPointer = styled.img`
+  position: absolute;
+  z-index: 99;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -100%);
+  ${size}
+  ${space}
+  ${position}
+`
 
 const WheelSliceContent = styled.div`
   position: absolute;
@@ -54,4 +64,4 @@ const WheelSliceContent = styled.div`
   height: 200%;
 `
 
-export { WheelWrapper, WheelSliceWrapper, WheelSliceContent }
+export { WheelWrapper, WheelSliceWrapper, WheelSliceContent, WheelPointer }

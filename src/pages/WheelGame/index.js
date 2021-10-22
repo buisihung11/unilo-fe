@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import WinWheel from 'winwheeljs'
 import useSound from 'use-sound'
 import {
   Box,
@@ -25,29 +26,38 @@ import mascot from '../../assets/images/reward-bear.png'
 import { useHistory } from 'react-router'
 import Icon from '../../components/Icon'
 import { sleep } from '../../utils/utils'
+import { useQuery } from 'react-query'
+import { getGameInfo } from '../../api/game'
 
 const DEFAULT_DURATION = 5000 /* ms */
 const DEFAULT_ROTATE = 360 * 10 /* ms */
 
-const gameRewards = [
-  'Voucher 20K',
-  'Voucher 50K',
-  'Voucher 70K',
-  'Voucher 25K',
-  'BAD LUCK',
-  'Voucher 200K',
-  'Voucher 500K',
-  'Voucher 800K',
-]
+// const gameRewards = [
+//   'Voucher 20K',
+//   'Voucher 50K',
+//   'Voucher 70K',
+//   'Voucher 25K',
+//   'BAD LUCK',
+//   'Voucher 200K',
+//   'Voucher 500K',
+//   'Voucher 800K',
+// ]
+
+const GAME_PARAMS = {
+  gameConfigId: '23a84279-5011-4ec3-8719-35a7ea3ac7d2',
+  brandId: 'd05777ad-26fc-4d76-a44b-d462b6c1a181',
+}
+
+const TOKEN =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Im5ndXllbiIsInJvbGUiOiJCcmFuZCBNYW5hZ2VyIiwibmJmIjoxNjM0ODAxODQwLCJleHAiOjE2MzU0MDY2NDAsImlhdCI6MTYzNDgwMTg0MH0.TC1QgyPpVLRLUqiVrm5SkLYOV2NZ0287HAtRXHkbqFM'
+
+// const theWheel = window.WinWheel()
+
+// console.log(theWheel)
+
 const WheelGamePage = () => {
   const history = useHistory()
   const { mute } = useSetting()
-
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [rotate, setRotate] = useState(false)
-  const [rotateDeg, setRotateDeg] = useState(0)
-  const [prize, setPrize] = useState(null)
-
   const [clickSound] = useSound(clickSfx, {
     soundEnabled: !mute,
   })
@@ -61,33 +71,45 @@ const WheelGamePage = () => {
     soundEnabled: !mute,
   })
 
-  const startPlayGame = useCallback(async () => {
-    if (isPlaying || prize) return
-    setIsPlaying(true)
-    clickSound()
-    // API TO PLAY GAME
-    console.log('SHOW LOADING....')
-    console.log('PLAY WHEEL GAME....')
-    await sleep(1000)
-    // GET REWARD ITEM
-    const rewardIdx = Math.floor(Math.random() * gameRewards.length)
-    const rotateDeg =
-      DEFAULT_ROTATE + (rewardIdx + 1) * Math.ceil(360 / gameRewards.length)
-    console.log(`WINNING PRIZE`, rewardIdx)
-    // SPIN TO THAT ITEM
-    console.log('START SPIN....')
-    setRotateDeg(rotateDeg)
-    setRotate(true)
-    await sleep(DEFAULT_DURATION)
-
-    setPrize(gameRewards[rewardIdx])
-    if (gameRewards[rewardIdx] === 'BAD LUCK') {
-      badLuckSound()
-    } else {
-      rewardSound()
+  const { data: gameConfig } = useQuery(
+    ['minigame', 'wheel', 'config'],
+    () =>
+      getGameInfo(GAME_PARAMS, {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      }),
+    {
+      select: (res) => res?.data,
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
     }
-    setIsPlaying(false)
-  }, [clickSound, rewardSound, badLuckSound, isPlaying, prize])
+  )
+
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [prizeIdx, setPrizeIdx] = useState(null)
+
+  const gameRewards = useMemo(
+    () =>
+      gameConfig?.gameItems?.map((gameItem) => ({
+        text: gameItem.displayText,
+        fillStyle: gameItem.itemColor,
+      })) ?? [],
+    [gameConfig]
+  )
+
+  const prize = gameConfig?.gameItems && gameConfig.gameItems[prizeIdx]
+  const badLuck = prize?.displayText === 'Chúc bạn may mắn lần sau'
+
+  const startPlayGame = useCallback(async () => {
+    if (isPlaying || prizeIdx) return
+    clickSound()
+    await sleep(1000)
+    const rewardIdx = Math.floor(Math.random() * gameRewards.length)
+    console.log(`rewardIdx`, rewardIdx)
+    setIsPlaying(true)
+    setPrizeIdx(rewardIdx)
+  }, [clickSound, isPlaying, prizeIdx, gameRewards])
 
   useEffect(() => {
     if (isPlaying) {
@@ -97,21 +119,28 @@ const WheelGamePage = () => {
     }
   }, [isPlaying, stopGameSound, wheelGameSound])
 
-  const resetGame = () => {
+  const onFinishRotate = () => {
+    console.log(`prize.displayText`, prize.displayText)
+    if (badLuck) {
+      badLuckSound()
+    } else {
+      rewardSound()
+    }
+
     setIsPlaying(false)
-    setPrize(null)
-    setRotate(false)
-    setRotateDeg(0)
   }
 
-  console.log(`prize`, prize)
+  const resetGame = () => {
+    setIsPlaying(false)
+    setPrizeIdx(null)
+  }
 
   return (
     <StyledUniloWrapper>
       <StyledUniloBackground />
       <Overlay />
       <Dialog
-        visible={Boolean(prize)}
+        visible={Boolean(prize && !isPlaying)}
         headerTitle={
           <Text fontWeight="bold" color="white">
             Phần thưởng
@@ -122,20 +151,18 @@ const WheelGamePage = () => {
         }
         footer={
           <Button onClick={resetGame} variant="primary">
-            <h4>Tiếp tục</h4>
+            <h4>Quay lại</h4>
           </Button>
         }
       >
         <Box textAlign="center">
           <div style={{ width: '100%' }}>
-            <h2>Chúc mừng</h2>
+            <h2>{badLuck ? 'Tiếc quá ' : 'Chúc mừng'}</h2>
             <DashedLine />
-            <p>Bạn đã nhận được 01 phần quà</p>
-            <Text fontSize="3rem">{prize}</Text>
-          </div>
-          <div style={{ width: '100%' }}>
-            <DashedLine />
-            <p>Bạn có muốn tiếp tục?</p>
+            {!badLuck && <p>Bạn đã nhận được 01 phần quà</p>}
+            <Box style={{ 'overflow-wrap': 'break-word' }}>
+              <Text fontSize="3rem">{prize?.displayText}</Text>
+            </Box>
           </div>
         </Box>
       </Dialog>
@@ -160,10 +187,11 @@ const WheelGamePage = () => {
               Vòng quay may mắn
             </Text>
             <Wheel
-              onClick={startPlayGame}
-              isRotate={rotate}
-              deg={rotateDeg}
-              duration={DEFAULT_DURATION}
+              segments={gameRewards}
+              onStart={startPlayGame}
+              onFinish={onFinishRotate}
+              rewardSegmentIdx={prizeIdx}
+              isPlaying={isPlaying}
               width="100%"
               height="auto"
               aspectRatio={'1/1'}
@@ -173,6 +201,9 @@ const WheelGamePage = () => {
             {prize && !isPlaying && (
               <Button onClick={resetGame}>Chơi lại</Button>
             )}
+            {/* <Box width="300px" height="300px">
+              <canvas id="wheel-canvas" width="300" height="300"></canvas>
+            </Box> */}
           </Box>
         }
         Footer={<CustomerSummary />}

@@ -11533,6 +11533,15 @@ which@^2.0.1, which@^2.0.2:
   dependencies:
     isexe "^2.0.0"
 
+"win-wheel@git+https://github.com/zarocknz/javascript-winwheel.git":
+  version "0.0.0"
+  resolved "git+https://github.com/zarocknz/javascript-winwheel.git#229a47acc3d7fd941d72a3ba9e1649751fd10ed5"
+
+winwheeljs@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/winwheeljs/-/winwheeljs-2.7.0.tgz#3f5d2239c5df155e98314b45d685508605a99638"
+  integrity sha512-COUFeWY4uR4xQXkqWc1XcsiUAyPJg+Z4TC/7QVGEGFqKCd+TJIK8f4gMOxYEOVoQGnaGHUKu1NQmUlEyvzrPqA==
+
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
