@@ -12,16 +12,12 @@ export default function ExpandableItem(props) {
   return (
     <div>
       <LabelWrapper onClick={() => setHidden(!hidden)}>
-        <h6 style={{ margin: 0 }}># {props.label || DEFAULT_LABEL}</h6>
+        <h5 style={{ margin: 0 }}># {props.label || DEFAULT_LABEL}</h5>
         <i className={`fas fa-angle-${hidden ? 'down' : 'up'}`}></i>
       </LabelWrapper>
-      {!hidden ? (
-        <DescriptionWrapper>
-          {props.children || DEFAULT_DESCRIPTION}
-        </DescriptionWrapper>
-      ) : (
-        ''
-      )}
+      <DescriptionWrapper hidden={hidden}>
+        {props.children || DEFAULT_DESCRIPTION}
+      </DescriptionWrapper>
       <DashedLine />
     </div>
   )

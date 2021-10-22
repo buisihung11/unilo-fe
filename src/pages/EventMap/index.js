@@ -18,6 +18,7 @@ import {
   SimpleTable,
   OverlayView,
   Button,
+  ExpandableItem,
 } from '../../components'
 import {
   StyledUniloBackground,
@@ -56,10 +57,33 @@ const getEventLocations = () => {
     .then((res) => res.data)
 }
 
+const DEFAULT_DESC = [
+  {
+    key: 'Phần thưởng',
+    value: '10 hạt dẻ',
+  },
+  { key: 'Mô tả', value: undefined },
+  { key: 'Hướng dẫn', value: undefined },
+  { key: 'Điều kiện tham gia', value: undefined },
+]
+
 const EventACBMapPage = () => {
   const history = useHistory()
   const [selectedEvent, setSelectedEvent] = useState(null)
   const { data } = useQuery(['event-locations'], getEventLocations)
+
+  const {
+    name,
+    descriptions = DEFAULT_DESC,
+    startDate,
+    expirationDate,
+  } = selectedEvent || {}
+
+  const content = descriptions.map(({ key, value }, i) => (
+    <ExpandableItem key={key} label={key} isShown={i === 0}>
+      {value}
+    </ExpandableItem>
+  ))
 
   return (
     <StyledUniloWrapper>
@@ -70,16 +94,18 @@ const EventACBMapPage = () => {
         footer={<Button onClick={() => setSelectedEvent(null)}>Đóng</Button>}
       >
         <div style={{ width: '100%' }}>
-          <h4>{'Mission Name'}</h4>
+          <h4>{name || 'Mission Name'}</h4>
           <p>
             <small>
-              {/* ({startDate || 'dd/mm/yyyy'} - {expirationDate || 'dd/mm/yyyy'}) */}
+              ({startDate || 'dd/mm/yyyy'} - {expirationDate || 'dd/mm/yyyy'})
             </small>
-            Nội dung sự kiện
           </p>
+          {content}
         </div>
       </Dialog>
+
       <StyledUniloBackground />
+
       <Layout
         Header={
           <Box p={2} display="flex">
