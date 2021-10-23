@@ -6,12 +6,12 @@ export const StyledSpecialBox = styled.div`
   display: flex;
   align-items: center;
   background: url(${bgImg}) no-repeat center center/contain;
-  background-size: 90% 110%;
+  background-size: cover;
   width: 100%;
   height: 24%;
   margin: 0 auto;
   padding-top: 0.5rem;
-  padding-left: 18%;
+  padding-left: 15%;
 
   @media (max-width: 320px) {
     height: 23%;
@@ -30,8 +30,8 @@ export const StyledImage = styled.div`
   background: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  width: 26%;
-  height: 45%;
+  width: 85px;
+  height: 85px;
   border-radius: 30%;
 `
 export const ContentWrapper = styled.div`

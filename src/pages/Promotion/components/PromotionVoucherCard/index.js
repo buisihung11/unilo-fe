@@ -1,48 +1,52 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import {
-  StyledVoucherCardWrapper,
-  ImgThumbnail,
-  ContentWrapper,
-  Title,
-  Description,
-  QuantityWrapper,
-} from './PromotionVoucher.style'
 import { Button, Icon } from '../../../../components'
+import { getBadgeImage } from '../../../../utils/utils'
+import {
+  ContentWrapper,
+  Description,
+  ImgThumbnail,
+  QuantityWrapper,
+  StyledVoucherCardWrapper,
+  Title,
+} from './PromotionVoucher.style'
 
 function PromotionVoucher(props) {
+  const { item } = props
+  const {
+    name,
+    description,
+    bannerImg,
+    exchangedWalletAmount,
+    exchangedWalletType,
+  } = item || {}
+
   const history = useHistory()
+
   const getPromotionDetail = () => {
+    // TODO: Fix this
     history.push({
       pathname: `/promotion/${props.item.id}`,
-      state: {
-        id: props.item.id,
-        name: props.item.title,
-        description: props.item.description,
-        applyRule: props.item.applyRule,
-        bannerImg: props.item.img,
-        startDate: props.item.startDate,
-        expirationDate: props.item.expirationDate,
-        exchangedValue: props.item.quantity,
-        exchangedType: props.item.badgeIcon,
-        partnerName: props.item.partnerName,
-      },
+      state: item,
     })
   }
+
+  const walletType = exchangedWalletType?.name
+
   return (
     <StyledVoucherCardWrapper key={props.item.id}>
-      <ImgThumbnail image={props.item.img} />
+      <ImgThumbnail image={bannerImg} />
       <ContentWrapper onClick={() => getPromotionDetail()}>
-        <Title>{props.item.title}</Title>
-        <Description>{props.item.description}</Description>
+        <Title>{name}</Title>
+        <Description>{description}</Description>
       </ContentWrapper>
 
       <Button
         style={{ width: '25%' }}
         variant={props.shownIndex ? 'success' : 'danger'}
       >
-        <QuantityWrapper>{props.item.quantity}</QuantityWrapper>
-        <Icon img={props.item.badgeIcon} style={{ width: '1.5em' }} />
+        <QuantityWrapper>{exchangedWalletAmount}</QuantityWrapper>
+        <Icon img={getBadgeImage(walletType)} style={{ width: '1.5em' }} />
       </Button>
     </StyledVoucherCardWrapper>
   )

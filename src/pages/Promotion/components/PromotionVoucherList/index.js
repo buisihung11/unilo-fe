@@ -1,79 +1,20 @@
 import React, { useState } from 'react'
-
-import {
-  StyledVoucherListWrapper,
-  StyledListWrapprer,
-} from './PromotionListVoucher.style'
-import { TabTable } from '../../../../components'
-import lounge from '../../../../assets/images/lounge.jpg'
 import badgeMedium from '../../../../assets/icons/honeypot2.png'
+import lounge from '../../../../assets/images/lounge.jpg'
+import { TabTable } from '../../../../components'
+import useVouchersWallet from '../../../../hooks/user/useVouchersWallet'
 import PromotionVoucher from '../PromotionVoucherCard'
+import {
+  StyledListWrapprer,
+  StyledVoucherListWrapper,
+} from './PromotionListVoucher.style'
 
-const promotionVouchers = [
-  {
-    id: 1,
-    img: lounge,
-    title: 'VIP Lounge',
-    description: '1 lượt checkin phòng chờ thương gia',
-    applyRule: 'Cho khách hàng thân thiết',
-    quantity: 3,
-    badgeIcon: badgeMedium,
-    partnerName: 'phòng chờ Lotus',
-    startDate: '20/10/2021',
-    expirationDate: '20/11/2021',
-  },
-  {
-    id: 2,
-    img: lounge,
-    title: 'VIP Lounge',
-    description: '1 lượt checkin phòng chờ thương gia',
-    applyRule: 'Cho khách hàng thân thiết',
-    quantity: 4,
-    badgeIcon: badgeMedium,
-    partnerName: 'phòng chờ Lotus',
-    startDate: '20/10/2021',
-    expirationDate: '20/11/2021',
-  },
-  {
-    id: 3,
-    img: lounge,
-    title: 'VIP Lounge',
-    description: ' 1 lượt checkin phòng chờ thương gia',
-    applyRule: 'Cho khách hàng thân thiết',
-    quantity: 5,
-    badgeIcon: badgeMedium,
-    partnerName: 'phòng chờ Lotus',
-    startDate: '20/10/2021',
-    expirationDate: '20/11/2021',
-  },
-  {
-    id: 4,
-    img: lounge,
-    title: 'VIP Lounge',
-    description: ' 1 lượt checkin phòng chờ thương gia',
-    applyRule: 'Cho khách hàng thân thiết',
-    quantity: 6,
-    badgeIcon: badgeMedium,
-    partnerName: 'phòng chờ Lotus',
-    startDate: '20/10/2021',
-    expirationDate: '20/11/2021',
-  },
-  {
-    id: 5,
-    img: lounge,
-    title: 'VIP Lounge',
-    description: ' 1 lượt checkin phòng chờ thương gia',
-    applyRule: 'Cho khách hàng thân thiết',
-    quantity: 7,
-    badgeIcon: badgeMedium,
-    partnerName: 'phòng chờ Lotus',
-    startDate: '20/10/2021',
-    expirationDate: '20/11/2021',
-  },
-]
+function PromotionListVoucher({ promotions = [] }) {
+  const { vouchers } = useVouchersWallet()
 
-function PromotionListVoucher() {
   const [shownIndex, setshownIndex] = useState(1)
+
+  const showPromotions = shownIndex === 1 ? promotions : vouchers
 
   return (
     <StyledVoucherListWrapper>
@@ -84,7 +25,7 @@ function PromotionListVoucher() {
         title2={'Giỏ quà của tôi'}
       >
         <StyledListWrapprer>
-          {promotionVouchers.map((voucher) => {
+          {showPromotions?.map((voucher) => {
             return (
               <PromotionVoucher
                 item={voucher}

@@ -11,27 +11,30 @@ import {
 } from '../../components'
 import Banner from './components/Banner'
 import honeypot1 from '../../assets/icons/honeypot1.png'
+import { getBadgeImage } from '../../utils/utils'
 
 export default function PromotionDetail(props) {
   let history = useHistory()
   let {
     name,
     description,
-    applyRule,
     bannerImg,
+    exchangedWalletAmount,
+    exchangedWalletType,
+    applyRule,
+    providerName,
     startDate,
     expirationDate,
-    exchangedValue,
-    exchangedType,
-    partnerName,
   } = history.location.state
+
+  const walletType = exchangedWalletType?.name
 
   const descriptions = [
     {
       key: 'Mô tả',
       value: description,
     },
-    { key: 'Điều kiện áp dụng', value: applyRule },
+    { key: 'Điều kiện áp dụng', value: applyRule ?? 'N/A' },
   ]
   const content = descriptions.map(({ key, value }, i) => (
     <ExpandableItem key={key} label={key} isShown={i === 0}>
@@ -44,7 +47,7 @@ export default function PromotionDetail(props) {
         <Header style={{ flex: 1 }} />
         <SimpleTable style={{ flex: 5 }} title="Chi tiết">
           <div style={{ width: '100%' }}>
-            <Banner img={bannerImg} subtitle={partnerName || 'Partner Name'} />
+            <Banner img={bannerImg} subtitle={providerName || 'Partner Name'} />
             <h4>{name || 'Voucher Name'}</h4>
             <p>
               <small>
@@ -58,8 +61,13 @@ export default function PromotionDetail(props) {
           <div
             style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
           >
-            <h2 style={{ margin: '0 .5em 0 0' }}>{exchangedValue || 3}</h2>
-            <Icon img={exchangedType || honeypot1} style={{ height: '80%' }} />
+            <h2 style={{ margin: '0 .5em 0 0' }}>
+              {exchangedWalletAmount || 0}
+            </h2>
+            <Icon
+              img={getBadgeImage(walletType) || honeypot1}
+              style={{ height: '80%' }}
+            />
           </div>
         </Button>
       </OverlayView>
