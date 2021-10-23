@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 import {
   StyledUniloWrapper,
   OverlayView,
@@ -8,25 +9,27 @@ import {
   ExpandableItem,
 } from '../../components'
 
-const DEFAULT_DESC = [
-  {
-    key: 'Phần thưởng',
-    value: '10 hạt dẻ',
-  },
-  { key: 'Mô tả', value: undefined },
-  { key: 'Hướng dẫn', value: undefined },
-  { key: 'Điều kiện tham gia', value: undefined },
-]
-
 export default function MissionDetail(props) {
-  const { name, descriptions = DEFAULT_DESC, startDate, expirationDate } = props
+  const history = useHistory()
+  const { description, conditionToJoin, tutorial, name, startDate, endDate } =
+    history.location.state
+
+  const descriptions = [
+    {
+      key: 'Phần thưởng',
+      value: '10 hạt dẻ',
+    },
+    { key: 'Mô tả', value: description },
+    { key: 'Hướng dẫn', value: tutorial },
+    { key: 'Điều kiện tham gia', value: conditionToJoin },
+  ]
 
   const content = descriptions.map(({ key, value }, i) => (
     <ExpandableItem key={key} label={key} isShown={i === 0}>
       {value}
     </ExpandableItem>
   ))
-  
+
   return (
     <StyledUniloWrapper>
       <OverlayView>
@@ -36,7 +39,7 @@ export default function MissionDetail(props) {
             <h4>{name || 'Mission Name'}</h4>
             <p>
               <small>
-                ({startDate || 'dd/mm/yyyy'} - {expirationDate || 'dd/mm/yyyy'})
+                ({startDate || 'dd/mm/yyyy'} - {endDate || 'dd/mm/yyyy'})
               </small>
             </p>
             {content}
