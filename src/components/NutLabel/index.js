@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { StyledNut, StyledNutLabel } from './NutLabel.style'
 import Box from '../Box'
 
-export default function NutLabel(props) {
-  const [currentNutCount, setCurrentNutCount] = useState(150)
+export default function NutLabel({ count = 0 }) {
   return (
     <StyledNutLabel>
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-        <div>{currentNutCount}</div>
+      <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
+        <div>{count}</div>
         <StyledNut nutSize={'20px'} />
       </Box>
     </StyledNutLabel>

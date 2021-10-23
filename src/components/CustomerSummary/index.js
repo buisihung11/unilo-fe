@@ -1,35 +1,46 @@
 import React, { useState } from 'react'
-import { StyledCustomerSummaryWrapper } from './CustomerSummary.style'
-import HoneyPot from '../HoneyPot'
 import honeypot1 from '../../assets/icons/honeypot1.png'
 import honeypot2 from '../../assets/icons/honeypot2.png'
 import honeypot3 from '../../assets/icons/honeypot3.png'
-import NutLabel from '../NutLabel'
-import avtImage from '../../assets/images/avt.png'
+import useUser from '../../hooks/user/useUser'
+import useWallets from '../../hooks/user/useWallets'
 import Box from '../Box'
+import HoneyPot from '../HoneyPot'
+import NutLabel from '../NutLabel'
 import Text from '../Text'
+import { StyledCustomerSummaryWrapper } from './CustomerSummary.style'
 
-function CustomerProfile(props) {
+function CustomerProfile({ name, avatar }) {
   const [customerName, setCustomerName] = useState('John Doe')
   return (
-    <Box display={"flex"} flexDirection={"column"} ml={"1rem"} alignItems={"center"}>
-      <img src={avtImage} width={40} height={40} />
-      <Text fontWeight={"bold"}>{customerName}</Text>
+    <Box
+      display={'flex'}
+      flexDirection={'column'}
+      ml={'1rem'}
+      alignItems={'center'}
+      width="125px"
+      textAlign="center"
+    >
+      <Box as="img" borderRadius="8px" src={avatar} width={40} height={40} />
+      <Text fontWeight={'bold'}>{name}</Text>
     </Box>
   )
 }
 
 export default function CustomerSummary(props) {
+  const { name, profileImg, id } = useUser()
+  const { pointWallet, badge1Wallet, badge2Wallet, badge3Wallet } = useWallets()
+
   return (
     <StyledCustomerSummaryWrapper>
-      <CustomerProfile />
-      <Box display={"flex"} flexDirection={"column"} mr={"1rem"}>
+      <CustomerProfile avatar={profileImg} name={name} />
+      <Box display={'flex'} flexDirection={'column'} mr={'1rem'}>
         <Box display={'flex'}>
-          <HoneyPot image={honeypot1} count={10} />
-          <HoneyPot image={honeypot2} count={5} />
-          <HoneyPot image={honeypot3} count={3} />
+          <HoneyPot image={honeypot1} count={badge1Wallet?.quantity} />
+          <HoneyPot image={honeypot2} count={badge2Wallet?.quantity} />
+          <HoneyPot image={honeypot3} count={badge3Wallet?.quantity} />
         </Box>
-        <NutLabel />
+        <NutLabel count={pointWallet?.quantity} />
       </Box>
     </StyledCustomerSummaryWrapper>
   )
