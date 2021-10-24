@@ -72,6 +72,7 @@ const LoginPage = () => {
             placeholder="Tên đăng nhập"
           />
           <Input
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Mật khẩu"

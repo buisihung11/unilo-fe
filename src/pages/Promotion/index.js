@@ -14,6 +14,9 @@ import { StyledPromotionWrapper } from './components/Promotion.style'
 import PromotionHeader from './components/PromotionHeader'
 import PromotionSpecial from './components/PromotionSpecialBox'
 import PromotionVoucherList from './components/PromotionVoucherList'
+import mascot from '../../assets/images/reward-bear.png'
+import Banner from '../PromotionDetail/components/Banner'
+import { formatDate } from '../../utils/utils'
 
 export default function Promotion(props) {
   const { data: promotions } = useGifts()
@@ -21,6 +24,7 @@ export default function Promotion(props) {
   const { mutateAsync, isLoading } = useRedeemption()
   const [error, setError] = useState(null)
   const [currentVoucher, setCurrentVoucher] = useState(null)
+  const [successRedeemptVoucher, setSuccessRedeemptVoucher] = useState(null)
 
   const hightlightPromotion = Array.isArray(promotions) && promotions[0]
 
@@ -29,6 +33,7 @@ export default function Promotion(props) {
       const voucherId = currentVoucher.id
       setCurrentVoucher(null)
       const res = await mutateAsync(voucherId)
+      setSuccessRedeemptVoucher(currentVoucher)
     } catch (error) {
       const errMsg = error.response.data?.message ?? 'Có lỗi'
       setCurrentVoucher(null)
@@ -46,6 +51,56 @@ export default function Promotion(props) {
         errorMsg={error}
         onClose={() => setError(null)}
       />
+      {successRedeemptVoucher && (
+        <Dialog
+          visible={Boolean(successRedeemptVoucher)}
+          headerTitle={
+            <Text fontWeight="bold" color="white">
+              Thành công
+            </Text>
+          }
+          extraHeader={
+            <Box pr={4} as="img" src={mascot} width={140} height="auto" />
+          }
+          footer={
+            <Button
+              onClick={() => setSuccessRedeemptVoucher(null)}
+              variant="primary"
+            >
+              <h4>Quay lại</h4>
+            </Button>
+          }
+        >
+          <Box textAlign="center" pb={4}>
+            <div style={{ width: '100%' }}>
+              <Text pb={2} fontWeight="bold">
+                Bạn đã đổi thành công
+              </Text>
+              <div style={{ width: '100%' }}>
+                <Banner
+                  img={successRedeemptVoucher.bannerImg}
+                  subtitle={
+                    successRedeemptVoucher.providerName || 'Partner Name'
+                  }
+                />
+                <h4>{successRedeemptVoucher.name || 'Voucher Name'}</h4>
+                <p>
+                  <small>
+                    (
+                    {formatDate(successRedeemptVoucher.startDate) ||
+                      'dd/mm/yyyy'}{' '}
+                    -{' '}
+                    {formatDate(successRedeemptVoucher.expirationDate) ||
+                      'dd/mm/yyyy'}
+                    )
+                  </small>
+                </p>
+              </div>
+            </div>
+          </Box>
+        </Dialog>
+      )}
+
       <Dialog
         visible={Boolean(currentVoucher)}
         headerTitle="Xác nhận"
