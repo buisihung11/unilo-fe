@@ -92,6 +92,7 @@ const DialogContentWrapper = styled.div`
   min-height: 350px;
   max-height: 80%;
   padding: 2rem;
+  padding-bottom: 3.5rem;
   z-index: 20;
   width: 100%;
 `

@@ -9,6 +9,7 @@ const LoginWrapper = styled.div`
   align-items: center;
   height: 100%;
   padding: 1rem 2rem;
+  padding-bottom: 6rem;
 `
 
 const WelcomeBear = styled.img`
@@ -16,6 +17,9 @@ const WelcomeBear = styled.img`
   right: 0;
   bottom: 0;
   padding: 1rem;
+  width: 140px;
+  height: auto;
+  z-index: 0;
 `
 const Input = styled.input`
   font-size: 18px;

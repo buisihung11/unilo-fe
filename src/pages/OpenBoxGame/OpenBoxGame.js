@@ -139,7 +139,7 @@ export default function OpenBoxGame() {
             <h2>Chúc mừng</h2>
             <DashedLine />
             <p>Bạn đã nhận được 01 phần quà</p>
-            <Box as="img" src={prize?.imgUrl} width={75} height="auto" />
+            <Box py={4} as="img" src={prize?.imgUrl} width={75} height="auto" />
             <Text color="white" fontSize="2rem">
               {prize?.description}
             </Text>

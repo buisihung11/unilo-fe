@@ -145,7 +145,7 @@ const WheelGamePage = () => {
             <h2>{badLuck ? 'Tiếc quá ' : 'Chúc mừng'}</h2>
             <DashedLine />
             {!badLuck && <p>Bạn đã nhận được 01 phần quà</p>}
-            <Box as="img" src={prize?.imgUrl} width={75} height="auto" />
+            <Box py={4} as="img" src={prize?.imgUrl} width={75} height="auto" />
             <Box style={{ 'overflow-wrap': 'break-word' }}>
               <Text color="white" fontSize="2rem">
                 {prize?.description}

@@ -63,7 +63,7 @@ const LoginPage = () => {
       <StyledUniloBackground />
       <LoginWrapper>
         <Text fontWeight="bold" fontSize="2rem">
-          Chào bạn đến với ACB
+          Chào bạn đến với <br /> ACB Gamification
         </Text>
         <Box py={4}>
           <Input
