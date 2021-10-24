@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import axiosClient from '../../utils/axios'
 import useUser from './useUser'
+import useProgramTier from './useProgramTier'
 
 const useMembership = () => {
   const { id } = useUser()
@@ -14,12 +15,11 @@ const useMembership = () => {
 
   const currentMembership = memberships?.find((m) => m.currentTierFlg)
 
-  const nextMembership =
-    currentMembership &&
-    memberships?.find(
-      (m) =>
-        m.programTier.tierIndex === currentMembership.programTier.tierIndex + 1
-    )
+  const { tiers } = useProgramTier(currentMembership?.programTier.programId)
+
+  const nextMembership = tiers?.find(
+    (t) => t.tierIndex === currentMembership.programTier.tierIndex + 1
+  )
 
   return {
     memberships,

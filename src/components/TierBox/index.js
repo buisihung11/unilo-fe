@@ -20,7 +20,7 @@ export default function TierBox(props) {
   const { currentMembership, nextMembership } = useMembership()
 
   const lowerTier = currentMembership?.programTier?.name
-  const upperTier = nextMembership?.programTier?.name
+  const upperTier = nextMembership?.name
 
   const currentNutCount =
     currentMembership?.programTier?.minPoint + pointWallet?.quantity
