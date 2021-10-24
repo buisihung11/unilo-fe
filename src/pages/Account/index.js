@@ -58,32 +58,36 @@ function Account() {
     })
 
   const content = shownIndex ? earnedPointHistory : redeemedPointHistory
-  const tblContent = content.map(
-    ({ id, name, date, point, walletType }, index) => (
-      <HistoryItem key={id}>
-        <HistoryItemLeftWrapper style={{ flex: 4 }}>
-          <div>
-            <HistoryItemName>
-              #{index + 1} {name}
-            </HistoryItemName>
-            <HistoryItemDate>
-              {date.toLocaleDateString()} {date.toLocaleTimeString()}
-            </HistoryItemDate>
-          </div>
-        </HistoryItemLeftWrapper>
-        <Button style={{ flex: 1 }} variant={shownIndex ? 'success' : 'danger'}>
-          <b>
-            {shownIndex ? '+' : '-'}
-            {point}
-          </b>
-          <Icon
-            img={iconMapper[walletType]}
-            style={{ width: '1.5em', marginLeft: '.2em' }}
-          />
-        </Button>
-      </HistoryItem>
-    )
-  )
+  const tblContent =
+    content.length == 0
+      ? 'Không có lịch sử giao dịch'
+      : content.map(({ id, name, date, point, walletType }, index) => (
+          <HistoryItem key={id}>
+            <HistoryItemLeftWrapper style={{ flex: 4 }}>
+              <div>
+                <HistoryItemName>
+                  #{index + 1} {name}
+                </HistoryItemName>
+                <HistoryItemDate>
+                  {date.toLocaleDateString()} {date.toLocaleTimeString()}
+                </HistoryItemDate>
+              </div>
+            </HistoryItemLeftWrapper>
+            <Button
+              style={{ flex: 1 }}
+              variant={shownIndex ? 'success' : 'danger'}
+            >
+              <b>
+                {shownIndex ? '+' : '-'}
+                {point}
+              </b>
+              <Icon
+                img={iconMapper[walletType]}
+                style={{ width: '1.5em', marginLeft: '.2em' }}
+              />
+            </Button>
+          </HistoryItem>
+        ))
   return (
     <StyledUniloWrapper>
       <OverlayView>
