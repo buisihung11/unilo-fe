@@ -7,7 +7,7 @@ export default function HoneyPot(props) {
     <StyledHoneyPotCard>
       <StyledBackgroundButton
         image={props.image}
-        width={'1.6rem'}
+        width={'1.5rem'}
         style={{ marginTop: '-1.3rem' }}
       />
       <StyledHoneyPotCount>{props.count}</StyledHoneyPotCount>

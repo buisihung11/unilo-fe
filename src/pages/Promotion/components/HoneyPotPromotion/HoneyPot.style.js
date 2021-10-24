@@ -5,10 +5,14 @@ export const StyledHoneyPotCard = styled.div`
   align-items: center;
   padding-top: 18px;
   padding-left: 7px;
-  width: 3.9rem;
+  width: 4rem;
 `
 export const StyledHoneyPotCount = styled.div`
   margin-top: -1.3rem;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1rem;
+
+  @media (max-width: 375px) {
+    font-size: 0.9rem;
+  }
 `
