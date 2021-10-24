@@ -19,15 +19,19 @@ import { useMutation } from 'react-query'
 import useMembership from '../../hooks/user/useMembership'
 import StyledNut from '../../components/NutStyle'
 import mascot from '../../assets/images/reward-bear.png'
+import CircularLoaddingDialog from '../../components/Loading/CircularLoaddingDialog'
 
 const ScanQRPage = () => {
   const history = useHistory()
   const { currentMembership, nextMembership } = useMembership()
+
+  const qrCodeRef = useRef(null)
+  const inputFileRef = useRef(null)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
-  const { mutate: submit } = useMutation(
+  const { mutate: submit, isLoading } = useMutation(
     () => {
       return axiosClient.post(`/event/submit`, {
         membershipId: currentMembership.id,
@@ -54,22 +58,15 @@ const ScanQRPage = () => {
       submit()
     }
   }
+
   const handleError = (err) => {
     setError(err)
     console.error(err)
   }
 
-  const scanQrImg = (e) => {
-    console.log(e)
-    const image = e.currentTarget.files[0]
-    console.log(`image`, image)
-    QrScanner.scanImage(image)
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error || 'No QR code found.'))
-  }
-
   return (
     <StyledUniloWrapper>
+      {isLoading && <CircularLoaddingDialog />}
       <Dialog
         visible={isVisible}
         headerTitle={
@@ -81,8 +78,8 @@ const ScanQRPage = () => {
           <Box pr={4} as="img" src={mascot} width={140} height="auto" />
         }
         footer={
-          <Button onClick={() => history.replace('/')} variant="primary">
-            <h4>Trang chủ</h4>
+          <Button onClick={() => setIsVisible(false)} variant="primary">
+            <h4>Quay lại</h4>
           </Button>
         }
       >
@@ -116,9 +113,26 @@ const ScanQRPage = () => {
               onScan={handleScan}
               style={{ width: '100%' }}
             />
+            <QrReader
+              ref={qrCodeRef}
+              delay={300}
+              onError={handleError}
+              onScan={handleScan}
+              style={{ display: 'none' }}
+              legacyMode
+            />
             <Text py={2} fontWeight="bold">
               Đưa camera vào mã QR
             </Text>
+            <input
+              ref={inputFileRef}
+              type="file"
+              accept="image/png, image/gif, image/jpeg"
+              hidden
+            />
+            <Button onClick={() => qrCodeRef.current?.openImageDialog()}>
+              Chọn từ thư viện
+            </Button>
             <Text py={2} fontWeight="bold">
               {result}
             </Text>

@@ -10,6 +10,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import axios from 'axios'
 import { useHistory } from 'react-router'
 import axiosClient from '../../utils/axios'
+import CircularLoaddingDialog from '../../components/Loading/CircularLoaddingDialog'
 
 const LoginPage = () => {
   const queryClient = useQueryClient()
@@ -19,7 +20,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState(null)
   const [error, setError] = useState(null)
 
-  const { mutate: login } = useMutation(
+  const { mutate: login, isLoading } = useMutation(
     () => {
       return axiosClient.post(`/customers/login`, {
         email: username,
@@ -29,7 +30,7 @@ const LoginPage = () => {
     {
       onError: (res) => {
         if (res.response?.data?.status === 401) {
-          setError('Sai tên đăng nhập')
+          setError('Sai tên đăng nhập hoặc mật khẩu')
         }
       },
       onSuccess: async (res) => {
@@ -60,6 +61,7 @@ const LoginPage = () => {
 
   return (
     <StyledUniloWrapper>
+      {isLoading && <CircularLoaddingDialog />}
       <StyledUniloBackground />
       <LoginWrapper>
         <Text fontWeight="bold" fontSize="2rem">
