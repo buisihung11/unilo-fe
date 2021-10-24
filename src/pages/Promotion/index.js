@@ -9,6 +9,7 @@ import CircularLoaddingDialog from '../../components/Loading/CircularLoaddingDia
 import Text from '../../components/Text'
 import useGifts from '../../hooks/gifts/useGifts'
 import useRedeemption from '../../hooks/gifts/useRedeemption'
+import useWallets from '../../hooks/user/useWallets'
 import { StyledPromotionWrapper } from './components/Promotion.style'
 import PromotionHeader from './components/PromotionHeader'
 import PromotionSpecial from './components/PromotionSpecialBox'
@@ -16,6 +17,7 @@ import PromotionVoucherList from './components/PromotionVoucherList'
 
 export default function Promotion(props) {
   const { data: promotions } = useGifts()
+  const { badge1Wallet, badge2Wallet, badge3Wallet } = useWallets()
   const { mutateAsync, isLoading } = useRedeemption()
   const [error, setError] = useState(null)
   const [currentVoucher, setCurrentVoucher] = useState(null)
@@ -70,7 +72,11 @@ export default function Promotion(props) {
       </Dialog>
       <OverlayView>
         <StyledPromotionWrapper>
-          <PromotionHeader />
+          <PromotionHeader
+            badge1={badge1Wallet}
+            badge2={badge2Wallet}
+            badge3={badge3Wallet}
+          />
           <PromotionSpecial
             onRedeempt={setCurrentVoucher}
             item={hightlightPromotion}
