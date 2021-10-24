@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import useTransactions from '../../hooks/user/useTransactions'
 import {
   StyledUniloWrapper,
   OverlayView,
@@ -15,71 +16,74 @@ import {
   HistoryItemDate,
 } from './components'
 import nutIcon from '../../assets/icons/nut.png'
+import badge1Icon from '../../assets/icons/honeypot1.png'
+import badge2Icon from '../../assets/icons/honeypot2.png'
+import badge3Icon from '../../assets/icons/honeypot3.png'
 
-const earnedPointHistory = [
-  {
-    id: 0,
-    name: 'Giao dịch thanh toán hóa đơn 1234565',
-    date: 'dd/MM/yyyy - hh:ss:mm',
-    point: 5,
-  },
-  {
-    id: 1,
-    name: 'Giao dịch thanh toán hóa đơn 1234565',
-    date: 'dd/MM/yyyy - hh:ss:mm',
-    point: 5,
-  },
-  {
-    id: 2,
-    name: 'Giao dịch thanh toán hóa đơn 1234565',
-    date: 'dd/MM/yyyy - hh:ss:mm',
-    point: 10,
-  },
-]
-
-const redeemedPointHistory = [
-  {
-    id: 0,
-    name: 'Giao dịch thanh toán hóa đơn 1234565',
-    date: 'dd/MM/yyyy - hh:ss:mm',
-    point: 5,
-  },
-  {
-    id: 1,
-    name: 'Giao dịch thanh toán hóa đơn 1234565',
-    date: 'dd/MM/yyyy - hh:ss:mm',
-    point: 5,
-  },
-  {
-    id: 2,
-    name: 'Giao dịch thanh toán hóa đơn 1234565',
-    date: 'dd/MM/yyyy - hh:ss:mm',
-    point: 10,
-  },
-]
+const iconMapper = {
+  POINT: nutIcon,
+  BADGE_1: badge1Icon,
+  BADGE_2: badge2Icon,
+  BADGE_3: badge3Icon,
+}
 
 function Account() {
+  let { transactions } = useTransactions()
   const [shownIndex, setShownIndex] = useState(1)
+
+  const earnedPointHistory = (transactions || [])
+    .filter((trans) => trans.metadata?.actionType === 'POINT_ADDING')
+    .map((trans) => {
+      return {
+        id: trans.id,
+        name: trans.metadata.eventDescription,
+        date: new Date(trans.createdAt),
+        point: trans.metadata.amount,
+        walletType: trans.metadata.walletType,
+      }
+    })
+
+  const redeemedPointHistory = (transactions || [])
+    .filter(
+      (trans) => trans.metadata?.actionType === 'BADGE_TO_GIFT_REDEEMPTION'
+    )
+    .map((trans) => {
+      return {
+        id: trans.id,
+        name: `Đổi ưu đãi "${trans.metadata.giftGroup.name}"`,
+        date: new Date(trans.createdAt),
+        point: trans.metadata.amount,
+        walletType: trans.metadata.walletType,
+      }
+    })
+
   const content = shownIndex ? earnedPointHistory : redeemedPointHistory
-  const tblContent = content.map(({ id, name, date, point }, index) => (
-    <HistoryItem key={id}>
-      <HistoryItemLeftWrapper style={{ flex: 4 }}>
-        <div>
-          <HistoryItemName>
-            #{index + 1} {name}
-          </HistoryItemName>
-          <HistoryItemDate>{date}</HistoryItemDate>
-        </div>
-      </HistoryItemLeftWrapper>
-      <Button style={{ flex: 1 }} variant={shownIndex ? 'success' : 'danger'}>
-        <b>
-          {shownIndex ? '+' : '-'}
-          {point}
-        </b>
-        <Icon img={nutIcon} style={{ width: '1.5em' }} />
-      </Button>
-    </HistoryItem>
-  ))
+  const tblContent = content.map(
+    ({ id, name, date, point, walletType }, index) => (
+      <HistoryItem key={id}>
+        <HistoryItemLeftWrapper style={{ flex: 4 }}>
+          <div>
+            <HistoryItemName>
+              #{index + 1} {name}
+            </HistoryItemName>
+            <HistoryItemDate>
+              {date.toLocaleDateString()} {date.toLocaleTimeString()}
+            </HistoryItemDate>
+          </div>
+        </HistoryItemLeftWrapper>
+        <Button style={{ flex: 1 }} variant={shownIndex ? 'success' : 'danger'}>
+          <b>
+            {shownIndex ? '+' : '-'}
+            {point}
+          </b>
+          <Icon
+            img={iconMapper[walletType]}
+            style={{ width: '1.5em', marginLeft: '.2em' }}
+          />
+        </Button>
+      </HistoryItem>
+    )
+  )
   return (
     <StyledUniloWrapper>
       <OverlayView>
