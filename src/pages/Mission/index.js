@@ -29,6 +29,13 @@ export default function Mission(props) {
       </Button>
     </MissionItem>
   ))
+
+  const goToEventMapHandler = () => {
+    history.push({
+      pathname: `/event-map`,
+    })
+  }
+
   return (
     <StyledUniloWrapper>
       <OverlayView>
@@ -36,6 +43,20 @@ export default function Mission(props) {
         <TabTable style={{ flex: 5 }} title1="Nhiệm vụ">
           {content}
         </TabTable>
+        <Button
+          style={{
+            width: '40%',
+            margin: '0 auto',
+            marginTop: '-6.5rem',
+            fontSize: '0.9rem',
+            fontWeight: 'bold',
+            zIndex: 10,
+          }}
+          onClick={() => goToEventMapHandler()}
+          variant={'primary'}
+        >
+          Xem bản đồ
+        </Button>
         <Mascot image={mascot} />
       </OverlayView>
     </StyledUniloWrapper>

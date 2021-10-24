@@ -13,7 +13,7 @@ import {
 import MiniGameBox from './components/OpenBoxGame'
 import useSound from 'use-sound'
 import useSetting from '../../hooks/useSetting'
-import { sleep } from '../../utils/utils'
+import { getBadgeImage, sleep } from '../../utils/utils'
 import Text from '../../components/Text'
 // Sound
 import clickSfx from '../../assets/sounds/button-click.wav'
@@ -55,12 +55,12 @@ export default function OpenBoxGame() {
     clickSound()
     await sleep(1000)
     try {
-      const rewardIdx = await playGameAsync()
+      const reward = await playGameAsync()
       // getReward(gameConfig.id)
-      console.log(`rewardIdx`, rewardIdx)
+      console.log(`reward`, reward)
       setIsPlaying(true)
-      setPrize(gameRewards[rewardIdx])
-      if (gameRewards[rewardIdx] === 'LUCKY_NEXT_TIME') {
+      setPrize(reward)
+      if (reward.displayText === 'LUCKY_NEXT_TIME') {
         badLuckSound()
       } else {
         rewardSound()
@@ -139,7 +139,10 @@ export default function OpenBoxGame() {
             <h2>Chúc mừng</h2>
             <DashedLine />
             <p>Bạn đã nhận được 01 phần quà</p>
-            <Text fontSize="3rem">{prize}</Text>
+            <Box py={4} as="img" src={prize?.imgUrl} width={75} height="auto" />
+            <Text color="white" fontSize="2rem">
+              {prize?.description}
+            </Text>
           </div>
           <div style={{ width: '100%' }}>
             <DashedLine />

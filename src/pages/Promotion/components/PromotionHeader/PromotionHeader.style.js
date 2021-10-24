@@ -14,8 +14,8 @@ export const ButtonWrapper = styled.div`
 
 export const StyledBadgesCard = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   background: url(${badgesCard}) no-repeat center/contain;
-  width: 15rem;
+  width: 28rem;
   height: 5rem;
 `

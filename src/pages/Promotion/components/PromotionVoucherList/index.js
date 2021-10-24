@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import { TabTable } from '../../../../components'
 import useVouchersWallet from '../../../../hooks/user/useVouchersWallet'
 import PromotionVoucher from '../PromotionVoucherCard'
@@ -23,12 +24,14 @@ function PromotionListVoucher({ promotions = [], onRedeempt }) {
         title2={'Giỏ quà của tôi'}
       >
         <StyledListWrapprer>
-          {showPromotions?.map((voucher) => {
+          {showPromotions?.map((voucher, idx) => {
             return (
               <PromotionVoucher
                 item={voucher}
                 shownIndex={shownIndex}
-                key={voucher.id}
+                key={`${shownIndex === 1 ? 'promotion' : 'voucher'}-${
+                  voucher.id
+                }-${idx}`}
                 showAction={shownIndex === 1}
                 onRedeempt={() => onRedeempt(voucher)}
               />

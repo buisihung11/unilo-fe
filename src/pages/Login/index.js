@@ -63,7 +63,7 @@ const LoginPage = () => {
       <StyledUniloBackground />
       <LoginWrapper>
         <Text fontWeight="bold" fontSize="2rem">
-          Chào bạn đến với ACB
+          Chào bạn đến với <br /> ACB Gamification
         </Text>
         <Box py={4}>
           <Input
@@ -72,6 +72,7 @@ const LoginPage = () => {
             placeholder="Tên đăng nhập"
           />
           <Input
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Mật khẩu"
