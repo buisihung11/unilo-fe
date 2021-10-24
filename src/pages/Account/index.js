@@ -50,12 +50,15 @@ function Account() {
     .map((trans) => {
       return {
         id: trans.id,
-        name: `Đổi ưu đãi "${trans.metadata.giftGroup.name}"`,
+        name: `Đổi ưu đãi "${trans.metadata.giftGroup?.name ?? ''}"`,
         date: new Date(trans.createdAt),
         point: trans.metadata.amount,
         walletType: trans.metadata.walletType,
       }
     })
+
+  console.log(`earnedPointHistory`, earnedPointHistory)
+  console.log(`redeemedPointHistory`, redeemedPointHistory)
 
   const content = shownIndex ? earnedPointHistory : redeemedPointHistory
   const tblContent =

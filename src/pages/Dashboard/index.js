@@ -64,7 +64,6 @@ export default function Dashboard(props) {
                     maxWidth: '5em',
                   }}
                 />
-                <Icon style={{ paddingBottom: '0.5rem' }} img={settingIcon} />
                 <Icon img={muteIcon} onClick={() => updateSoundMode(!mute)} />
               </SidebarWrapper>
               <Box display={'flex'} justifyContent={'space-around'} mt={2}>
