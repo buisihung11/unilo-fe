@@ -6,7 +6,7 @@
 # Game
 
 - [ ] Play game API (Khoi xu ly truoc 2h) (**ME**)
-- [ ] Tao data openn box game (Khoi)
+- [x] Tao data openn box game (Khoi)
 - [ ] Open box game (Box game - ) (Sua lai 3x3) (**ME**)
 
 # Account

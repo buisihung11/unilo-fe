@@ -77,7 +77,7 @@ const WheelGamePage = () => {
     try {
       const reward = await playGameAsync()
       console.log(`reward`, reward)
-      const rewardIdx = gameConfig?.gameItems.findIdex(
+      const rewardIdx = gameConfig?.gameItems.findIndex(
         (gameItem) => gameItem.displayText === reward.displayText
       )
       console.log(`rewardIdx`, rewardIdx)
@@ -145,8 +145,11 @@ const WheelGamePage = () => {
             <h2>{badLuck ? 'Tiếc quá ' : 'Chúc mừng'}</h2>
             <DashedLine />
             {!badLuck && <p>Bạn đã nhận được 01 phần quà</p>}
+            <Box as="img" src={prize?.imgUrl} width={75} height="auto" />
             <Box style={{ 'overflow-wrap': 'break-word' }}>
-              <Text fontSize="3rem">{prize?.displayText}</Text>
+              <Text color="white" fontSize="2rem">
+                {prize?.description}
+              </Text>
             </Box>
           </div>
         </Box>
