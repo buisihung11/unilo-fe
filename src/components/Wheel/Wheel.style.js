@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { position, size, width, height, space } from 'styled-system'
-import wheelImg from '../../assets/images/Wheel.png'
+import wheelImg from '../../assets/images/wheel/wheel.png'
 
 const calculateSkew = (total, index) => {
   const rotate = 360 / total
@@ -17,10 +17,14 @@ const rotateAnimation = (deg) => keyframes`
 `
 
 const WheelWrapper = styled.div`
+  background-image: url(${wheelImg});
+  background-repeat: no-repeat; /* Ensure that background does not repeat */
+  background-position: center;
+  background-size: cover;
   margin-top: 30px;
   position: relative;
   padding: 0;
-  max-width: 300px;
+  max-width: 340px;
   min-width: 200px;
   min-height: 200px;
   border-radius: 50%;
@@ -49,9 +53,33 @@ const WheelSliceWrapper = styled.div`
 const WheelPointer = styled.img`
   position: absolute;
   z-index: 99;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: auto;
   transform: translate(-50%, -100%);
+  ${size}
+  ${space}
+  ${position}
+`
+
+const WheelTrigger = styled.img`
+  position: absolute;
+  z-index: 99;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  ${size}
+  ${space}
+  ${position}
+`
+const WheelBackground = styled.img`
+  position: absolute;
+  z-index: 99;
+  width: 360px;
+  height: 360px;
+  top: 0;
+  left: 0;
   ${size}
   ${space}
   ${position}
@@ -64,4 +92,11 @@ const WheelSliceContent = styled.div`
   height: 200%;
 `
 
-export { WheelWrapper, WheelSliceWrapper, WheelSliceContent, WheelPointer }
+export {
+  WheelWrapper,
+  WheelSliceWrapper,
+  WheelSliceContent,
+  WheelPointer,
+  WheelBackground,
+  WheelTrigger,
+}
