@@ -23,3 +23,10 @@ export const sleep = (amount) =>
       res()
     }, amount)
   })
+
+export const formatDate = (datetime) => {
+  var str = datetime
+  var parts = str.slice(0, -1).split('T')
+  var dateComponent = parts[0]
+  return dateComponent
+}

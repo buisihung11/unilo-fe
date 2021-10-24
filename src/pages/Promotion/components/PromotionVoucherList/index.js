@@ -28,7 +28,9 @@ function PromotionListVoucher({ promotions = [], onRedeempt }) {
               <PromotionVoucher
                 item={voucher}
                 shownIndex={shownIndex}
-                key={voucher.id}
+                key={`${shownIndex === 1 ? 'promotion' : 'voucher'}-${
+                  voucher.id
+                }`}
                 showAction={shownIndex === 1}
                 onRedeempt={() => onRedeempt(voucher)}
               />
