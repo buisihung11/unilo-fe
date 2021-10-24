@@ -1,22 +1,28 @@
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useState } from 'react'
 import WinWheel from 'winwheeljs'
-import { WheelPointer, WheelWrapper } from './Wheel.style'
+import {
+  WheelBackground,
+  WheelPointer,
+  WheelTrigger,
+  WheelWrapper,
+} from './Wheel.style'
+import wheelImg from '../../assets/images/wheel/wheel.png'
+import marker from '../../assets/images/wheel/marker.png'
+import triggerImg from '../../assets/images/wheel/trigger.png'
 
 const segments = ['A', 'B', 'C', 'C', 'C']
 
-const DEFAULT_WIDTH = 300
-const DEFAULT_HEIGHT = 300
+const DEFAULT_WIDTH = 340
+const DEFAULT_HEIGHT = 340
 
 const wrapText = (text) => {
   const words = text.split(' ')
-  console.log(`words`, words)
   let multilineText = ''
   for (let index = 0; index < words.length; index = index + 2) {
     multilineText =
       multilineText + '\n' + words.slice(index, index + 2).join(' ')
   }
-  console.log(`multilineText`, multilineText)
   return multilineText
 }
 
@@ -53,7 +59,7 @@ const Wheel = ({
       lineWidth: 0,
       textAligment: 'outer',
       textMargin: 30,
-      // outerRadius: 146, // Use these three properties to
+      outerRadius: 140, // Use these three properties to
       centerX: DEFAULT_WIDTH / 2 + 1, // correctly position the wheel
       centerY: DEFAULT_WIDTH / 2,
       segments: styledSegments,
@@ -80,23 +86,15 @@ const Wheel = ({
   }, [rewardSegmentIdx, wheel, isPlaying])
 
   return (
-    <WheelWrapper
-      onClick={onStart}
-      {...props}
-      width={DEFAULT_WIDTH}
-      height={DEFAULT_HEIGHT}
-    >
-      {/* <Box as={Img} src={wheelImg} width="100%" /> */}
+    <WheelWrapper {...props} width={DEFAULT_WIDTH} height={DEFAULT_HEIGHT}>
       <canvas
         id="wheel-canvas"
-        width={DEFAULT_WIDTH}
-        height={DEFAULT_HEIGHT}
+        width={DEFAULT_WIDTH - 20}
+        height={DEFAULT_WIDTH - 20}
       ></canvas>
-      <WheelPointer
-        top={20}
-        left={DEFAULT_WIDTH / 2}
-        src="https://app.woay.vn/template/96b5c8ab-5dc9-4f09-99ba-cd8d71238392/images/pin.png"
-      />
+      {/* <WheelBackground src={wheelImg} /> */}
+      <WheelTrigger onClick={onStart} src={triggerImg} />
+      <WheelPointer top={60} left={DEFAULT_WIDTH / 2} src={marker} />
     </WheelWrapper>
   )
 }

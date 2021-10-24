@@ -5,6 +5,7 @@ import {
   border,
   color,
   flexbox,
+  grid,
   layout,
   position,
   shadow,
@@ -26,7 +27,8 @@ const Box = styled.div(
   typography,
   border,
   shadow,
-  position
+  position,
+  grid
 )
 
 Box.propTypes = {
@@ -37,6 +39,7 @@ Box.propTypes = {
   ...propTypes.typography,
   ...propTypes.layout,
   ...propTypes.border,
+  ...propTypes.grid,
 }
 
 export default Box

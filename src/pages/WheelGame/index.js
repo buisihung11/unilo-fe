@@ -29,18 +29,17 @@ import Icon from '../../components/Icon'
 import { sleep } from '../../utils/utils'
 import { useQuery } from 'react-query'
 import { getGameInfo } from '../../api/game'
+import useGame from '../../hooks/game/useGame'
+import CircularLoaddingDialog from '../../components/Loading/CircularLoaddingDialog'
+import ErrorDialog from '../../components/Dialog/ErrorDialog'
 
-const GAME_PARAMS = {
-  gameConfigId: '23a84279-5011-4ec3-8719-35a7ea3ac7d2',
-  brandId: 'd05777ad-26fc-4d76-a44b-d462b6c1a181',
-}
-
-const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Im5ndXllbiIsInJvbGUiOiJCcmFuZCBNYW5hZ2VyIiwibmJmIjoxNjM0ODAxODQwLCJleHAiOjE2MzU0MDY2NDAsImlhdCI6MTYzNDgwMTg0MH0.TC1QgyPpVLRLUqiVrm5SkLYOV2NZ0287HAtRXHkbqFM'
+const GAMEID = '23a84279-5011-4ec3-8719-35a7ea3ac7d2'
 
 const WheelGamePage = () => {
   const history = useHistory()
   const { mute } = useSetting()
+
+  const [error, setError] = useState(null)
   const [clickSound] = useSound(clickSfx, {
     soundEnabled: !mute,
   })
@@ -54,22 +53,7 @@ const WheelGamePage = () => {
     soundEnabled: !mute,
   })
 
-  const { data: gameConfig } = useQuery(
-    ['minigame', 'wheel', 'config'],
-    () =>
-      getGameInfo(GAME_PARAMS, {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-        },
-      }),
-    {
-      select: (res) => res?.data,
-      refetchOnWindowFocus: false,
-      staleTime: Infinity,
-    }
-  )
-
-  const { mutateAsync: getReward } = usePlayGame()
+  const { gameConfig, playGameAsync, isGettingReward } = useGame(GAMEID)
 
   const [isPlaying, setIsPlaying] = useState(false)
   const [prizeIdx, setPrizeIdx] = useState(null)
@@ -77,25 +61,34 @@ const WheelGamePage = () => {
   const gameRewards = useMemo(
     () =>
       gameConfig?.gameItems?.map((gameItem) => ({
-        text: gameItem.displayText,
+        text: gameItem.description,
         fillStyle: gameItem.itemColor,
       })) ?? [],
     [gameConfig]
   )
 
   const prize = gameConfig?.gameItems && gameConfig.gameItems[prizeIdx]
-  const badLuck = prize?.displayText === 'Chúc bạn may mắn lần sau'
+  const badLuck = prize?.displayText === 'LUCKY_NEXT_TIME'
 
   const startPlayGame = useCallback(async () => {
     if (isPlaying || prizeIdx) return
     clickSound()
     await sleep(1000)
-    const rewardIdx = Math.floor(Math.random() * gameRewards.length)
-    // getReward(gameConfig.id)
-    console.log(`rewardIdx`, rewardIdx)
-    setIsPlaying(true)
-    setPrizeIdx(rewardIdx)
-  }, [clickSound, isPlaying, prizeIdx, gameRewards])
+    try {
+      const reward = await playGameAsync()
+      console.log(`reward`, reward)
+      const rewardIdx = gameConfig?.gameItems.findIdex(
+        (gameItem) => gameItem.displayText === reward.displayText
+      )
+      console.log(`rewardIdx`, rewardIdx)
+      setIsPlaying(true)
+      setPrizeIdx(rewardIdx)
+    } catch (error) {
+      console.log(`error`, error)
+      const errMsg = error.response?.data?.message ?? 'Có lỗi'
+      setError(errMsg)
+    }
+  }, [isPlaying, prizeIdx, clickSound, playGameAsync, gameConfig?.gameItems])
 
   useEffect(() => {
     if (isPlaying) {
@@ -125,6 +118,12 @@ const WheelGamePage = () => {
     <StyledUniloWrapper>
       <StyledUniloBackground />
       <Overlay />
+      {isGettingReward && <CircularLoaddingDialog />}
+      <ErrorDialog
+        visible={Boolean(error)}
+        errorMsg={error}
+        onClose={() => setError(null)}
+      />
       <Dialog
         visible={Boolean(prize && !isPlaying)}
         headerTitle={

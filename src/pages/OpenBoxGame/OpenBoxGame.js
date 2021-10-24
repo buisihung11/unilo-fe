@@ -22,13 +22,21 @@ import badLuckSfx from '../../assets/sounds/bad-luck.wav'
 // Images
 import backImage from '../../assets/images/back.png'
 import mascot from '../../assets/images/reward-bear.png'
+import useGame from '../../hooks/game/useGame'
+import CircularLoaddingDialog from '../../components/Loading/CircularLoaddingDialog'
+import ErrorDialog from '../../components/Dialog/ErrorDialog'
 
 const gameRewards = ['Voucher 20K', 'Voucher 50K', 'Voucher 70K', 'BAD LUCK']
 
+const GAMEID = '2D5698FC-B9B2-4CDD-A503-0FE5E93C1CEA'
+
 export default function OpenBoxGame() {
   const { mute } = useSetting()
+
+  const [showConfirm, setShowConfirm] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [prize, setPrize] = useState(null)
+
   const [clickSound] = useSound(clickSfx, {
     soundEnabled: !mute,
   })
@@ -39,37 +47,77 @@ export default function OpenBoxGame() {
     soundEnabled: !mute,
   })
 
+  const { gameConfig, playGameAsync, isGettingReward } = useGame(GAMEID)
+  const [error, setError] = useState(null)
+
   const startPlayGame = useCallback(async () => {
     if (isPlaying || prize) return
-    setIsPlaying(true)
     clickSound()
-    // API TO PLAY GAME
-    console.log('SHOW LOADING....')
-    console.log('PLAY WHEEL GAME....')
     await sleep(1000)
-    // GET REWARD ITEM
-    const rewardIdx = Math.floor(Math.random() * gameRewards.length)
-
-    console.log(`WINNING PRIZE`, rewardIdx)
-    // SPIN TO THAT ITEM
-    console.log('START SPIN....')
-
-    setPrize(gameRewards[rewardIdx])
-    if (gameRewards[rewardIdx] === 'BAD LUCK') {
-      badLuckSound()
-    } else {
-      rewardSound()
+    try {
+      const rewardIdx = await playGameAsync()
+      // getReward(gameConfig.id)
+      console.log(`rewardIdx`, rewardIdx)
+      setIsPlaying(true)
+      setPrize(gameRewards[rewardIdx])
+      if (gameRewards[rewardIdx] === 'LUCKY_NEXT_TIME') {
+        badLuckSound()
+      } else {
+        rewardSound()
+      }
+      setIsPlaying(false)
+    } catch (error) {
+      const errMsg = error.response?.data?.message ?? 'Có lỗi'
+      setError(errMsg)
     }
-    setIsPlaying(false)
-  }, [clickSound, rewardSound, badLuckSound, isPlaying, prize])
+  }, [isPlaying, prize, clickSound, playGameAsync, badLuckSound, rewardSound])
 
   const resetGame = () => {
     setIsPlaying(false)
     setPrize(null)
   }
 
+  const totalItem =
+    Array.isArray(gameConfig?.gameItems) && gameConfig?.gameItems.length
+
   return (
     <StyledUniloWrapper>
+      {isGettingReward && <CircularLoaddingDialog />}
+      <ErrorDialog
+        visible={Boolean(error)}
+        errorMsg={error}
+        onClose={() => setError(null)}
+      />
+      <Dialog
+        visible={Boolean(showConfirm)}
+        headerTitle="Xác nhận"
+        footer={
+          <Box display="flex" justifyContent="space-around">
+            <Button
+              width="150px"
+              variant="success"
+              onClick={() => setShowConfirm(false)}
+            >
+              Quay lại
+            </Button>
+            <Button
+              width="150px"
+              onClick={() => {
+                setShowConfirm(false)
+                startPlayGame()
+              }}
+            >
+              Xác nhận
+            </Button>
+          </Box>
+        }
+      >
+        <Box textAlign="center">
+          <Text fontWeight="bold" fontSize="1rem">
+            Bạn có muốn mở hộp quà này?
+          </Text>
+        </Box>
+      </Dialog>
       <Dialog
         visible={Boolean(prize)}
         headerTitle={
@@ -103,19 +151,28 @@ export default function OpenBoxGame() {
         <Link to="/dashboard">
           <img src={backImage} alt="back button" width="65px" />
         </Link>
-        <Box display="flex" flexDirection="column" alignItems="center" mt={-1}>
+        <Box
+          mb={2}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          mt={-1}
+        >
           <BorderText as="h2" color="#FFFFFF" fontWeight="bold">
             Hộp quà bí mật
           </BorderText>
           <BorderText as="h5" color="#3391EC" fontWeight="bold">
             Săn mật cùng ACB Subie
           </BorderText>
-          <BorderText as="h4" color="#F1D302" fontWeight="bold" pt={3}>
+          <BorderText as="h4" color="#F1D302" fontWeight="bold" pt={2}>
             1 lượt chơi = 2
             <StyledNut position="relative" top="5px" left="3px" />
           </BorderText>
         </Box>
-        <MiniGameBox onPlay={startPlayGame} />
+        <MiniGameBox
+          totalItem={totalItem}
+          onPlay={() => setShowConfirm(true)}
+        />
         <CustomerSummary />
       </StyledDarkUnilo>
     </StyledUniloWrapper>
