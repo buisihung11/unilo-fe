@@ -12,7 +12,7 @@ import {
 } from './PromotionVoucher.style'
 
 function PromotionVoucher(props) {
-  const { item, showAction, onRedeempt } = props
+  const { item, showAction, onRedeempt, shownIndex } = props
   const {
     name,
     description,
@@ -27,7 +27,7 @@ function PromotionVoucher(props) {
     // TODO: Fix this
     history.push({
       pathname: `/promotion/${props.item.id}`,
-      state: item,
+      state: { item: item, shownIndex: shownIndex },
     })
   }
 

@@ -14,8 +14,8 @@ const useVouchersWallet = () => {
   )
 
   const normalizedVouchers = vouchers?.map(({ giftGroup, ...others }) => ({
-    ...giftGroup,
     ...others,
+    ...giftGroup,
   }))
 
   return {
