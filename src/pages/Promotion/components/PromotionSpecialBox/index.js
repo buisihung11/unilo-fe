@@ -11,7 +11,7 @@ import {
   StyledSpecialBox,
 } from './PromotionSpecialBox.style'
 
-function PromotionSpecial({ item }) {
+function PromotionSpecial({ item, onRedeempt }) {
   const {
     name,
     description,
@@ -33,6 +33,7 @@ function PromotionSpecial({ item }) {
         <Button
           style={{ width: '30%', marginBottom: '5%' }}
           variant={'success'}
+          onClick={() => onRedeempt(item)}
         >
           <QuantityWrapper>{exchangedWalletAmount}</QuantityWrapper>
           <Icon img={getBadgeImage(walletType)} style={{ width: '1.4em' }} />

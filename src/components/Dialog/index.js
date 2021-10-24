@@ -30,7 +30,7 @@ const Dialog = (props) => {
       <DialogOverlay onClick={onCloseHandler} />
       <DialogContentWrapper>
         <DialogHeader>{headerTitle}</DialogHeader>
-        <DialogExtraHeader>{extraHeader}</DialogExtraHeader>
+        <DialogExtraHeader  >{extraHeader}</DialogExtraHeader>
         <DialogBackground src={dialog} />
         <DialogContent>{children}</DialogContent>
         <DialogFooterWrapper>{footer}</DialogFooterWrapper>

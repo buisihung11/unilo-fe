@@ -12,7 +12,7 @@ import {
 } from './PromotionVoucher.style'
 
 function PromotionVoucher(props) {
-  const { item } = props
+  const { item, showAction, onRedeempt } = props
   const {
     name,
     description,
@@ -41,13 +41,16 @@ function PromotionVoucher(props) {
         <Description>{description}</Description>
       </ContentWrapper>
 
-      <Button
-        style={{ width: '25%' }}
-        variant={props.shownIndex ? 'success' : 'danger'}
-      >
-        <QuantityWrapper>{exchangedWalletAmount}</QuantityWrapper>
-        <Icon img={getBadgeImage(walletType)} style={{ width: '1.5em' }} />
-      </Button>
+      {showAction && (
+        <Button
+          style={{ width: '25%' }}
+          variant={props.shownIndex ? 'success' : 'danger'}
+          onClick={onRedeempt}
+        >
+          <QuantityWrapper>{exchangedWalletAmount}</QuantityWrapper>
+          <Icon img={getBadgeImage(walletType)} style={{ width: '1.5em' }} />
+        </Button>
+      )}
     </StyledVoucherCardWrapper>
   )
 }

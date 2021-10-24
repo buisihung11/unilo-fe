@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import badgeMedium from '../../../../assets/icons/honeypot2.png'
-import lounge from '../../../../assets/images/lounge.jpg'
 import { TabTable } from '../../../../components'
 import useVouchersWallet from '../../../../hooks/user/useVouchersWallet'
 import PromotionVoucher from '../PromotionVoucherCard'
@@ -9,7 +7,7 @@ import {
   StyledVoucherListWrapper,
 } from './PromotionListVoucher.style'
 
-function PromotionListVoucher({ promotions = [] }) {
+function PromotionListVoucher({ promotions = [], onRedeempt }) {
   const { vouchers } = useVouchersWallet()
 
   const [shownIndex, setshownIndex] = useState(1)
@@ -31,6 +29,8 @@ function PromotionListVoucher({ promotions = [] }) {
                 item={voucher}
                 shownIndex={shownIndex}
                 key={voucher.id}
+                showAction={shownIndex === 1}
+                onRedeempt={() => onRedeempt(voucher)}
               />
             )
           })}

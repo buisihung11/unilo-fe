@@ -22,7 +22,6 @@ const useUser = () => {
     [data, isFetching]
   )
 
-  console.log(`value`, value)
   return value
 }
 
