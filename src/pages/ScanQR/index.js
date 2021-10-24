@@ -1,21 +1,57 @@
 import React, { useEffect, useRef, useState } from 'react'
 import QrReader from 'react-qr-reader'
-import { Box, Icon, StyledUniloWrapper } from '../../components'
+import {
+  Box,
+  Icon,
+  StyledUniloWrapper,
+  Dialog,
+  Button,
+  DashedLine,
+} from '../../components'
 import { StyledUniloBackground } from '../../components/AppStyles'
 import Layout from '../../components/Layout'
 import backIcon from '../../assets/icons/back.png'
 import { useHistory } from 'react-router'
 import Text from '../../components/Text'
 import QrScanner from 'qr-scanner'
+import axiosClient from '../../utils/axios'
+import { useMutation } from 'react-query'
+import useMembership from '../../hooks/user/useMembership'
+import StyledNut from '../../components/NutStyle'
+import mascot from '../../assets/images/reward-bear.png'
 
 const ScanQRPage = () => {
   const history = useHistory()
+  const { currentMembership, nextMembership } = useMembership()
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+  const [data, setData] = useState(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const { mutate: submit } = useMutation(
+    () => {
+      return axiosClient.post(`/event/submit`, {
+        membershipId: currentMembership.id,
+        actionId: data.actionId,
+        description: data.description,
+      })
+    },
+    {
+      onError: (res) => {
+        if (!isVisible) {
+          setResult(res.response.data)
+        }
+      },
+      onSuccess: async (res) => {
+        setResult(res.pointAmount)
+        setIsVisible(true)
+      },
+    }
+  )
 
   const handleScan = (data) => {
     if (data) {
-      setResult(data)
+      setData(JSON.parse(data))
+      submit()
     }
   }
   const handleError = (err) => {
@@ -34,6 +70,37 @@ const ScanQRPage = () => {
 
   return (
     <StyledUniloWrapper>
+      <Dialog
+        visible={isVisible}
+        headerTitle={
+          <Text fontWeight="bold" color="white">
+            Phần thưởng
+          </Text>
+        }
+        extraHeader={
+          <Box pr={4} as="img" src={mascot} width={140} height="auto" />
+        }
+        footer={
+          <Button onClick={() => history.replace('/')} variant="primary">
+            <h4>Trang chủ</h4>
+          </Button>
+        }
+      >
+        <Box textAlign="center">
+          <div style={{ width: '100%' }}>
+            <h2>Chúc mừng</h2>
+            <DashedLine />
+            <p>Bạn đã nhận được 01 phần thưởng</p>
+            <Text fontSize="3rem" mt={3}>
+              {result} x{' '}
+              <StyledNut nutSize={'50px'} position="relative" top="7px" />
+            </Text>
+          </div>
+          <div style={{ width: '100%', paddingTop: '20px' }}>
+            <p>{data?.description}</p>
+          </div>
+        </Box>
+      </Dialog>
       <StyledUniloBackground />
       <Layout
         Header={
