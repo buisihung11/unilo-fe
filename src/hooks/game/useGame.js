@@ -40,9 +40,11 @@ const useGame = (gameConfigId) => {
     const rewardIdx = Math.floor(Math.random() * gameConfig?.gameItems.length)
     const randomRewards = gameConfig?.gameItems[rewardIdx]
 
-    const badgeCode = randomRewards.name
-
-    return mutateAsync(gameConfigId, { badgeCode })
+    const badgeCode = randomRewards.displayText
+    console.log(`badgeCode`, badgeCode)
+    return mutateAsync({ gameId: gameConfigId, data: { badgeCode } }).then(
+      (res) => randomRewards
+    )
   }
 
   return {

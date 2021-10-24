@@ -75,16 +75,20 @@ const WheelGamePage = () => {
     clickSound()
     await sleep(1000)
     try {
-      const rewardIdx = await playGameAsync()
-      // getReward(gameConfig.id)
+      const reward = await playGameAsync()
+      console.log(`reward`, reward)
+      const rewardIdx = gameConfig?.gameItems.findIdex(
+        (gameItem) => gameItem.displayText === reward.displayText
+      )
       console.log(`rewardIdx`, rewardIdx)
       setIsPlaying(true)
-      setPrizeIdx(/* rewardIdx */ 3)
+      setPrizeIdx(rewardIdx)
     } catch (error) {
-      const errMsg = error.response.data?.message ?? 'Có lỗi'
+      console.log(`error`, error)
+      const errMsg = error.response?.data?.message ?? 'Có lỗi'
       setError(errMsg)
     }
-  }, [isPlaying, prizeIdx, clickSound, playGameAsync])
+  }, [isPlaying, prizeIdx, clickSound, playGameAsync, gameConfig?.gameItems])
 
   useEffect(() => {
     if (isPlaying) {

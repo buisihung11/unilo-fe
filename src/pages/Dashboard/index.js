@@ -34,11 +34,6 @@ export default function Dashboard(props) {
     soundEnabled: !mute,
     volume: 0.5,
   })
-  const { data } = useQuery(['test'], () =>
-    axiosClient.get(
-      `https://api-loyalty.unilo.net/api/v1/brand/8CBAC6F4-6578-4920-8825-586D1634FF1B`
-    )
-  )
 
   useEffect(() => {
     playBgGameSound()

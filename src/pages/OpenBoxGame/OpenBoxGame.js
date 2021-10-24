@@ -32,8 +32,11 @@ const GAMEID = '2D5698FC-B9B2-4CDD-A503-0FE5E93C1CEA'
 
 export default function OpenBoxGame() {
   const { mute } = useSetting()
+
+  const [showConfirm, setShowConfirm] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [prize, setPrize] = useState(null)
+
   const [clickSound] = useSound(clickSfx, {
     soundEnabled: !mute,
   })
@@ -64,7 +67,7 @@ export default function OpenBoxGame() {
       }
       setIsPlaying(false)
     } catch (error) {
-      const errMsg = error.response.data?.message ?? 'Có lỗi'
+      const errMsg = error.response?.data?.message ?? 'Có lỗi'
       setError(errMsg)
     }
   }, [isPlaying, prize, clickSound, playGameAsync, badLuckSound, rewardSound])
@@ -85,6 +88,36 @@ export default function OpenBoxGame() {
         errorMsg={error}
         onClose={() => setError(null)}
       />
+      <Dialog
+        visible={Boolean(showConfirm)}
+        headerTitle="Xác nhận"
+        footer={
+          <Box display="flex" justifyContent="space-around">
+            <Button
+              width="150px"
+              variant="success"
+              onClick={() => setShowConfirm(false)}
+            >
+              Quay lại
+            </Button>
+            <Button
+              width="150px"
+              onClick={() => {
+                setShowConfirm(false)
+                startPlayGame()
+              }}
+            >
+              Xác nhận
+            </Button>
+          </Box>
+        }
+      >
+        <Box textAlign="center">
+          <Text fontWeight="bold" fontSize="1rem">
+            Bạn có muốn mở hộp quà này?
+          </Text>
+        </Box>
+      </Dialog>
       <Dialog
         visible={Boolean(prize)}
         headerTitle={
@@ -136,7 +169,10 @@ export default function OpenBoxGame() {
             <StyledNut position="relative" top="5px" left="3px" />
           </BorderText>
         </Box>
-        <MiniGameBox totalItem={totalItem} onPlay={startPlayGame} />
+        <MiniGameBox
+          totalItem={totalItem}
+          onPlay={() => setShowConfirm(true)}
+        />
         <CustomerSummary />
       </StyledDarkUnilo>
     </StyledUniloWrapper>
