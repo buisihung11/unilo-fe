@@ -6,7 +6,7 @@ const usePlayGame = () => {
   const queryClient = useQueryClient()
   const { id } = useUser()
   const mutate = useMutation(
-    (gameId) => axiosClient.post(`/game/${gameId}/play`),
+    (gameId, data) => axiosClient.post(`/game/${gameId}/play`, data),
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['user', id, 'wallets'])
