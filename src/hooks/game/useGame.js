@@ -7,7 +7,7 @@ const GAME_PARAMS = {
 }
 
 const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Im5ndXllbiIsInJvbGUiOiJCcmFuZCBNYW5hZ2VyIiwibmJmIjoxNjM0ODAxODQwLCJleHAiOjE2MzU0MDY2NDAsImlhdCI6MTYzNDgwMTg0MH0.TC1QgyPpVLRLUqiVrm5SkLYOV2NZ0287HAtRXHkbqFM'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Im5ndXllbiIsInJvbGUiOiJCcmFuZCBNYW5hZ2VyIiwibmJmIjoxNjM1OTUyNjU0LCJleHAiOjE2MzY1NTc0NTQsImlhdCI6MTYzNTk1MjY1NH0.D_3zHh5p_FyeDVFiYvc11xEzPIw47dvn16zCfX8Vw_I'
 
 const useGame = (gameConfigId) => {
   const { data: gameConfig, ...others } = useQuery(
