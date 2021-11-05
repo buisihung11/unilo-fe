@@ -103,8 +103,52 @@ const EventACBMapPage = () => {
   const [answer, setAnswer] = useState(null)
   const [gameStatus, setGameStatus] = useState(null)
   const [counter, setCounter] = useState(30)
-  const { data } = useQuery(['event-locations'], getEventLocations)
-
+  const data = [
+    {
+      id: 12528,
+      name: 'ACB Quan 1',
+      wkt: 'POINT (106.700751 10.782349)',
+      createDate: '2021-10-21T14:42:17.717',
+      brandId: 298,
+      address:
+        'ACB, Lê Văn Hưu, Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh, 70206, Việt Nam',
+      brandName: 'ACB',
+      type: 'Kids/baby stores',
+      status: 1,
+      storeStreetSegments: [],
+      imageUrl:
+        'https://www.acb.com.vn/wps/wcm/connect/f6798828-b0d3-4061-8581-f7ee2b9c1d68/logo-acb.png?MOD=AJPERES&CACHEID=f6798828-b0d3-4061-8581-f7ee2b9c1d68',
+      geom: {
+        type: 'Point',
+        coordinates: [106.700751, 10.782349],
+      },
+      storeCode: 'ACBQ1',
+      storeTypeId: 5,
+      storeTypeName: 'Chung cư',
+    },
+    {
+      id: 12529,
+      name: 'ACB Quan 3',
+      wkt: 'POINT (106.6848832 10.7689731)',
+      createDate: '2021-10-21T14:43:51.557',
+      brandId: 298,
+      address:
+        'ACB, Nguyễn Thị Minh Khai, Phường 5, Quận 3, Thành phố Hồ Chí Minh, 70200, Việt Nam',
+      brandName: 'ACB',
+      type: 'Kids/baby stores',
+      status: 1,
+      storeStreetSegments: [],
+      imageUrl:
+        'https://www.acb.com.vn/wps/wcm/connect/f6798828-b0d3-4061-8581-f7ee2b9c1d68/logo-acb.png?MOD=AJPERES&CACHEID=f6798828-b0d3-4061-8581-f7ee2b9c1d68',
+      geom: {
+        type: 'Point',
+        coordinates: [106.6848832, 10.7689731],
+      },
+      storeCode: 'ACBQUAN3',
+      storeTypeId: 5,
+      storeTypeName: 'Chung cư',
+    },
+  ]
   const [rewardSound] = useSound(rewardSfx, {
     soundEnabled: !mute,
   })
