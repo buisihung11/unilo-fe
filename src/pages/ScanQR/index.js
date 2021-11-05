@@ -107,12 +107,12 @@ const ScanQRPage = () => {
         }
         Content={
           <Box p={2} textAlign="center">
-            <QrReader
-              delay={300}
-              onError={handleError}
-              onScan={handleScan}
-              style={{ width: '100%' }}
-            />
+            {/*<QrReader*/}
+            {/*  delay={300}*/}
+            {/*  onError={handleError}*/}
+            {/*  onScan={handleScan}*/}
+            {/*  style={{ width: '100%' }}*/}
+            {/*/>*/}
             <QrReader
               ref={qrCodeRef}
               delay={300}
@@ -121,9 +121,9 @@ const ScanQRPage = () => {
               style={{ display: 'none' }}
               legacyMode
             />
-            <Text py={2} fontWeight="bold">
-              Đưa camera vào mã QR
-            </Text>
+            {/*<Text py={2} fontWeight="bold">*/}
+            {/*  Đưa camera vào mã QR*/}
+            {/*</Text>*/}
             <input
               ref={inputFileRef}
               type="file"
