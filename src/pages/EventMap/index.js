@@ -8,6 +8,8 @@ import {
   useMap,
   useMapEvents,
 } from 'react-leaflet'
+import rewardSfx from '../../assets/sounds/reward.wav'
+import badLuckSfx from '../../assets/sounds/bad-luck.wav'
 import L from 'leaflet'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
@@ -19,7 +21,12 @@ import {
   OverlayView,
   Button,
   ExpandableItem,
+  DashedLine,
 } from '../../components'
+
+import mascot from '../../assets/images/reward-bear.png'
+import winIcon from '../../assets/icons/honeypot1.png'
+import loseIcon from '../../assets/images/welcome-bear.png'
 import {
   StyledUniloBackground,
   StyledUniloWrapper,
@@ -32,6 +39,9 @@ import backIcon from '../../assets/icons/back.png'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 import Text from '../../components/Text'
+import { Input } from '../Login/Login.style'
+import useSound from 'use-sound'
+import useSetting from '../../hooks/useSetting'
 
 const MapStyledContainer = styled(MapContainer)`
   width: 100%;
@@ -47,7 +57,7 @@ const IconStores = new L.Icon({
 
 const getEventLocations = () => {
   const jwt =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImYxM2FlZGY4LTIwM2MtNGZmNi1iMzJjLTgzY2FkOWE4NjMyMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQUNCIEJBTksiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhY2IiLCJGY21Ub2tlbiI6IiIsIkltYWdlVXJsIjoiIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbW9iaWxlcGhvbmUiOiIxMjMxMjMiLCJCcmFuZElkIjoiMjk4IiwiQnJhbmROYW1lIjoiQUNCIiwiQWN0aXZlIjoiVHJ1ZSIsImV4cCI6MTYzNTM3OTIwMCwiaXNzIjoiVFJBREVaT05FTUFQIiwiYXVkIjoiVFJBREVaT05FTUFQIn0.mamAoWLUhyvNF8v8cfEefrLCCqfXe8xpLWrKyZSY5YY'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImYxM2FlZGY4LTIwM2MtNGZmNi1iMzJjLTgzY2FkOWE4NjMyMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQUNCIEJBTksiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhY2IiLCJGY21Ub2tlbiI6IiIsIkltYWdlVXJsIjoiIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbW9iaWxlcGhvbmUiOiIxMjMxMjMiLCJCcmFuZElkIjoiMjk4IiwiQnJhbmROYW1lIjoiQUNCIiwiQWN0aXZlIjoiVHJ1ZSIsImV4cCI6MTYzNjY3NTIwMCwiaXNzIjoiVFJBREVaT05FTUFQIiwiYXVkIjoiVFJBREVaT05FTUFQIn0.tTwPEGJTpkk8KR6eiwo0BLyyLDLvraA_5BMp58iN_vk'
   return axios
     .get(`https://stg-api.tradezonemap.com/api/v1.0/stores/brand`, {
       headers: {
@@ -59,18 +69,59 @@ const getEventLocations = () => {
 
 const DEFAULT_DESC = [
   {
+    key: 'Tiêu đề',
+    value: 'Lên rừng, xuống biển',
+  },
+  {
     key: 'Phần thưởng',
     value: '10 hạt dẻ',
   },
-  { key: 'Mô tả', value: undefined },
-  { key: 'Hướng dẫn', value: undefined },
-  { key: 'Điều kiện tham gia', value: undefined },
+  {
+    key: 'Mô tả',
+    value:
+      'Hợp tác cùng Tổ chức Change, ACB tổ chức một lớp học đầy ý nghĩa mang tên Lên rừng, xuống biển. Qua lớp học môi trường này, ACB muốn gửi gắm thông điệp cùng chung tay bảo vệ môi trường đến mọi người',
+  },
+  {
+    key: 'Hướng dẫn',
+    value: `B1: Đến lớp học tại số 123 Abc Q1 HCM
+  B2: Tham gia lớp học
+  B3: Sau khi kết thúc buổi học, ban tổ chức sẽ cung cấp cho bạn mã QR xác nhận đã tham gia
+  B4: Mở app ACB Mobile Banking
+  B5: Quét mã QR và nhận thưởng
+  `,
+  },
+  { key: 'Điều kiện tham gia', value: 'Tất cả mọi người' },
 ]
 
 const EventACBMapPage = () => {
   const history = useHistory()
+
+  const { mute } = useSetting()
   const [selectedEvent, setSelectedEvent] = useState(null)
+  const [guessGame, setGuessGame] = useState(null)
+  const [playGame, setPlayGame] = useState(false)
+  const [answer, setAnswer] = useState(null)
+  const [gameStatus, setGameStatus] = useState(null)
+  const [counter, setCounter] = useState(null)
   const { data } = useQuery(['event-locations'], getEventLocations)
+
+  const [rewardSound] = useSound(rewardSfx, {
+    soundEnabled: !mute,
+  })
+  const [badLuckSound] = useSound(badLuckSfx, {
+    soundEnabled: !mute,
+  })
+
+  console.log(`data`, data)
+
+  // useEffect(() => {
+  //   if (playGame) {
+  //     setInterval(() => {
+  //       setCounter(1)
+  //     }, 30 * 1000)
+  //   }
+  //   return () => {}
+  // }, [playGame])
 
   const {
     name,
@@ -85,24 +136,135 @@ const EventACBMapPage = () => {
     </ExpandableItem>
   ))
 
+  const checkGame = () => {
+    setPlayGame(false)
+    if (answer?.toLowerCase() == 'acbwin') {
+      setGameStatus('WIN')
+      rewardSound()
+    } else {
+      setGameStatus('LOSE')
+      badLuckSound()
+    }
+    setAnswer(null)
+  }
+
+  const badLuck = gameStatus === 'LOSE'
+
   return (
     <StyledUniloWrapper>
       <Dialog
-        visible={Boolean(selectedEvent)}
-        onClose={() => setSelectedEvent(null)}
-        headerTitle="Mission Name"
-        footer={<Button onClick={() => setSelectedEvent(null)}>Đóng</Button>}
+        visible={Boolean(gameStatus)}
+        headerTitle={
+          <Text fontWeight="bold" color="white">
+            Phần thưởng
+          </Text>
+        }
+        extraHeader={
+          <Box pr={4} as="img" src={mascot} width={140} height="auto" />
+        }
+        footer={
+          <Button onClick={() => setGameStatus(null)} variant="primary">
+            <h4>Quay lại</h4>
+          </Button>
+        }
       >
-        <div style={{ width: '100%' }}>
-          <h4>{name || 'Mission Name'}</h4>
-          <p>
-            <small>
-              ({startDate || 'dd/mm/yyyy'} - {expirationDate || 'dd/mm/yyyy'})
-            </small>
-          </p>
-          {content}
-        </div>
+        <Box textAlign="center">
+          <div style={{ width: '100%' }}>
+            <h2>{badLuck ? 'Tiếc quá ' : 'Chúc mừng'}</h2>
+            <DashedLine />
+            {!badLuck ? (
+              <p>Bạn đã nhận được 01 phần quà</p>
+            ) : (
+              <p>Bạn đã đoán sai rồi</p>
+            )}
+            <Box
+              py={4}
+              as="img"
+              src={badLuck ? loseIcon : winIcon}
+              width={75}
+              height="auto"
+            />
+            <Box style={{ 'overflow-wrap': 'break-word' }}>
+              <Text color="white" fontSize="2rem">
+                3 hũ mật ong cao cấp
+              </Text>
+            </Box>
+          </div>
+        </Box>
       </Dialog>
+
+      {selectedEvent && (
+        <Dialog
+          visible={Boolean(selectedEvent)}
+          onClose={() => setSelectedEvent(null)}
+          headerTitle="Lên rừng xuống biển"
+          footer={
+            <Button onClick={() => history.push('/qr-scan')}>Thực hiện</Button>
+          }
+        >
+          <div style={{ width: '100%' }}>
+            <h4>{name || 'Mission Name'}</h4>
+            <p>
+              <small>
+                ({startDate || 'dd/mm/yyyy'} - {expirationDate || 'dd/mm/yyyy'})
+              </small>
+            </p>
+            {content}
+          </div>
+        </Dialog>
+      )}
+
+      {guessGame && (
+        <Dialog
+          visible={Boolean(guessGame)}
+          onClose={() => setGuessGame(false)}
+          headerTitle="Đoán vui có thưởng"
+          footer={
+            <Button
+              onClick={() => {
+                setGuessGame(false)
+                setPlayGame(true)
+              }}
+            >
+              Chơi ngay
+            </Button>
+          }
+        >
+          <div style={{ width: '100%' }}>
+            <h4>Trò chơi</h4>
+            <p>Đoán đúng ô chữ trong vòng 30s để nhận được phần thưởng nhé</p>
+          </div>
+        </Dialog>
+      )}
+
+      {playGame && (
+        <Dialog
+          visible={Boolean(playGame)}
+          onClose={() => setPlayGame(false)}
+          headerTitle={
+            <Text sx={{ fontWeight: 'bold', color: 'white' }}>Đố bạn</Text>
+          }
+          footer={
+            <Box textAlign="center">
+              <Input
+                style={{ width: '50%' }}
+                placeholder="Đáp án của bạn"
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+              <Button mt="1rem" onClick={checkGame}>
+                Xác nhận
+              </Button>
+            </Box>
+          }
+        >
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <h5>Hãy ghép các chữ sau thành từ có nghĩa:</h5>
+            <p>Đoán đúng ô chữ trong vòng 30s để nhận được phần thưởng nhé</p>
+            <h3 style={{ marginTop: '2rem' }}>A / W / n / C / i / B</h3>
+          </div>
+        </Dialog>
+      )}
 
       <StyledUniloBackground />
 
@@ -122,7 +284,7 @@ const EventACBMapPage = () => {
             <Box p={2} width="100%" height="100%">
               <MapStyledContainer
                 center={{ lat: 10.772461, lng: 106.698055 }}
-                zoom={8}
+                zoom={12}
                 scrollWheelZoom={true}
                 zoomDelta={3}
               >
@@ -130,7 +292,7 @@ const EventACBMapPage = () => {
                   attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png"
                 />
-                {data?.map((e) => (
+                {data?.map((e, idx) => (
                   <Marker
                     key={e.id}
                     position={{
@@ -139,7 +301,13 @@ const EventACBMapPage = () => {
                     }}
                     icon={IconStores}
                     eventHandlers={{
-                      click: () => setSelectedEvent(e),
+                      click: () => {
+                        if (idx === 0) {
+                          setSelectedEvent(e)
+                        } else {
+                          setGuessGame(true)
+                        }
+                      },
                     }}
                   >
                     <Popup>{e.name}</Popup>
