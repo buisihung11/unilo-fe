@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
   LayersControl,
   MapContainer,
@@ -102,7 +102,7 @@ const EventACBMapPage = () => {
   const [playGame, setPlayGame] = useState(false)
   const [answer, setAnswer] = useState(null)
   const [gameStatus, setGameStatus] = useState(null)
-  const [counter, setCounter] = useState(null)
+  const [counter, setCounter] = useState(30)
   const { data } = useQuery(['event-locations'], getEventLocations)
 
   const [rewardSound] = useSound(rewardSfx, {
@@ -114,14 +114,42 @@ const EventACBMapPage = () => {
 
   console.log(`data`, data)
 
-  // useEffect(() => {
-  //   if (playGame) {
-  //     setInterval(() => {
-  //       setCounter(1)
-  //     }, 30 * 1000)
-  //   }
-  //   return () => {}
-  // }, [playGame])
+  const checkGame = useCallback(() => {
+    setPlayGame(false)
+    if (answer?.toLowerCase() == 'acbwin') {
+      setGameStatus('WIN')
+      rewardSound()
+    } else {
+      setGameStatus('LOSE')
+      badLuckSound()
+    }
+    setAnswer(null)
+    setCounter(30)
+  }, [answer, badLuckSound, rewardSound])
+
+  useEffect(() => {
+    let interval
+    if (playGame) {
+      interval = setInterval(() => {
+        setCounter(counter - 1)
+      }, 1000)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [playGame, counter])
+
+  useEffect(() => {
+    let timeout
+    if (playGame) {
+      timeout = setTimeout(() => {
+        checkGame()
+      }, 1000 * 30)
+    }
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [playGame, checkGame])
 
   const {
     name,
@@ -135,18 +163,6 @@ const EventACBMapPage = () => {
       {value}
     </ExpandableItem>
   ))
-
-  const checkGame = () => {
-    setPlayGame(false)
-    if (answer?.toLowerCase() == 'acbwin') {
-      setGameStatus('WIN')
-      rewardSound()
-    } else {
-      setGameStatus('LOSE')
-      badLuckSound()
-    }
-    setAnswer(null)
-  }
 
   const badLuck = gameStatus === 'LOSE'
 
@@ -184,11 +200,13 @@ const EventACBMapPage = () => {
               width={75}
               height="auto"
             />
-            <Box style={{ 'overflow-wrap': 'break-word' }}>
-              <Text color="white" fontSize="2rem">
-                3 hũ mật ong cao cấp
-              </Text>
-            </Box>
+            {!badLuck && (
+              <Box style={{ 'overflow-wrap': 'break-word' }}>
+                <Text color="white" fontSize="2rem">
+                  3 hũ mật ong cao cấp
+                </Text>
+              </Box>
+            )}
           </div>
         </Box>
       </Dialog>
@@ -261,6 +279,7 @@ const EventACBMapPage = () => {
           <div style={{ width: '100%', textAlign: 'center' }}>
             <h5>Hãy ghép các chữ sau thành từ có nghĩa:</h5>
             <p>Đoán đúng ô chữ trong vòng 30s để nhận được phần thưởng nhé</p>
+            <h4>{counter}</h4>
             <h3 style={{ marginTop: '2rem' }}>A / W / n / C / i / B</h3>
           </div>
         </Dialog>
