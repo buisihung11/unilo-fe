@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
-import { Box, CustomerSummary, Icon } from '../../components'
+import { Box, Button, CustomerSummary, Icon } from '../../components'
 import {
   StyledUniloBackground,
   StyledUniloWrapper,
@@ -26,10 +26,23 @@ import useSound from 'use-sound'
 import { useQuery } from 'react-query'
 import axiosClient from '../../utils/axios'
 
+const checkHasFeed = () => {
+  if (localStorage.getItem('LAST_FEED') == null) return false
+
+  const lastFeed = Date.parse(localStorage.getItem('LAST_FEED') ?? new Date())
+  const curent = new Date()
+  const diffMs = Math.abs(curent - lastFeed)
+  return diffMs / 1000 / 60 < 30
+}
+const updateFeedTime = () => {
+  return localStorage.setItem('LAST_FEED', new Date())
+}
+
 export default function Dashboard(props) {
   const router = useHistory()
   const { mute, updateSoundMode } = useSetting()
-
+  const [hasFeed, setHasFeed] = useState(checkHasFeed())
+  console.log(`hasFeed`, hasFeed)
   const [playBgGameSound, { stop }] = useSound(gameBgSfx, {
     soundEnabled: !mute,
     volume: 0.5,
@@ -100,7 +113,15 @@ export default function Dashboard(props) {
                   </Text>
                 </StyledGameBackground>
               </Box>
-              <BearTalking />
+              <BearTalking hasFeed={hasFeed} />
+              <Button
+                onClick={() => {
+                  setHasFeed(true)
+                  updateFeedTime()
+                }}
+              >
+                {!hasFeed ? 'Nạp năng lượng ' : 'Quay lại sau 30ph'}
+              </Button>
             </Box>
           </Box>
         }

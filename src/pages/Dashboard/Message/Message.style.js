@@ -4,13 +4,15 @@ import bgChat from '../../../assets/images/bg-chat.png'
 export const StyledMessage = styled.div`
   background: url(${bgChat}) no-repeat center center/contain;
   display: flex;
-  width: 250px;
+  width: 200px;
   height: 250px;
   align-items: center;
   padding: 2rem;
   position: absolute;
   justify-content: center;
   top: -20%;
+  left: 30%;
+  z-index: 99999;
   animation: expand-bounce 2s 1;
 
   @keyframes expand-bounce {
